@@ -3,7 +3,8 @@
   "Bake-off",
   "Retro Arcade",
   "Originals",
-  "Playable Ads"
+  "Playable Ads",
+  "Pixel Marathon"
  ],
  "games": [
   {
@@ -2175,6 +2176,270 @@
    "orientation": "portrait",
    "path": "../games/playable-ads/tug-tangle/index.html",
    "title": "Tug Tangle"
+  },
+  {
+   "autostart": [],
+   "category": "Pixel Marathon",
+   "id": "pixel-potion-panic",
+   "keys": {},
+   "labels": {},
+   "note": "Pixel-art remake of the Tincture Tide playable ad (Sort puzzle · 2D). One self-contained file, about 30-50 seconds: POTION PANIC!",
+   "orientation": "portrait",
+   "path": "../games/pixel-marathon/potion-panic/index.html",
+   "title": "POTION PANIC!"
+  },
+  {
+   "autostart": [],
+   "category": "Pixel Marathon",
+   "id": "pixel-roost-riot",
+   "keys": {},
+   "labels": {},
+   "note": "Pixel-art remake of the Roost Shuffle playable ad (Sort puzzle · 2D). One self-contained file, about 30-50 seconds: ROOST RIOT!",
+   "orientation": "portrait",
+   "path": "../games/pixel-marathon/roost-riot/index.html",
+   "title": "ROOST RIOT!"
+  },
+  {
+   "autostart": [],
+   "category": "Pixel Marathon",
+   "id": "pixel-yeti-scoops",
+   "keys": {},
+   "labels": {},
+   "note": "Pixel-art remake of the Scoop Yeti playable ad (Sort puzzle · 2D). One self-contained file, about 30-50 seconds: YETI SCOOPS!",
+   "orientation": "portrait",
+   "path": "../games/pixel-marathon/yeti-scoops/index.html",
+   "title": "YETI SCOOPS!"
+  },
+  {
+   "autostart": [],
+   "category": "Pixel Marathon",
+   "id": "pixel-jelly-jars",
+   "keys": {},
+   "labels": {},
+   "note": "Pixel-art remake of the Jiggle Jars playable ad (Sort puzzle · 2D). One self-contained file, about 30-50 seconds: JELLY JARS!",
+   "orientation": "portrait",
+   "path": "../games/pixel-marathon/jelly-jars/index.html",
+   "title": "JELLY JARS!"
+  },
+  {
+   "autostart": [],
+   "category": "Pixel Marathon",
+   "id": "pixel-reef-rescue",
+   "keys": {},
+   "labels": {},
+   "note": "Pixel-art remake of the Reeflume playable ad (Match-3 · 2D). One self-contained file, about 30-50 seconds: REEF RESCUE!",
+   "orientation": "portrait",
+   "path": "../games/pixel-marathon/reef-rescue/index.html",
+   "title": "REEF RESCUE!"
+  },
+  {
+   "autostart": [],
+   "category": "Pixel Marathon",
+   "id": "pixel-lantern-rush",
+   "keys": {},
+   "labels": {},
+   "note": "Pixel-art remake of the Lantern Lift playable ad (Triple match · 2D). One self-contained file, about 30-50 seconds: LANTERN RUSH!",
+   "orientation": "portrait",
+   "path": "../games/pixel-marathon/lantern-rush/index.html",
+   "title": "LANTERN RUSH!"
+  },
+  {
+   "autostart": [],
+   "category": "Pixel Marathon",
+   "id": "pixel-kiln-line",
+   "keys": {},
+   "labels": {},
+   "note": "Pixel-art remake of the Glazeline playable ad (Block puzzle · 2D). One self-contained file, about 30-50 seconds: KILN LINE!",
+   "orientation": "portrait",
+   "path": "../games/pixel-marathon/kiln-line/index.html",
+   "title": "KILN LINE!"
+  },
+  {
+   "autostart": [],
+   "category": "Pixel Marathon",
+   "id": "pixel-dragon-nest",
+   "keys": {},
+   "labels": {},
+   "note": "Pixel-art remake of the Embernest playable ad (Merge · 2D). One self-contained file, about 30-50 seconds: DRAGON NEST!",
+   "orientation": "portrait",
+   "path": "../games/pixel-marathon/dragon-nest/index.html",
+   "title": "DRAGON NEST!"
+  },
+  {
+   "autostart": [],
+   "category": "Pixel Marathon",
+   "id": "pixel-splatrail",
+   "keys": {},
+   "labels": {},
+   "note": "Pixel-art remake of the Hopsplat playable ad (Paint train · 2D). One self-contained file, about 30-50 seconds: SPLATRAIL.",
+   "orientation": "portrait",
+   "path": "../games/pixel-marathon/splatrail/index.html",
+   "title": "SPLATRAIL"
+  },
+  {
+   "autostart": [],
+   "category": "Pixel Marathon",
+   "id": "pixel-pin-panic",
+   "keys": {},
+   "labels": {},
+   "note": "Pixel-art remake of the Gold Rush Rescue playable ad (Pin pull · 2D). One self-contained file, about 30-50 seconds: PIN PANIC.",
+   "orientation": "portrait",
+   "path": "../games/pixel-marathon/pin-panic/index.html",
+   "title": "PIN PANIC"
+  },
+  {
+   "autostart": [],
+   "category": "Pixel Marathon",
+   "id": "pixel-boat-jam",
+   "keys": {},
+   "labels": {},
+   "note": "Pixel-art remake of the Tug Tangle playable ad (Jam puzzle · 2D). One self-contained file, about 30-50 seconds: BOAT JAM.",
+   "orientation": "portrait",
+   "path": "../games/pixel-marathon/boat-jam/index.html",
+   "title": "BOAT JAM"
+  },
+  {
+   "autostart": [],
+   "category": "Pixel Marathon",
+   "id": "pixel-boltstorm",
+   "keys": {},
+   "labels": {},
+   "note": "Pixel-art remake of the Nutbolt Legion playable ad (Lane shooter · 2D). One self-contained file, about 30-50 seconds: BOLTSTORM.",
+   "orientation": "portrait",
+   "path": "../games/pixel-marathon/boltstorm/index.html",
+   "title": "BOLTSTORM"
+  },
+  {
+   "autostart": [],
+   "category": "Pixel Marathon",
+   "id": "pixel-moonstack",
+   "keys": {},
+   "labels": {},
+   "note": "Pixel-art remake of the Sky Stacker playable ad (Timing stacker · 2D). One self-contained file, about 30-50 seconds: MOONSTACK.",
+   "orientation": "portrait",
+   "path": "../games/pixel-marathon/moonstack/index.html",
+   "title": "MOONSTACK"
+  },
+  {
+   "autostart": [],
+   "category": "Pixel Marathon",
+   "id": "pixel-ricochet",
+   "keys": {},
+   "labels": {},
+   "note": "Pixel-art remake of the Bounce Blaster playable ad (Trick shot · 2D). One self-contained file, about 30-50 seconds: RICOCHET.",
+   "orientation": "portrait",
+   "path": "../games/pixel-marathon/ricochet/index.html",
+   "title": "RICOCHET"
+  },
+  {
+   "autostart": [],
+   "category": "Pixel Marathon",
+   "id": "pixel-inkstorm",
+   "keys": {},
+   "labels": {},
+   "note": "Pixel-art remake of the Inkwash Vigil playable ad (Survivor · 2D). One self-contained file, about 30-50 seconds: INKSTORM.",
+   "orientation": "portrait",
+   "path": "../games/pixel-marathon/inkstorm/index.html",
+   "title": "INKSTORM"
+  },
+  {
+   "autostart": [],
+   "category": "Pixel Marathon",
+   "id": "pixel-shardborn",
+   "keys": {},
+   "labels": {},
+   "note": "Pixel-art remake of the Shardstorm Rookie playable ad (Survivor · 2D). One self-contained file, about 30-50 seconds: SHARDBORN.",
+   "orientation": "portrait",
+   "path": "../games/pixel-marathon/shardborn/index.html",
+   "title": "SHARDBORN"
+  },
+  {
+   "autostart": [],
+   "category": "Pixel Marathon",
+   "id": "pixel-mob-march",
+   "keys": {},
+   "labels": {},
+   "note": "Pixel-art remake of the Causeway Crush playable ad (Crowd runner · 3D). One self-contained file, about 30-50 seconds: MOB MARCH!",
+   "orientation": "portrait",
+   "path": "../games/pixel-marathon/mob-march/index.html",
+   "title": "MOB MARCH!"
+  },
+  {
+   "autostart": [],
+   "category": "Pixel Marathon",
+   "id": "pixel-grow-or-bust",
+   "keys": {},
+   "labels": {},
+   "note": "Pixel-art remake of the Evolve Rush playable ad (Evolution runner · 3D). One self-contained file, about 30-50 seconds: GROW OR BUST!",
+   "orientation": "portrait",
+   "path": "../games/pixel-marathon/grow-or-bust/index.html",
+   "title": "GROW OR BUST!"
+  },
+  {
+   "autostart": [],
+   "category": "Pixel Marathon",
+   "id": "pixel-snack-hole",
+   "keys": {},
+   "labels": {},
+   "note": "Pixel-art remake of the Gulp City playable ad (Hole game · 3D). One self-contained file, about 30-50 seconds: SNACK HOLE!",
+   "orientation": "portrait",
+   "path": "../games/pixel-marathon/snack-hole/index.html",
+   "title": "SNACK HOLE!"
+  },
+  {
+   "autostart": [],
+   "category": "Pixel Marathon",
+   "id": "pixel-wind-racer",
+   "keys": {},
+   "labels": {},
+   "note": "Pixel-art remake of the Sunskiff playable ad (Racing · 3D). One self-contained file, about 30-50 seconds: WIND RACER!",
+   "orientation": "portrait",
+   "path": "../games/pixel-marathon/wind-racer/index.html",
+   "title": "WIND RACER!"
+  },
+  {
+   "autostart": [],
+   "category": "Pixel Marathon",
+   "id": "pixel-boiler-brawl",
+   "keys": {},
+   "labels": {},
+   "note": "Pixel-art remake of the Boilerbloom playable ad (Lane battle · 3D). One self-contained file, about 30-50 seconds: BOILER BRAWL!",
+   "orientation": "portrait",
+   "path": "../games/pixel-marathon/boiler-brawl/index.html",
+   "title": "BOILER BRAWL!"
+  },
+  {
+   "autostart": [],
+   "category": "Pixel Marathon",
+   "id": "pixel-bean-rush",
+   "keys": {},
+   "labels": {},
+   "note": "Pixel-art remake of the Cozy Bean Cafe playable ad (Idle arcade · 2D). One self-contained file, about 30-50 seconds: BEAN RUSH!",
+   "orientation": "portrait",
+   "path": "../games/pixel-marathon/bean-rush/index.html",
+   "title": "BEAN RUSH!"
+  },
+  {
+   "autostart": [],
+   "category": "Pixel Marathon",
+   "id": "pixel-shroom-shop",
+   "keys": {},
+   "labels": {},
+   "note": "Pixel-art remake of the Glimmerbrew playable ad (Idle arcade · 2D). One self-contained file, about 30-50 seconds: SHROOM SHOP!",
+   "orientation": "portrait",
+   "path": "../games/pixel-marathon/shroom-shop/index.html",
+   "title": "SHROOM SHOP!"
+  },
+  {
+   "autostart": [],
+   "category": "Pixel Marathon",
+   "id": "pixel-reef-guard",
+   "keys": {},
+   "labels": {},
+   "note": "Pixel-art remake of the Reefhold playable ad (Tower defense · 2D). One self-contained file, about 30-50 seconds: REEF GUARD!",
+   "orientation": "portrait",
+   "path": "../games/pixel-marathon/reef-guard/index.html",
+   "title": "REEF GUARD!"
   }
  ]
 }

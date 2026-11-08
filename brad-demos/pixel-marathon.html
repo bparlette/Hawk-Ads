@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<title>PIXEL MARATHON — BRAIN BOOST</title>
+<link rel="icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==">
+<style>
+  /* ============ PIXEL ARCADE — flat colors, hard shadows, zero radius, zero gradients ============ */
+  * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
+  html, body { height:100%; }
+  body {
+    background:#05060a; color:#f4f6ff;
+    font-family:"Courier New", Courier, monospace; font-weight:bold;
+    overflow:hidden; user-select:none; -webkit-user-select:none;
+    display:flex; flex-direction:column;
+    height:100dvh;
+    padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+  }
+  button { font-family:inherit; font-weight:bold; cursor:pointer; border-radius:0; }
+
+  /* ---------- HUD ---------- */
+  #hud {
+    flex:0 0 auto; background:#0b0d16; border-bottom:4px solid #ffd23c;
+    padding:8px 10px 0 10px; z-index:30;
+  }
+  #hudRow { display:flex; align-items:center; gap:10px; }
+  .hudItem { font-size:15px; letter-spacing:1px; white-space:nowrap; }
+  .hudItem .lab { color:#31d8ff; font-size:11px; display:block; letter-spacing:2px; }
+  .hudItem .val { font-size:20px; color:#fff; text-shadow:2px 2px 0 #000; }
+  #hudScore .val { color:#ffd23c; }
+  #hudStreak .val { color:#38f26b; }
+  #hudStreak.hot .val { color:#ff9f1c; text-shadow:2px 2px 0 #7a0800; }
+  #hudGame { margin-left:auto; text-align:right; }
+  #hudGame .val { color:#31d8ff; }
+  .hudBtn {
+    background:#161a2c; color:#f4f6ff; border:3px solid #f4f6ff;
+    box-shadow:3px 3px 0 #000; padding:7px 10px; font-size:14px; letter-spacing:1px;
+  }
+  .hudBtn:active { transform:translate(2px,2px); box-shadow:1px 1px 0 #000; }
+  #btnSkip { border-color:#ffd23c; color:#ffd23c; }
+  #btnQuit { border-color:#ff3b3b; color:#ff3b3b; }
+  #timeWrap { height:12px; background:#161a2c; border:3px solid #000; margin:8px 0 10px 0; }
+  #timeFill { height:100%; width:100%; background:#38f26b; }
+  #timeFill.low { background:#ff3b3b; }
+
+  /* ---------- STAGE ---------- */
+  #stage { flex:1 1 auto; position:relative; background:#000; }
+  #gameFrame { position:absolute; inset:0; width:100%; height:100%; border:0; background:#000; display:block; }
+
+  .overlay {
+    position:absolute; inset:0; z-index:20; display:none;
+    flex-direction:column; align-items:center; justify-content:center;
+    text-align:center; padding:20px; background:#05060a;
+  }
+  .overlay.show { display:flex; }
+
+  /* ---------- START ---------- */
+  #startScreen { background:#05060a; border-top:0; }
+  .gameTitle {
+    font-size:clamp(38px, 11vw, 84px); line-height:0.95; color:#ffd23c;
+    text-shadow:5px 5px 0 #ff3b3b, 10px 10px 0 #000; letter-spacing:2px; text-transform:uppercase;
+  }
+  .gameSub {
+    margin-top:18px; font-size:clamp(14px, 4vw, 20px); color:#31d8ff; letter-spacing:3px; text-transform:uppercase;
+  }
+  .gameBlurb { margin-top:14px; font-size:clamp(12px, 3.4vw, 16px); color:#f4f6ff; max-width:520px; line-height:1.5; letter-spacing:1px; }
+  .bigBtn {
+    margin-top:28px; background:#38f26b; color:#04140a; border:4px solid #f4f6ff;
+    box-shadow:6px 6px 0 #000; padding:16px 42px; font-size:clamp(20px, 6vw, 30px); letter-spacing:3px;
+  }
+  .bigBtn:active { transform:translate(3px,3px); box-shadow:3px 3px 0 #000; }
+  .bestLine { margin-top:16px; color:#ffd23c; font-size:15px; letter-spacing:2px; min-height:18px; }
+
+  /* ---------- INTERSTITIAL ---------- */
+  #interstitial { background:#05060a; }
+  #intGameNo { color:#31d8ff; font-size:clamp(20px, 6vw, 34px); letter-spacing:4px; text-shadow:3px 3px 0 #000; }
+  #intName {
+    margin-top:10px; color:#ffd23c; font-size:clamp(36px, 11vw, 76px); line-height:1;
+    text-shadow:5px 5px 0 #000; text-transform:uppercase; letter-spacing:2px;
+  }
+  #intSkill {
+    margin-top:18px; display:inline-block; border:4px solid #38f26b; color:#38f26b;
+    padding:6px 16px; font-size:clamp(15px, 4.5vw, 22px); letter-spacing:3px; box-shadow:4px 4px 0 #000;
+  }
+  #intInstruction {
+    margin-top:22px; color:#fff; font-size:clamp(19px, 6vw, 34px); line-height:1.3;
+    text-transform:uppercase; letter-spacing:2px; max-width:640px; text-shadow:3px 3px 0 #000;
+  }
+  #intGo { margin-top:20px; color:#ff3b3b; font-size:clamp(16px, 5vw, 24px); letter-spacing:5px; }
+
+  /* ---------- FLASH ---------- */
+  #flash {
+    position:absolute; inset:0; z-index:25; display:none; align-items:center; justify-content:center;
+    pointer-events:none; background:transparent; text-align:center;
+  }
+  #flash.show { display:flex; }
+  #flashText { font-size:clamp(44px, 14vw, 110px); letter-spacing:3px; text-transform:uppercase; }
+  #flash.win  #flashText { color:#38f26b; text-shadow:6px 6px 0 #000, -2px -2px 0 #000; }
+  #flash.lose #flashText { color:#ff3b3b; text-shadow:6px 6px 0 #000, -2px -2px 0 #000; }
+  #flash.skip #flashText { color:#ffd23c; text-shadow:6px 6px 0 #000, -2px -2px 0 #000; }
+
+  /* ---------- PAUSE ---------- */
+  #pauseScreen { background:rgba(5,6,10,0.92); }
+  #pauseScreen .pauseBig { color:#31d8ff; font-size:clamp(34px, 10vw, 64px); text-shadow:5px 5px 0 #000; letter-spacing:4px; }
+  #pauseScreen .pauseSub { margin-top:12px; color:#f4f6ff; letter-spacing:2px; font-size:16px; }
+
+  /* ---------- END ---------- */
+  #endScreen { background:#05060a; }
+  .endTitle { color:#31d8ff; font-size:clamp(22px, 6vw, 36px); letter-spacing:4px; text-shadow:3px 3px 0 #000; }
+  #endRank {
+    margin-top:8px; color:#ffd23c; font-size:clamp(40px, 12vw, 84px); line-height:1;
+    text-shadow:5px 5px 0 #ff3b3b, 10px 10px 0 #000; text-transform:uppercase; letter-spacing:2px;
+  }
+  .statGrid { margin-top:24px; display:flex; gap:26px; flex-wrap:wrap; justify-content:center; }
+  .statBox { border:4px solid #f4f6ff; box-shadow:5px 5px 0 #000; padding:12px 18px; min-width:130px; background:#0b0d16; }
+  .statBox .lab { color:#31d8ff; font-size:12px; letter-spacing:3px; display:block; }
+  .statBox .num { font-size:34px; color:#fff; margin-top:4px; }
+  .statBox.gold .num { color:#ffd23c; }
+  .statBox.green .num { color:#38f26b; }
+  #endBest { margin-top:18px; color:#ffd23c; letter-spacing:2px; font-size:16px; min-height:19px; }
+</style>
+<style id="moth-game-guard">
+html,body{touch-action:none;overscroll-behavior:none;-webkit-touch-callout:none;-webkit-user-select:none;user-select:none;-webkit-tap-highlight-color:transparent}
+canvas{touch-action:none}
+</style>
+</head>
+<body>
+
+  <!-- HUD -->
+  <div id="hud">
+    <div id="hudRow">
+      <div class="hudItem" id="hudScore"><span class="lab">SCORE</span><span class="val" id="scoreVal">0</span></div>
+      <div class="hudItem" id="hudStreak"><span class="lab">STREAK</span><span class="val" id="streakVal">×0</span></div>
+      <div class="hudItem" id="hudGame"><span class="lab">GAME</span><span class="val" id="gameVal">–/–</span></div>
+      <button class="hudBtn" id="btnPause" title="Pause (P)">❚❚</button>
+      <button class="hudBtn" id="btnSkip" title="Skip (N)">SKIP ›</button>
+      <button class="hudBtn" id="btnQuit" title="Quit run">✕</button>
+    </div>
+    <div id="timeWrap"><div id="timeFill"></div></div>
+  </div>
+
+  <!-- STAGE -->
+  <div id="stage">
+    <iframe id="gameFrame" title="microgame" allow="autoplay; fullscreen; gamepad" sandbox="allow-scripts allow-same-origin allow-pointer-lock"></iframe>
+
+    <div class="overlay show" id="startScreen">
+      <div class="gameTitle">PIXEL<br>MARATHON</div>
+      <div class="gameSub">— BRAIN BOOST —</div>
+      <div class="gameBlurb">24 MICROGAMES. RANDOM ORDER. SECONDS EACH.<br>CLEAR EACH ONE BEFORE THE BAR DRAINS.<br>STREAKS PAY BONUS. NO MERCY.</div>
+      <button class="bigBtn" id="btnStart">▶ START</button>
+      <div class="bestLine" id="startBest"></div>
+    </div>
+
+    <div class="overlay" id="interstitial">
+      <div id="intGameNo">GAME 1/24</div>
+      <div id="intName">???</div>
+      <div><span id="intSkill">SKILL: ???</span></div>
+      <div id="intInstruction">GET READY!</div>
+      <div id="intGo">▶ ▶ ▶</div>
+    </div>
+
+    <div id="flash"><div id="flashText">CLEAR!</div></div>
+
+    <div class="overlay" id="pauseScreen">
+      <div class="pauseBig">❚❚ PAUSED</div>
+      <div class="pauseSub">TAP OR PRESS P TO RESUME</div>
+    </div>
+
+    <div class="overlay" id="endScreen">
+      <div class="endTitle">RUN COMPLETE</div>
+      <div id="endRank">GALAXY BRAIN</div>
+      <div class="statGrid">
+        <div class="statBox gold"><span class="lab">SCORE</span><div class="num" id="endScore">0</div></div>
+        <div class="statBox green"><span class="lab">CLEARED</span><div class="num" id="endClears">0/24</div></div>
+        <div class="statBox"><span class="lab">BEST STREAK</span><div class="num" id="endStreak">×0</div></div>
+      </div>
+      <div id="endBest"></div>
+      <button class="bigBtn" id="btnAgain">↻ PLAY AGAIN</button>
+    </div>
+  </div>
+
+<script>
+"use strict";
+/* =====================================================================
+   PIXEL MARATHON — BRAIN BOOST
+   Rapid-fire microgame shell. Game list between the markers below is
+   filled in by assemble.cjs from batch1/2/3-mapping.json.
+   Each game lives at ../games/pixel-marathon/<slug>/index.html and
+   signals its end with:
+     window.parent.postMessage({type:'micro-done', win:<bool>, score:<number>}, '*')
+   ===================================================================== */
+/*__GAMES_BEGIN__*/
+const GAMES = [
+  {
+    "name": "POTION PANIC!",
+    "slug": "potion-panic",
+    "skill": "Sort",
+    "instruction": "TAP A FLASK, TAP ANOTHER - SORT THE COLORS!",
+    "budgetSec": 50
+  },
+  {
+    "name": "ROOST RIOT!",
+    "slug": "roost-riot",
+    "skill": "Sort",
+    "instruction": "TAP TO SORT THE BIRDS!",
+    "budgetSec": 45
+  },
+  {
+    "name": "YETI SCOOPS!",
+    "slug": "yeti-scoops",
+    "skill": "Sort",
+    "instruction": "TAP THE RIGHT SCOOPS, FAST!",
+    "budgetSec": 45
+  },
+  {
+    "name": "JELLY JARS!",
+    "slug": "jelly-jars",
+    "skill": "Sort",
+    "instruction": "DRAG TO SORT THE JELLY!",
+    "budgetSec": 45
+  },
+  {
+    "name": "REEF RESCUE!",
+    "slug": "reef-rescue",
+    "skill": "Match",
+    "instruction": "SWIPE TO SWAP - MATCH 3 TO FREE THEM!",
+    "budgetSec": 50
+  },
+  {
+    "name": "LANTERN RUSH!",
+    "slug": "lantern-rush",
+    "skill": "Match",
+    "instruction": "TAP 3 OF A KIND TO LIGHT THE SKY!",
+    "budgetSec": 45
+  },
+  {
+    "name": "KILN LINE!",
+    "slug": "kiln-line",
+    "skill": "Puzzle",
+    "instruction": "DRAG TILES - FILL THE ROW!",
+    "budgetSec": 50
+  },
+  {
+    "name": "DRAGON NEST!",
+    "slug": "dragon-nest",
+    "skill": "Merge",
+    "instruction": "DRAG TO MERGE - RAISE A LEGEND!",
+    "budgetSec": 45
+  },
+  {
+    "name": "SPLATRAIL",
+    "slug": "splatrail",
+    "skill": "Steering",
+    "instruction": "TAP A FROG!",
+    "budgetSec": 45
+  },
+  {
+    "name": "PIN PANIC",
+    "slug": "pin-panic",
+    "skill": "Logic",
+    "instruction": "PULL THE PINS, SAVE THE MINER!",
+    "budgetSec": 45
+  },
+  {
+    "name": "BOAT JAM",
+    "slug": "boat-jam",
+    "skill": "Reflex",
+    "instruction": "TAP A GLOWING BOAT!",
+    "budgetSec": 40
+  },
+  {
+    "name": "BOLTSTORM",
+    "slug": "boltstorm",
+    "skill": "Aim",
+    "instruction": "DRAG TO THE BLUE GATE!",
+    "budgetSec": 42
+  },
+  {
+    "name": "MOONSTACK",
+    "slug": "moonstack",
+    "skill": "Timing",
+    "instruction": "ONE TAP PER FLOOR",
+    "budgetSec": 42
+  },
+  {
+    "name": "RICOCHET",
+    "slug": "ricochet",
+    "skill": "Aim",
+    "instruction": "DRAG TO AIM, LET GO TO FIRE",
+    "budgetSec": 45
+  },
+  {
+    "name": "INKSTORM",
+    "slug": "inkstorm",
+    "skill": "Survive",
+    "instruction": "DRAG TO HOLD THE TEMPLE!",
+    "budgetSec": 44
+  },
+  {
+    "name": "SHARDBORN",
+    "slug": "shardborn",
+    "skill": "Survive",
+    "instruction": "SURVIVE THE SWARM!",
+    "budgetSec": 44
+  },
+  {
+    "name": "MOB MARCH!",
+    "slug": "mob-march",
+    "skill": "Steer",
+    "instruction": "DRAG TO STEER - PICK THE RIGHT GATE!",
+    "budgetSec": 44
+  },
+  {
+    "name": "GROW OR BUST!",
+    "slug": "grow-or-bust",
+    "skill": "Evolve",
+    "instruction": "DRAG TO HUNT - TAP TO SMASH!",
+    "budgetSec": 45
+  },
+  {
+    "name": "SNACK HOLE!",
+    "slug": "snack-hole",
+    "skill": "Gulp",
+    "instruction": "DRAG THE HOLE - EAT THE TOWER!",
+    "budgetSec": 40
+  },
+  {
+    "name": "WIND RACER!",
+    "slug": "wind-racer",
+    "skill": "Sail",
+    "instruction": "DRAG TO STEER - TAP WIND TO FLY!",
+    "budgetSec": 45
+  },
+  {
+    "name": "BOILER BRAWL!",
+    "slug": "boiler-brawl",
+    "skill": "Stoke",
+    "instruction": "BURST THEIR BOILER!",
+    "budgetSec": 50
+  },
+  {
+    "name": "BEAN RUSH!",
+    "slug": "bean-rush",
+    "skill": "Serve",
+    "instruction": "TAP TO SERVE!",
+    "budgetSec": 45
+  },
+  {
+    "name": "SHROOM SHOP!",
+    "slug": "shroom-shop",
+    "skill": "Brew",
+    "instruction": "TAP TO PICK MUSHROOMS!",
+    "budgetSec": 42
+  },
+  {
+    "name": "REEF GUARD!",
+    "slug": "reef-guard",
+    "skill": "Defend",
+    "instruction": "TAP TO BUILD - HOLD THE REEF!",
+    "budgetSec": 45
+  }
+];
+/*__GAMES_END__*/
+
+const GAME_URL = slug => "../games/pixel-marathon/" + slug + "/index.html";
+const INTERSTITIAL_MS = 1600;
+const FLASH_MS = 1200;
+const SKIP_FLASH_MS = 700;
+const BEST_KEY = "pixel-marathon-best";
+
+const $ = id => document.getElementById(id);
+const frame = $("gameFrame");
+
+const S = {
+  phase: "start",        // start | interstitial | playing | flash | paused | end
+  order: [],             // shuffled GAMES for this run
+  prevOrder: null,       // last run's slug sequence (never repeat)
+  idx: 0,
+  score: 0, streak: 0, bestStreak: 0, clears: 0,
+  budgetMs: 0, remainingMs: 0,
+  timerId: null, phaseTimeout: null,
+  log: []                // event log (also used by tests)
+};
+
+function shuffle(arr) {
+  const a = arr.slice();
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+function newOrder() {
+  let o = shuffle(GAMES);
+  if (S.prevOrder && o.length > 1) {
+    let guard = 0;
+    while (o.map(g => g.slug).join("|") === S.prevOrder.join("|") && guard++ < 50) o = shuffle(GAMES);
+  }
+  return o;
+}
+
+function renderHUD() {
+  $("scoreVal").textContent = S.score;
+  $("streakVal").textContent = (S.streak >= 3 ? "🔥" : "") + "×" + S.streak;
+  $("hudStreak").classList.toggle("hot", S.streak >= 3);
+  const total = S.order.length || GAMES.length;
+  $("gameVal").textContent = (S.phase === "start" ? "–" : Math.min(S.idx + 1, total)) + "/" + total;
+  const pct = S.budgetMs > 0 ? Math.max(0, (S.remainingMs / S.budgetMs) * 100) : 100;
+  $("timeFill").style.width = pct + "%";
+  $("timeFill").classList.toggle("low", S.phase === "playing" && pct <= 25);
+}
+function show(id) {
+  for (const o of ["startScreen", "interstitial", "pauseScreen", "endScreen"]) $(o).classList.toggle("show", o === id);
+  if (!id) for (const o of ["startScreen", "interstitial", "pauseScreen", "endScreen"]) $(o).classList.remove("show");
+}
+function flash(kind, text, ms, next) {
+  S.phase = "flash";
+  const f = $("flash");
+  f.className = "show " + kind;
+  $("flashText").textContent = text;
+  renderHUD();
+  S.phaseTimeout = setTimeout(() => { f.className = ""; next(); }, ms);
+}
+
+/* ---------------- run flow ---------------- */
+function startRun() {
+  S.order = newOrder();
+  S.prevOrder = S.order.map(g => g.slug);
+  S.idx = 0; S.score = 0; S.streak = 0; S.bestStreak = 0; S.clears = 0;
+  S.log.push({ ev: "run-start", order: S.prevOrder.slice() });
+  nextInterstitial();
+}
+function nextInterstitial() {
+  stopTimer();
+  frame.src = "about:blank";
+  if (S.idx >= S.order.length) return endRun();
+  const g = S.order[S.idx];
+  S.phase = "interstitial";
+  S.budgetMs = g.budgetSec * 1000;
+  S.remainingMs = S.budgetMs;
+  $("intGameNo").textContent = "GAME " + (S.idx + 1) + "/" + S.order.length;
+  $("intName").textContent = g.name;
+  $("intSkill").textContent = "SKILL: " + g.skill;
+  $("intInstruction").textContent = g.instruction;
+  show("interstitial");
+  renderHUD();
+  S.phaseTimeout = setTimeout(playGame, INTERSTITIAL_MS);
+}
+function playGame() {
+  const g = S.order[S.idx];
+  if (!g) return endRun();
+  S.phase = "playing";
+  S.remainingMs = S.budgetMs;
+  show(null);
+  renderHUD();
+  frame.onload = () => { if (S.phase === "playing") startTimer(); };
+  frame.src = GAME_URL(g.slug);
+  // Fallback: if load event is missed (cached), start the clock anyway.
+  setTimeout(() => { if (S.phase === "playing" && !S.timerId) startTimer(); }, 600);
+}
+function startTimer() {
+  stopTimer();
+  let last = performance.now();
+  S.timerId = setInterval(() => {
+    if (S.phase !== "playing") return;
+    const now = performance.now();
+    S.remainingMs -= (now - last);
+    last = now;
+    renderHUD();
+    if (S.remainingMs <= 0) { S.remainingMs = 0; renderHUD(); onTimeUp("timeout"); }
+  }, 100);
+}
+function stopTimer() { if (S.timerId) { clearInterval(S.timerId); S.timerId = null; } }
+
+function onWin(msgScore) {
+  if (S.phase !== "playing") return;
+  stopTimer();
+  S.streak++;
+  S.bestStreak = Math.max(S.bestStreak, S.streak);
+  const gained = 100 + S.streak * 10;
+  S.score += gained;
+  S.clears++;
+  S.log.push({ ev: "win", slug: S.order[S.idx].slug, gained, msgScore });
+  flash("win", "CLEAR! +" + gained, FLASH_MS, advance);
+}
+function onTimeUp(kind) {
+  if (S.phase !== "playing") return;
+  stopTimer();
+  S.streak = 0;
+  S.log.push({ ev: kind, slug: S.order[S.idx] ? S.order[S.idx].slug : null });
+  flash("lose", "TIME UP!", FLASH_MS, advance);
+}
+function onSkip() {
+  if (S.phase !== "playing" && S.phase !== "interstitial") return;
+  clearTimeout(S.phaseTimeout);
+  stopTimer();
+  S.streak = 0;
+  S.log.push({ ev: "skip", slug: S.order[S.idx] ? S.order[S.idx].slug : null });
+  flash("skip", "SKIPPED", SKIP_FLASH_MS, advance);
+}
+function advance() { S.idx++; nextInterstitial(); }
+
+function rankFor(clears) {
+  if (clears >= 22) return "GALAXY BRAIN";
+  if (clears >= 18) return "BIG BRAIN";
+  if (clears >= 13) return "SHARP";
+  if (clears >= 8)  return "WARMING UP";
+  return "KEEP TRAINING";
+}
+function endRun() {
+  S.phase = "end";
+  stopTimer();
+  frame.src = "about:blank";
+  const total = S.order.length || GAMES.length;
+  $("endRank").textContent = rankFor(S.clears);
+  $("endScore").textContent = S.score;
+  $("endClears").textContent = S.clears + "/" + total;
+  $("endStreak").textContent = "×" + S.bestStreak;
+  let best = 0;
+  try {
+    best = parseInt(localStorage.getItem(BEST_KEY) || "0", 10) || 0;
+    if (S.score > best) { best = S.score; localStorage.setItem(BEST_KEY, String(best)); $("endBest").textContent = "★ NEW BEST SCORE! ★"; }
+    else $("endBest").textContent = best > 0 ? "BEST: " + best : "";
+  } catch (e) { $("endBest").textContent = ""; }
+  S.log.push({ ev: "run-end", score: S.score, clears: S.clears, bestStreak: S.bestStreak });
+  show("endScreen");
+  renderHUD();
+}
+
+/* ---------------- pause / quit ---------------- */
+function togglePause() {
+  if (S.phase === "playing") {
+    S.phase = "paused";
+    show("pauseScreen");
+    S.log.push({ ev: "pause" });
+  } else if (S.phase === "paused") {
+    S.phase = "playing";
+    show(null);
+    S.log.push({ ev: "resume" });
+  }
+  renderHUD();
+}
+function quitRun() {
+  if (S.phase === "start" || S.phase === "end") return;
+  clearTimeout(S.phaseTimeout);
+  $("flash").className = "";
+  endRun();
+}
+
+/* ---------------- wiring ---------------- */
+window.addEventListener("message", e => {
+  const d = e.data;
+  if (!d || d.type !== "micro-done") return;
+  if (frame.contentWindow && e.source !== frame.contentWindow) return;
+  if (d.win) onWin(d.score); else onTimeUp("lose");
+});
+$("btnStart").addEventListener("click", startRun);
+$("btnAgain").addEventListener("click", startRun);
+$("btnSkip").addEventListener("click", onSkip);
+$("btnPause").addEventListener("click", togglePause);
+$("btnQuit").addEventListener("click", quitRun);
+$("pauseScreen").addEventListener("click", togglePause);
+window.addEventListener("keydown", e => {
+  if (e.key === "n" || e.key === "N" || e.key === "ArrowRight") onSkip();
+  else if (e.key === "p" || e.key === "P") togglePause();
+});
+try {
+  const b = parseInt(localStorage.getItem(BEST_KEY) || "0", 10) || 0;
+  if (b > 0) $("startBest").textContent = "BEST: " + b;
+} catch (e) {}
+renderHUD();
+
+/* test/debug handle */
+window.__pm = S;
+</script>
+<script id="moth-game-guard-js">
+(function(){
+  var lastEnd=0;
+  function onUi(t){return t&&t.closest&&t.closest('button,a,input,select,textarea,[data-scroll]');}
+  document.addEventListener('touchend',function(e){
+    var now=Date.now();
+    if(!onUi(e.target)&&now-lastEnd<=300&&e.cancelable)e.preventDefault();
+    lastEnd=now;
+  },{passive:false});
+  ['gesturestart','gesturechange','gestureend'].forEach(function(n){
+    document.addEventListener(n,function(e){e.preventDefault();});
+  });
+  document.addEventListener('dblclick',function(e){e.preventDefault();},{passive:false});
+  document.addEventListener('contextmenu',function(e){e.preventDefault();});
+  document.addEventListener('touchmove',function(e){
+    if(e.target&&e.target.closest&&e.target.closest('[data-scroll]'))return;
+    if(e.cancelable)e.preventDefault();
+  },{passive:false});
+})();
+</script>
+</body>
+</html>
