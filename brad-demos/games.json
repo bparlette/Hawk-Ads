@@ -1,0 +1,2180 @@
+{
+ "categories": [
+  "Bake-off",
+  "Retro Arcade",
+  "Originals",
+  "Playable Ads"
+ ],
+ "games": [
+  {
+   "autostart": [],
+   "category": "Originals",
+   "extras": [
+    {
+     "key": "KeyM",
+     "label": "MUTE"
+    }
+   ],
+   "id": "hoa-sledge",
+   "keys": {
+    "attack": "KeyJ"
+   },
+   "labels": {
+    "attack": "SLAM · TAP"
+   },
+   "note": "The HOA fined you for gnomes on the lawn. You have the sledgehammer. Real rigid-body physics (Rapier): every flamingo, chair and yard gnome tumbles, stacks and flies. Built with gamepress.",
+   "orientation": "portrait",
+   "path": "g/hoa-sledge/index.html",
+   "thumb": "thumbs/hoa-sledge.webp?v=1792421389",
+   "title": "HOA SLEDGE — Code Violation #1"
+  },
+  {
+   "autostart": [
+    [
+     900,
+     "Enter"
+    ],
+    [
+     700,
+     "Enter"
+    ],
+    [
+     700,
+     "Enter"
+    ],
+    [
+     700,
+     "Enter"
+    ]
+   ],
+   "category": "Bake-off",
+   "extras": [
+    {
+     "key": "KeyQ",
+     "label": "CAM ◀"
+    },
+    {
+     "key": "KeyE",
+     "label": "CAM ▶"
+    }
+   ],
+   "id": "bakeoff-a-free",
+   "keys": {
+    "attack": "KeyJ",
+    "jump": "KeyK",
+    "select": "Escape",
+    "special": "KeyL",
+    "start": "Enter"
+   },
+   "orientation": "any",
+   "path": "g/bakeoff-a-free/index.html?nosw&noboot",
+   "thumb": "thumbs/bakeoff-a-free.webp?v=1791639767",
+   "title": "A · Free City"
+  },
+  {
+   "autostart": [
+    [
+     900,
+     "Enter"
+    ],
+    [
+     700,
+     "Enter"
+    ],
+    [
+     700,
+     "Enter"
+    ],
+    [
+     700,
+     "Enter"
+    ]
+   ],
+   "category": "Bake-off",
+   "extras": [
+    {
+     "key": "KeyQ",
+     "label": "CAM ◀"
+    },
+    {
+     "key": "KeyE",
+     "label": "CAM ▶"
+    }
+   ],
+   "id": "bakeoff-b-paper",
+   "keys": {
+    "attack": "KeyJ",
+    "jump": "KeyK",
+    "select": "Escape",
+    "special": "KeyL",
+    "start": "Enter"
+   },
+   "orientation": "any",
+   "path": "g/bakeoff-b-paper/index.html?nosw&noboot",
+   "thumb": "thumbs/bakeoff-b-paper.webp?v=1791639790",
+   "title": "B · Paper City"
+  },
+  {
+   "autostart": [
+    [
+     900,
+     "Enter"
+    ],
+    [
+     700,
+     "Enter"
+    ],
+    [
+     700,
+     "Enter"
+    ],
+    [
+     700,
+     "Enter"
+    ]
+   ],
+   "category": "Bake-off",
+   "extras": [
+    {
+     "key": "KeyQ",
+     "label": "CAM ◀"
+    },
+    {
+     "key": "KeyE",
+     "label": "CAM ▶"
+    }
+   ],
+   "id": "bakeoff-c-gta",
+   "keys": {
+    "attack": "KeyJ",
+    "jump": "KeyK",
+    "select": "Escape",
+    "special": "KeyL",
+    "start": "Enter"
+   },
+   "orientation": "any",
+   "path": "g/bakeoff-c-gta/index.html?nosw&noboot",
+   "thumb": "thumbs/bakeoff-c-gta.webp?v=1791639840",
+   "title": "C · GTA City"
+  },
+  {
+   "autostart": [
+    [
+     900,
+     "Enter"
+    ],
+    [
+     700,
+     "Enter"
+    ],
+    [
+     700,
+     "Enter"
+    ],
+    [
+     700,
+     "Enter"
+    ]
+   ],
+   "category": "Bake-off",
+   "extras": [
+    {
+     "key": "KeyQ",
+     "label": "CAM ◀"
+    },
+    {
+     "key": "KeyE",
+     "label": "CAM ▶"
+    }
+   ],
+   "id": "bakeoff-d-skyline",
+   "keys": {
+    "attack": "KeyJ",
+    "jump": "KeyK",
+    "select": "Escape",
+    "special": "KeyL",
+    "start": "Enter"
+   },
+   "orientation": "any",
+   "path": "g/bakeoff-d-skyline/index.html?nosw&noboot",
+   "thumb": "thumbs/bakeoff-d-skyline.webp?v=1791639909",
+   "title": "D · Skyline City"
+  },
+  {
+   "autostart": [
+    [
+     900,
+     "Enter"
+    ],
+    [
+     700,
+     "Enter"
+    ],
+    [
+     700,
+     "Enter"
+    ],
+    [
+     700,
+     "Enter"
+    ]
+   ],
+   "category": "Bake-off",
+   "extras": [
+    {
+     "key": "KeyQ",
+     "label": "CAM ◀"
+    },
+    {
+     "key": "KeyE",
+     "label": "CAM ▶"
+    }
+   ],
+   "id": "bakeoff-e-gta32",
+   "keys": {
+    "attack": "KeyJ",
+    "jump": "KeyK",
+    "select": "Escape",
+    "special": "KeyL",
+    "start": "Enter"
+   },
+   "orientation": "any",
+   "path": "g/bakeoff-e-gta32/index.html?nosw&noboot",
+   "thumb": "thumbs/bakeoff-e-gta32.webp?v=1791639960",
+   "title": "E · GTA 32"
+  },
+  {
+   "autostart": [
+    [
+     900,
+     "Enter"
+    ],
+    [
+     700,
+     "Enter"
+    ],
+    [
+     700,
+     "Enter"
+    ],
+    [
+     700,
+     "Enter"
+    ]
+   ],
+   "category": "Bake-off",
+   "extras": [
+    {
+     "key": "KeyQ",
+     "label": "CAM ◀"
+    },
+    {
+     "key": "KeyE",
+     "label": "CAM ▶"
+    }
+   ],
+   "id": "bakeoff-f-free16",
+   "keys": {
+    "attack": "KeyJ",
+    "jump": "KeyK",
+    "select": "Escape",
+    "special": "KeyL",
+    "start": "Enter"
+   },
+   "orientation": "any",
+   "path": "g/bakeoff-f-free16/index.html?nosw&noboot",
+   "thumb": "thumbs/bakeoff-f-free16.webp?v=1791639996",
+   "title": "F · Free 16"
+  },
+  {
+   "autostart": [
+    [
+     900,
+     "Enter"
+    ],
+    [
+     700,
+     "Enter"
+    ],
+    [
+     700,
+     "Enter"
+    ],
+    [
+     700,
+     "Enter"
+    ]
+   ],
+   "category": "Bake-off",
+   "extras": [
+    {
+     "key": "KeyQ",
+     "label": "CAM ◀"
+    },
+    {
+     "key": "KeyE",
+     "label": "CAM ▶"
+    }
+   ],
+   "id": "bakeoff-g-hd2d",
+   "keys": {
+    "attack": "KeyJ",
+    "jump": "KeyK",
+    "select": "Escape",
+    "special": "KeyL",
+    "start": "Enter"
+   },
+   "orientation": "any",
+   "path": "g/bakeoff-g-hd2d/index.html?nosw&noboot",
+   "thumb": "thumbs/bakeoff-g-hd2d.webp?v=1791640060",
+   "title": "G · HD-2D"
+  },
+  {
+   "autostart": [
+    [
+     900,
+     "Enter"
+    ],
+    [
+     700,
+     "Enter"
+    ],
+    [
+     700,
+     "Enter"
+    ],
+    [
+     700,
+     "Enter"
+    ]
+   ],
+   "category": "Bake-off",
+   "extras": [
+    {
+     "key": "KeyQ",
+     "label": "CAM ◀"
+    },
+    {
+     "key": "KeyE",
+     "label": "CAM ▶"
+    }
+   ],
+   "id": "bakeoff-h-iso",
+   "keys": {
+    "attack": "KeyJ",
+    "jump": "KeyK",
+    "select": "Escape",
+    "special": "KeyL",
+    "start": "Enter"
+   },
+   "orientation": "any",
+   "path": "g/bakeoff-h-iso/index.html?nosw&noboot",
+   "thumb": "thumbs/bakeoff-h-iso.webp?v=1791640144",
+   "title": "H · Iso City"
+  },
+  {
+   "autostart": [],
+   "category": "Bake-off",
+   "extras": [
+    {
+     "key": "KeyQ",
+     "label": "CAM ◀"
+    },
+    {
+     "key": "KeyE",
+     "label": "CAM ▶"
+    }
+   ],
+   "id": "bakeoff-i-cel",
+   "keys": {
+    "attack": "KeyJ",
+    "jump": "KeyK",
+    "start": "Enter"
+   },
+   "labels": {
+    "attack": "SLASH"
+   },
+   "orientation": "any",
+   "path": "g/bakeoff-i-cel/index.html",
+   "thumb": "thumbs/bakeoff-i-cel.webp?v=1791640173",
+   "title": "I · Cel City"
+  },
+  {
+   "autostart": [],
+   "category": "Bake-off",
+   "id": "live-at-eleven",
+   "keys": {
+    "attack": "KeyJ",
+    "jump": "KeyK",
+    "special": "KeyL",
+    "start": "Enter"
+   },
+   "orientation": "any",
+   "path": "g/live-at-eleven/index.html",
+   "thumb": "thumbs/live-at-eleven.webp?v=1791648187",
+   "title": "Live at Eleven"
+  },
+  {
+   "autostart": [],
+   "category": "Bake-off",
+   "id": "cinema-city",
+   "keys": {
+    "attack": "KeyJ",
+    "jump": "KeyK",
+    "special": "KeyL",
+    "start": "Enter"
+   },
+   "orientation": "any",
+   "path": "g/cinema-city/index.html",
+   "thumb": "thumbs/cinema-city.webp?v=1791654906",
+   "title": "J · Cinema City"
+  },
+  {
+   "autostart": [],
+   "category": "Originals",
+   "extras": [
+    {
+     "key": "KeyM",
+     "label": "MUTE"
+    },
+    {
+     "key": "KeyH",
+     "label": "16-BIT"
+    }
+   ],
+   "id": "wasteland-van",
+   "keys": {
+    "attack": "Space",
+    "down": "KeyS",
+    "jump": "ShiftLeft",
+    "left": "KeyA",
+    "right": "KeyD",
+    "select": "KeyP",
+    "special": "KeyR",
+    "start": "Enter",
+    "up": "KeyW"
+   },
+   "labels": {
+    "attack": "NITRO",
+    "jump": "DRIFT",
+    "select": "PAUSE",
+    "special": "R FLIP",
+    "start": "DRIVE"
+   },
+   "note": "Hark original (2026-10-13): spiked war-van stunt racer x 1,000+ zombie horde survival. Three.js r160 local, cel/halftone/outline look, raycast suspension, 4 weapons + 4 evolutions, GRAVEMAW boss, extraction win. Source: /workspace/work/wasteland-van (src/ -> build.sh -> site/).",
+   "orientation": "any",
+   "path": "g/wasteland-van/index.html",
+   "thumb": "thumbs/wasteland-van.webp?v=1791952931",
+   "title": "★ ROADKILL RIG — Hark Original"
+  },
+  {
+   "autostart": [],
+   "category": "Originals",
+   "id": "gulf-thunder",
+   "keys": {
+    "attack": "KeyJ",
+    "jump": "KeyK",
+    "special": "KeyL",
+    "start": "Enter"
+   },
+   "orientation": "any",
+   "path": "g/gulf-thunder/index.html",
+   "thumb": "thumbs/gulf-thunder.webp?v=1791655051",
+   "title": "Gulf Thunder"
+  },
+  {
+   "autostart": [],
+   "category": "Bake-off",
+   "id": "toad-street-32",
+   "keys": {
+    "attack": "KeyJ",
+    "jump": "KeyK",
+    "special": "KeyL",
+    "start": "Enter"
+   },
+   "orientation": "any",
+   "path": "g/toad-street-32/index.html",
+   "thumb": "thumbs/toad-street-32.webp?v=1791683427",
+   "title": "K · Toad Street 32"
+  },
+  {
+   "autostart": [],
+   "category": "Originals",
+   "extras": [
+    {
+     "key": "KeyP",
+     "label": "PAUSE"
+    },
+    {
+     "key": "KeyM",
+     "label": "MUTE"
+    }
+   ],
+   "id": "toad-city-paperboy",
+   "keys": {
+    "attack": "KeyJ",
+    "down": "KeyS",
+    "left": "KeyA",
+    "right": "KeyD",
+    "start": "Enter",
+    "up": "KeyW"
+   },
+   "labels": {
+    "attack": "J · THROW"
+   },
+   "note": "Paperboy-style route on the Toad City Baltimore engine (same rowhouse kit, props, cars, Harold/Mavis rigs, Fells Point + WTC landmarks, toon/ink shading). Source /workspace/work/bmore-paperboy.",
+   "orientation": "any",
+   "path": "g/toad-city-paperboy/index.html",
+   "thumb": "thumbs/toad-city-paperboy.webp?v=1791954865",
+   "title": "Toad City Paperboy"
+  },
+  {
+   "autostart": [],
+   "category": "Originals",
+   "extras": [
+    {
+     "key": "KeyE",
+     "label": "SWAP"
+    },
+    {
+     "key": "KeyV",
+     "label": "SHOVE"
+    },
+    {
+     "key": "KeyP",
+     "label": "PAUSE"
+    },
+    {
+     "key": "KeyM",
+     "label": "MUTE"
+    }
+   ],
+   "id": "toad-city-dead-streets",
+   "keys": {
+    "attack": "KeyJ",
+    "down": "KeyS",
+    "jump": "KeyF",
+    "left": "KeyA",
+    "right": "KeyD",
+    "special": "KeyG",
+    "start": "Enter",
+    "up": "KeyW"
+   },
+   "labels": {
+    "attack": "J · FIRE",
+    "jump": "F · BUILD",
+    "special": "G · BOMB"
+   },
+   "note": "Twin-stick zombie horde run on the Toad City Baltimore engine (same city kit, real-name signs, Harold/Mavis rigs, Fells Point + WTC landmarks, toon/ink/halftone shading). W Pratt St to the Broadway Pier water taxi: 2 barricade holds, 4 weapons, specials, the Harbor Hulk boss. Source /workspace/work/bmore-zombies.",
+   "orientation": "any",
+   "path": "g/toad-city-dead-streets/index.html",
+   "thumb": "thumbs/toad-city-dead-streets.webp?v=1791962412",
+   "title": "Toad City: Dead Streets"
+  },
+  {
+   "autostart": [],
+   "category": "Originals",
+   "extras": [
+    {
+     "key": "KeyP",
+     "label": "PAUSE"
+    },
+    {
+     "key": "KeyM",
+     "label": "MUTE"
+    }
+   ],
+   "id": "toad-city-drone",
+   "keys": {
+    "attack": "ShiftLeft",
+    "down": "KeyS",
+    "jump": "Space",
+    "left": "KeyA",
+    "right": "KeyD",
+    "special": "KeyV",
+    "start": "Enter",
+    "up": "KeyW"
+   },
+   "labels": {
+    "attack": "SHIFT · BOOST",
+    "jump": "SPACE · CLIMB",
+    "special": "V · CAM"
+   },
+   "note": "FPV drone race around the Inner Harbor on the Toad City Baltimore engine (same city kit, HD landmarks, toon/ink shading). Source /workspace/work/bmore-drone.",
+   "orientation": "any",
+   "path": "g/toad-city-drone/index.html",
+   "thumb": "thumbs/toad-city-drone.webp?v=1791957742",
+   "title": "Toad City Drone Racer"
+  },
+  {
+   "autostart": [],
+   "category": "Originals",
+   "extras": [
+    {
+     "key": "KeyK",
+     "label": "GRAB"
+    },
+    {
+     "key": "ShiftLeft",
+     "label": "SPECIAL"
+    },
+    {
+     "key": "KeyM",
+     "label": "MUTE"
+    }
+   ],
+   "id": "toad-city-skate",
+   "keys": {
+    "attack": "KeyJ",
+    "down": "ArrowDown",
+    "jump": "Space",
+    "left": "ArrowLeft",
+    "right": "ArrowRight",
+    "select": "KeyP",
+    "special": "KeyL",
+    "start": "Enter",
+    "up": "ArrowUp"
+   },
+   "labels": {
+    "attack": "J · FLIP",
+    "jump": "OLLIE",
+    "select": "PAUSE",
+    "special": "L · GRIND",
+    "start": "SKATE"
+   },
+   "note": "Tony Hawk-style 2-minute skate runs on the Toad City Baltimore code + city (same Inner Harbor, rowhouses, landmarks with real signage, toon/ink shading, rig system). Ollies, flips, grabs, spins, stoop-rail grinds, manuals, special meter, 5 goals (score, combo, S-K-A-T-E, secret tape, Harbor Gap). Source /workspace/work/bmore-skate.",
+   "orientation": "any",
+   "path": "g/toad-city-skate/index.html",
+   "thumb": "thumbs/toad-city-skate.webp?v=1791965651",
+   "title": "Toad City Skate"
+  },
+  {
+   "autostart": [],
+   "category": "Originals",
+   "extras": [
+    {
+     "key": "KeyM",
+     "label": "MUSIC"
+    }
+   ],
+   "id": "toad-city-rooftops",
+   "keys": {
+    "attack": "ShiftLeft",
+    "down": "KeyS",
+    "jump": "Space",
+    "left": "KeyA",
+    "right": "KeyD",
+    "select": "KeyP",
+    "special": "KeyE",
+    "start": "Enter",
+    "up": "KeyW"
+   },
+   "labels": {
+    "attack": "SHIFT · SLIDE",
+    "jump": "SPACE · JUMP",
+    "select": "PAUSE",
+    "special": "E · CAM",
+    "start": "START"
+   },
+   "note": "Rooftop parkour on the Toad City Baltimore engine (same city kit, rowhouse roofs, HD landmarks with real signage, toon/ink shading): 3 courses, FOXTROT police drone chaser, medals. Source /workspace/work/bmore-parkour.",
+   "orientation": "any",
+   "path": "g/toad-city-rooftops/index.html",
+   "thumb": "thumbs/toad-city-rooftops.webp?v=1791968340",
+   "title": "Toad City Rooftops"
+  },
+  {
+   "autostart": [],
+   "category": "Originals",
+   "id": "moth-runner",
+   "keys": {
+    "jump": "Space",
+    "start": "Space"
+   },
+   "orientation": "any",
+   "path": "g/moth-runner/index.html",
+   "thumb": "thumbs/moth-runner.webp?v=1792293836",
+   "title": "Moth Runner"
+  },
+  {
+   "autostart": [],
+   "category": "Originals",
+   "extras": [
+    {
+     "key": "KeyH",
+     "label": "16-BIT"
+    },
+    {
+     "key": "KeyM",
+     "label": "MUTE"
+    }
+   ],
+   "id": "socal-summer-games-plus",
+   "keys": {
+    "attack": "KeyZ",
+    "down": "ArrowDown",
+    "jump": "KeyX",
+    "left": "ArrowLeft",
+    "right": "ArrowRight",
+    "select": "KeyP",
+    "special": "KeyC",
+    "start": "Enter",
+    "up": "ArrowUp"
+   },
+   "labels": {
+    "attack": "A",
+    "jump": "B",
+    "select": "PAUSE",
+    "special": "C",
+    "start": "START"
+   },
+   "note": "Hark fan remaster of Epyx's 1987 California Games (2026-10-14): Half Pipe, Foot Bag, Surfing, Roller Skating, BMX, Flying Disk with the original rules, names/sponsors, trophies 5/3/1 and a champion. Cel-shaded three.js r160, original music. H = 16-bit mode. Boots in attract; any key/tap opens the menu. Source: /workspace/work/socal-painted/src",
+   "orientation": "any",
+   "path": "g/socal-summer-games-plus/index.html",
+   "thumb": "thumbs/socal-summer-games-plus.webp?v=1791954332",
+   "title": "★ California Games Remastered — Hark Edition (fan remake)"
+  },
+  {
+   "autostart": [],
+   "category": "Originals",
+   "extras": [
+    {
+     "key": "KeyH",
+     "label": "16-BIT"
+    }
+   ],
+   "id": "socal-summer-games",
+   "keys": {
+    "attack": "KeyZ",
+    "down": "ArrowDown",
+    "jump": "KeyX",
+    "left": "ArrowLeft",
+    "right": "ArrowRight",
+    "special": "KeyC",
+    "start": "Enter",
+    "up": "ArrowUp"
+   },
+   "labels": {
+    "attack": "Z",
+    "jump": "X",
+    "special": "C"
+   },
+   "note": "Pasted by Brad 2026-10-13, added as-is with no fixes. WASD also works. H toggles 16-bit mode.",
+   "orientation": "landscape",
+   "path": "g/socal-summer-games/index.html",
+   "thumb": "thumbs/socal-summer-games.webp?v=1791939086",
+   "title": "SoCal Summer Games: Painted Edition (1987 Remake)"
+  },
+  {
+   "autostart": [],
+   "category": "Originals",
+   "extras": [
+    {
+     "key": "Digit2",
+     "label": "MODE 2"
+    },
+    {
+     "key": "Digit3",
+     "label": "MODE 3"
+    },
+    {
+     "key": "KeyH",
+     "label": "16-BIT"
+    }
+   ],
+   "id": "viral-overdrive",
+   "keys": {
+    "attack": "Space",
+    "down": "KeyS",
+    "jump": "KeyE",
+    "left": "KeyA",
+    "right": "KeyD",
+    "special": "Digit1",
+    "start": "Enter",
+    "up": "KeyW"
+   },
+   "labels": {
+    "attack": "SPACE · GRAPPLE",
+    "jump": "E · NITRO",
+    "special": "1 · MODE"
+   },
+   "note": "Pasted by Brad 2026-10-13, added as-is with no fixes. Arrows also work. Space grapple/vortex, E nitro/slots, 1/2/3 switch mode, H 16-bit.",
+   "orientation": "any",
+   "path": "g/viral-overdrive/index.html",
+   "thumb": "thumbs/viral-overdrive.webp?v=1791937634",
+   "title": "VIRAL OVERDRIVE // PolyTrack x Survivors"
+  },
+  {
+   "autostart": [],
+   "category": "Originals",
+   "extras": [
+    {
+     "key": "Digit2",
+     "label": "MODE 2"
+    },
+    {
+     "key": "Digit3",
+     "label": "MODE 3"
+    },
+    {
+     "key": "KeyH",
+     "label": "16-BIT"
+    }
+   ],
+   "id": "viral-overdrive-2",
+   "keys": {
+    "attack": "Space",
+    "down": "KeyS",
+    "jump": "KeyE",
+    "left": "KeyA",
+    "right": "KeyD",
+    "special": "Digit1",
+    "start": "Enter",
+    "up": "KeyW"
+   },
+   "labels": {
+    "attack": "SPACE · GRAPPLE",
+    "jump": "E · NITRO",
+    "special": "1 · MODE"
+   },
+   "note": "Pasted by Brad 2026-10-13 (second attempt by the other AI), added as-is with no fixes.",
+   "orientation": "any",
+   "path": "g/viral-overdrive-2/index.html",
+   "thumb": "thumbs/viral-overdrive.webp?v=1791937634",
+   "title": "VIRAL OVERDRIVE 2.0 // Hawk Edition (PolyTrack x Survivors)"
+  },
+  {
+   "autostart": [],
+   "category": "Originals",
+   "extras": [
+    {
+     "key": "KeyP",
+     "label": "PAUSE"
+    },
+    {
+     "key": "KeyM",
+     "label": "MUTE"
+    }
+   ],
+   "id": "drift-survivors-after-hark",
+   "keys": {
+    "attack": "Space",
+    "down": "KeyS",
+    "jump": "KeyF",
+    "left": "KeyA",
+    "right": "KeyD",
+    "special": "KeyE",
+    "start": "Enter",
+    "up": "KeyW"
+   },
+   "labels": {
+    "attack": "SPACE · DODGE",
+    "jump": "F · HOOK",
+    "special": "E · EMP"
+   },
+   "note": "Pasted by Brad 2026-10-13: the other AI's official remake after reading Hark's instructions. Added as-is with no fixes.",
+   "orientation": "any",
+   "path": "g/drift-survivors-after-hark/index.html",
+   "thumb": "thumbs/drift-survivors-after-hark.webp?v=1792293836",
+   "title": "DRIFT SURVIVORS — Toon 3D Fan Game - after harkinstructions"
+  },
+  {
+   "autostart": [],
+   "category": "Originals",
+   "id": "big-bumpin-3d",
+   "keys": {
+    "action": "Space / E",
+    "camera": "C",
+    "drive": "WASD / Arrows"
+   },
+   "orientation": "any",
+   "path": "g/big-bumpin-3d/index.html",
+   "thumb": "thumbs/big-bumpin-3d.webp?v=1792293836",
+   "title": "Big Bumpin'"
+  },
+  {
+   "autostart": [],
+   "category": "Originals",
+   "id": "bmx-downhill-jam",
+   "keys": {
+    "down": "ArrowDown",
+    "left": "ArrowLeft",
+    "right": "ArrowRight",
+    "start": "Enter",
+    "up": "ArrowUp"
+   },
+   "labels": {
+    "down": "BRAKE",
+    "up": "PEDAL"
+   },
+   "note": "8-bit top-down downhill BMX racer: bomb a winding city street against rival DEX — launch the ramp, grind the bars, drop the stairs, thread the barricade chicane and crate slalom, slash grass for points, and take the bridge finish. Full source in games/bmx-downhill-jam/.",
+   "orientation": "portrait",
+   "path": "../games/bmx-downhill-jam/index.html",
+   "thumb": "thumbs/bmx-downhill-jam.webp",
+   "title": "BMX Downhill Jam"
+  },
+  {
+   "autostart": [],
+   "category": "Retro Arcade",
+   "extras": [
+    {
+     "key": "KeyM",
+     "label": "MUTE"
+    }
+   ],
+   "id": "disc-fighters",
+   "keys": {
+    "attack": "KeyZ",
+    "down": "ArrowDown",
+    "jump": "KeyX",
+    "left": "ArrowLeft",
+    "right": "ArrowRight",
+    "start": "Enter",
+    "up": "ArrowUp"
+   },
+   "labels": {
+    "attack": "Z · THROW",
+    "jump": "X · LOB"
+   },
+   "note": "Windjammers x Street Fighter II: disc duels with throws and lobs, a fireball super (down, forward, A) when the meter is full, and parries.",
+   "orientation": "portrait",
+   "path": "../games/disc-fighters/index.html",
+   "thumb": "thumbs/disc-fighters.webp",
+   "title": "Disc Fighters"
+  },
+  {
+   "autostart": [],
+   "category": "Retro Arcade",
+   "extras": [
+    {
+     "key": "KeyM",
+     "label": "MUTE"
+    }
+   ],
+   "id": "boom-balloons",
+   "keys": {
+    "attack": "KeyZ",
+    "down": "ArrowDown",
+    "jump": "KeyX",
+    "left": "ArrowLeft",
+    "right": "ArrowRight",
+    "start": "Enter",
+    "up": "ArrowUp"
+   },
+   "labels": {
+    "attack": "Z · FLAP",
+    "jump": "X · BOMB"
+   },
+   "note": "Balloon Fight x Bomberman: flap-physics aerial combat with timed bombs. Pop every enemy balloon and keep clear of the blast.",
+   "orientation": "portrait",
+   "path": "../games/boom-balloons/index.html",
+   "thumb": "thumbs/boom-balloons.webp",
+   "title": "Boom Balloons"
+  },
+  {
+   "autostart": [],
+   "category": "Retro Arcade",
+   "extras": [
+    {
+     "key": "KeyM",
+     "label": "MUTE"
+    }
+   ],
+   "id": "maze-wrecker-cabinet",
+   "keys": {
+    "attack": "KeyZ",
+    "down": "ArrowDown",
+    "jump": "KeyX",
+    "left": "ArrowLeft",
+    "right": "ArrowRight",
+    "start": "Enter",
+    "up": "ArrowUp"
+   },
+   "labels": {
+    "attack": "Z · SMASH",
+    "jump": "X · DASH"
+   },
+   "note": "Pac-Man x Wrecking Crew in the gameboy cabinet form: same maze, same rules, built on the frozen NES cabinet shell (256x224, string-map sprites, GAME contract, attract bot, ?seed= deterministic runs). The head-to-head twin of Maze Wrecker.",
+   "orientation": "portrait",
+   "path": "../games/maze-wrecker-cabinet/index.html",
+   "thumb": "thumbs/maze-wrecker-cabinet.webp",
+   "title": "Maze Wrecker (Cabinet)"
+  },
+  {
+   "autostart": [],
+   "category": "Retro Arcade",
+   "extras": [
+    {
+     "key": "KeyM",
+     "label": "MUTE"
+    }
+   ],
+   "id": "maze-wrecker-steel",
+   "keys": {
+    "attack": "KeyZ",
+    "down": "ArrowDown",
+    "jump": "KeyX",
+    "left": "ArrowLeft",
+    "right": "ArrowRight",
+    "start": "Enter",
+    "up": "ArrowUp"
+   },
+   "labels": {
+    "attack": "Z · SMASH",
+    "jump": "X · DASH"
+   },
+   "note": "The other AI's Maze Wrecker, kept as a second cabinet game (Cherie 2026-10-30): a riveted steel-plate maze where the dots hide inside smashable bricks — wreck walls to reveal all 26, dodge the patrol bots, beat the 80-second seal while walls grow back.",
+   "orientation": "portrait",
+   "path": "../games/maze-wrecker-steel/index.html",
+   "thumb": "thumbs/maze-wrecker-steel.webp",
+   "title": "Maze Wrecker: Steel Yard"
+  },
+  {
+   "autostart": [],
+   "category": "Retro Arcade",
+   "extras": [
+    {
+     "key": "KeyM",
+     "label": "MUTE"
+    }
+   ],
+   "id": "morph-climb",
+   "keys": {
+    "attack": "KeyZ",
+    "down": "ArrowDown",
+    "jump": "KeyX",
+    "left": "ArrowLeft",
+    "right": "ArrowRight",
+    "start": "Enter",
+    "up": "ArrowUp"
+   },
+   "labels": {
+    "attack": "Z · JUMP",
+    "jump": "X · FIRE"
+   },
+   "note": "Metroid x Kid Icarus: grab the form each floor needs — ball, wings, beam — and climb before the lava rises. From the five-agent cabinet batch (gamepress gameboy kit), merged to main 2026-10-30.",
+   "orientation": "portrait",
+   "path": "../games/morph-climb/index.html",
+   "thumb": "thumbs/morph-climb.webp",
+   "title": "Morph Climb"
+  },
+  {
+   "autostart": [],
+   "category": "Retro Arcade",
+   "extras": [
+    {
+     "key": "KeyM",
+     "label": "MUTE"
+    }
+   ],
+   "id": "dig-up",
+   "keys": {
+    "attack": "KeyZ",
+    "down": "ArrowDown",
+    "jump": "KeyX",
+    "left": "ArrowLeft",
+    "right": "ArrowRight",
+    "start": "Enter",
+    "up": "ArrowUp"
+   },
+   "labels": {
+    "attack": "Z · DIG",
+    "jump": "X · PUMP"
+   },
+   "note": "Dig Dug x Ice Climber: dig a staircase up the dirt, drop dirt on the critters, keep climbing. From the five-agent cabinet batch (gamepress gameboy kit), merged to main 2026-10-30.",
+   "orientation": "portrait",
+   "path": "../games/dig-up/index.html",
+   "thumb": "thumbs/dig-up.webp",
+   "title": "Dig Up"
+  },
+  {
+   "autostart": [],
+   "category": "Retro Arcade",
+   "extras": [
+    {
+     "key": "KeyM",
+     "label": "MUTE"
+    }
+   ],
+   "id": "gridlock-grand-prix",
+   "keys": {
+    "attack": "KeyZ",
+    "down": "ArrowDown",
+    "jump": "KeyX",
+    "left": "ArrowLeft",
+    "right": "ArrowRight",
+    "start": "Enter",
+    "up": "ArrowUp"
+   },
+   "labels": {
+    "attack": "Z · LANE",
+    "jump": "X · NITRO"
+   },
+   "note": "Pole Position x Frogger: weave through traffic, chain near misses — one crash ends the run. From the five-agent cabinet batch (gamepress gameboy kit), merged to main 2026-10-30.",
+   "orientation": "portrait",
+   "path": "../games/gridlock-grand-prix/index.html",
+   "thumb": "thumbs/gridlock-grand-prix.webp",
+   "title": "Gridlock Grand Prix"
+  },
+  {
+   "autostart": [],
+   "category": "Retro Arcade",
+   "extras": [
+    {
+     "key": "KeyM",
+     "label": "MUTE"
+    }
+   ],
+   "id": "hop-fight",
+   "keys": {
+    "attack": "KeyZ",
+    "down": "ArrowDown",
+    "jump": "KeyX",
+    "left": "ArrowLeft",
+    "right": "ArrowRight",
+    "start": "Enter",
+    "up": "ArrowUp"
+   },
+   "labels": {
+    "attack": "Z · UP-L",
+    "jump": "X · UP-R"
+   },
+   "note": "Q*bert x Joust: land on cubes to flip them, knock riders off their mounts. From the five-agent cabinet batch (gamepress gameboy kit), merged to main 2026-10-30.",
+   "orientation": "portrait",
+   "path": "../games/hop-fight/index.html",
+   "thumb": "thumbs/hop-fight.webp",
+   "title": "Hop Fight"
+  },
+  {
+   "autostart": [],
+   "category": "Retro Arcade",
+   "extras": [
+    {
+     "key": "KeyM",
+     "label": "MUTE"
+    }
+   ],
+   "id": "blade-punch",
+   "keys": {
+    "attack": "KeyZ",
+    "down": "ArrowDown",
+    "jump": "KeyX",
+    "left": "ArrowLeft",
+    "right": "ArrowRight",
+    "start": "Enter",
+    "up": "ArrowUp"
+   },
+   "labels": {
+    "attack": "Z · JAB",
+    "jump": "X · DODGE"
+   },
+   "note": "Punch-Out!! x Blade Ball: deflect the blade ball and be the last boxer standing. From the five-agent cabinet batch (gamepress gameboy kit), merged to main 2026-10-30.",
+   "orientation": "portrait",
+   "path": "../games/blade-punch/index.html",
+   "thumb": "thumbs/blade-punch.webp",
+   "title": "Blade Punch"
+  },
+  {
+   "autostart": [],
+   "category": "Retro Arcade",
+   "extras": [
+    {
+     "key": "KeyM",
+     "label": "MUTE"
+    }
+   ],
+   "id": "balatro-grand-prix",
+   "keys": {
+    "attack": "KeyZ",
+    "down": "ArrowDown",
+    "jump": "KeyX",
+    "left": "ArrowLeft",
+    "right": "ArrowRight",
+    "start": "Enter",
+    "up": "ArrowUp"
+   },
+   "labels": {
+    "attack": "Z · DRIFT",
+    "jump": "X · PLAY CARD"
+   },
+   "note": "Mario Kart x Balatro: collect cards at speed, play poker hands to boost. From the five-agent cabinet batch (gamepress gameboy kit), merged to main 2026-10-30.",
+   "orientation": "portrait",
+   "path": "../games/balatro-grand-prix/index.html",
+   "thumb": "thumbs/balatro-grand-prix.webp",
+   "title": "Balatro Grand Prix"
+  },
+  {
+   "autostart": [],
+   "category": "Retro Arcade",
+   "extras": [
+    {
+     "key": "KeyM",
+     "label": "MUTE"
+    }
+   ],
+   "id": "buckshot-saloon",
+   "keys": {
+    "attack": "KeyZ",
+    "down": "ArrowDown",
+    "jump": "KeyX",
+    "left": "ArrowLeft",
+    "right": "ArrowRight",
+    "start": "Enter",
+    "up": "ArrowUp"
+   },
+   "labels": {
+    "attack": "Z · SHOOT",
+    "jump": "X · SELF"
+   },
+   "note": "Sunset Riders x Buckshot Roulette: one gun, one table — out-draw the saloon. From the five-agent cabinet batch (gamepress gameboy kit), merged to main 2026-10-30.",
+   "orientation": "portrait",
+   "path": "../games/buckshot-saloon/index.html",
+   "thumb": "thumbs/buckshot-saloon.webp",
+   "title": "Buckshot Saloon"
+  },
+  {
+   "autostart": [],
+   "category": "Retro Arcade",
+   "extras": [
+    {
+     "key": "KeyM",
+     "label": "MUTE"
+    }
+   ],
+   "id": "kong-calamity",
+   "keys": {
+    "attack": "KeyZ",
+    "down": "ArrowDown",
+    "jump": "KeyX",
+    "left": "ArrowLeft",
+    "right": "ArrowRight",
+    "start": "Enter",
+    "up": "ArrowUp"
+   },
+   "labels": {
+    "attack": "Z · JUMP",
+    "jump": "X · ROLL"
+   },
+   "note": "Donkey Kong Country x Natural Disaster Survival: climb, roll, and cling to the post when disaster hits. From the five-agent cabinet batch (gamepress gameboy kit), merged to main 2026-10-30.",
+   "orientation": "portrait",
+   "path": "../games/kong-calamity/index.html",
+   "thumb": "thumbs/kong-calamity.webp",
+   "title": "Kong Calamity"
+  },
+  {
+   "autostart": [],
+   "category": "Retro Arcade",
+   "extras": [
+    {
+     "key": "KeyM",
+     "label": "MUTE"
+    }
+   ],
+   "id": "lethal-castlevania",
+   "keys": {
+    "attack": "KeyZ",
+    "down": "ArrowDown",
+    "jump": "KeyX",
+    "left": "ArrowLeft",
+    "right": "ArrowRight",
+    "start": "Enter",
+    "up": "ArrowUp"
+   },
+   "labels": {
+    "attack": "Z · WHIP",
+    "jump": "X · SCAN"
+   },
+   "note": "Castlevania: Symphony of the Night x Lethal Company: grab relics in the dark, fear what hunts the halls. From the five-agent cabinet batch (gamepress gameboy kit), merged to main 2026-10-30.",
+   "orientation": "portrait",
+   "path": "../games/lethal-castlevania/index.html",
+   "thumb": "thumbs/lethal-castlevania.webp",
+   "title": "Lethal Castlevania"
+  },
+  {
+   "autostart": [],
+   "category": "Retro Arcade",
+   "extras": [
+    {
+     "key": "KeyM",
+     "label": "MUTE"
+    }
+   ],
+   "id": "vampire-metroid",
+   "keys": {
+    "attack": "KeyZ",
+    "down": "ArrowDown",
+    "jump": "KeyX",
+    "left": "ArrowLeft",
+    "right": "ArrowRight",
+    "start": "Enter",
+    "up": "ArrowUp"
+   },
+   "labels": {
+    "attack": "Z · JUMP",
+    "jump": "X · DASH"
+   },
+   "note": "Super Metroid x Vampire Survivors: survive the swarm, level up, melt the hive. From the five-agent cabinet batch (gamepress gameboy kit), merged to main 2026-10-30.",
+   "orientation": "portrait",
+   "path": "../games/vampire-metroid/index.html",
+   "thumb": "thumbs/vampire-metroid.webp",
+   "title": "Vampire Metroid"
+  },
+  {
+   "autostart": [],
+   "category": "Retro Arcade",
+   "extras": [
+    {
+     "key": "KeyM",
+     "label": "MUTE"
+    }
+   ],
+   "id": "tower-of-yoshi",
+   "keys": {
+    "attack": "KeyZ",
+    "down": "ArrowDown",
+    "jump": "KeyX",
+    "left": "ArrowLeft",
+    "right": "ArrowRight",
+    "start": "Enter",
+    "up": "ArrowUp"
+   },
+   "labels": {
+    "attack": "Z · JUMP",
+    "jump": "X · TONGUE"
+   },
+   "note": "Super Mario World x Tower of Hell: climb the tower, flutter the gaps, dodge the rising lava. From the five-agent cabinet batch (gamepress gameboy kit), merged to main 2026-10-30.",
+   "orientation": "portrait",
+   "path": "../games/tower-of-yoshi/index.html",
+   "thumb": "thumbs/tower-of-yoshi.webp",
+   "title": "Tower of Yoshi"
+  },
+  {
+   "autostart": [],
+   "category": "Retro Arcade",
+   "extras": [
+    {
+     "key": "KeyM",
+     "label": "MUTE"
+    }
+   ],
+   "id": "mushroom-bedwars",
+   "keys": {
+    "attack": "KeyZ",
+    "down": "ArrowDown",
+    "jump": "KeyX",
+    "left": "ArrowLeft",
+    "right": "ArrowRight",
+    "start": "Enter",
+    "up": "ArrowUp"
+   },
+   "labels": {
+    "attack": "Z · BUILD",
+    "jump": "X · SWING"
+   },
+   "note": "Super Mario Bros 3 x BedWars: bridge out, bomb their bed, win the war. From the five-agent cabinet batch (gamepress gameboy kit), merged to main 2026-10-30.",
+   "orientation": "portrait",
+   "path": "../games/mushroom-bedwars/index.html",
+   "thumb": "thumbs/mushroom-bedwars.webp",
+   "title": "Mushroom BedWars"
+  },
+  {
+   "autostart": [],
+   "category": "Retro Arcade",
+   "extras": [
+    {
+     "key": "KeyM",
+     "label": "MUTE"
+    }
+   ],
+   "id": "contra-helldivers",
+   "keys": {
+    "attack": "KeyZ",
+    "down": "ArrowDown",
+    "jump": "KeyX",
+    "left": "ArrowLeft",
+    "right": "ArrowRight",
+    "start": "Enter",
+    "up": "ArrowUp"
+   },
+   "labels": {
+    "attack": "Z · FIRE",
+    "jump": "X · STRATAGEM"
+   },
+   "note": "Contra x Helldivers 2: call in the bomb with stratagems, kill the hive. From the five-agent cabinet batch (gamepress gameboy kit), merged to main 2026-10-30.",
+   "orientation": "portrait",
+   "path": "../games/contra-helldivers/index.html",
+   "thumb": "thumbs/contra-helldivers.webp",
+   "title": "Contra Helldivers"
+  },
+  {
+   "autostart": [],
+   "category": "Retro Arcade",
+   "extras": [
+    {
+     "key": "KeyM",
+     "label": "MUTE"
+    }
+   ],
+   "id": "hyrule-doors",
+   "keys": {
+    "attack": "KeyZ",
+    "down": "ArrowDown",
+    "jump": "KeyX",
+    "left": "ArrowLeft",
+    "right": "ArrowRight",
+    "start": "Enter",
+    "up": "ArrowUp"
+   },
+   "labels": {
+    "attack": "Z · OPEN",
+    "jump": "X · HIDE"
+   },
+   "note": "A Link to the Past x DOORS: open the doors, hide when the Rush comes. From the five-agent cabinet batch (gamepress gameboy kit), merged to main 2026-10-30.",
+   "orientation": "portrait",
+   "path": "../games/hyrule-doors/index.html",
+   "thumb": "thumbs/hyrule-doors.webp",
+   "title": "Hyrule DOORS"
+  },
+  {
+   "autostart": [],
+   "category": "Retro Arcade",
+   "extras": [
+    {
+     "key": "KeyM",
+     "label": "MUTE"
+    }
+   ],
+   "id": "onett-mart-sim",
+   "keys": {
+    "attack": "KeyZ",
+    "down": "ArrowDown",
+    "jump": "KeyX",
+    "left": "ArrowLeft",
+    "right": "ArrowRight",
+    "start": "Enter",
+    "up": "ArrowUp"
+   },
+   "labels": {
+    "attack": "Z · STOCK",
+    "jump": "X · SCAN"
+   },
+   "note": "EarthBound x Supermarket Simulator: stock shelves, scan shoppers, bat the thieves. From the five-agent cabinet batch (gamepress gameboy kit), merged to main 2026-10-30.",
+   "orientation": "portrait",
+   "path": "../games/onett-mart-sim/index.html",
+   "thumb": "thumbs/onett-mart-sim.webp",
+   "title": "Onett Mart Sim"
+  },
+  {
+   "autostart": [],
+   "category": "Retro Arcade",
+   "extras": [
+    {
+     "key": "KeyM",
+     "label": "MUTE"
+    }
+   ],
+   "id": "fisch-of-mana",
+   "keys": {
+    "attack": "KeyZ",
+    "down": "ArrowDown",
+    "jump": "KeyX",
+    "left": "ArrowLeft",
+    "right": "ArrowRight",
+    "start": "Enter",
+    "up": "ArrowUp"
+   },
+   "labels": {
+    "attack": "Z · CAST",
+    "jump": "X · SLASH"
+   },
+   "note": "Secret of Mana x FISCH: cast, reel, and land the kraken. From the five-agent cabinet batch (gamepress gameboy kit), merged to main 2026-10-30.",
+   "orientation": "portrait",
+   "path": "../games/fisch-of-mana/index.html",
+   "thumb": "thumbs/fisch-of-mana.webp",
+   "title": "Fisch of Mana"
+  },
+  {
+   "autostart": [],
+   "category": "Retro Arcade",
+   "extras": [
+    {
+     "key": "KeyM",
+     "label": "MUTE"
+    }
+   ],
+   "id": "liars-tavern",
+   "keys": {
+    "attack": "KeyZ",
+    "down": "ArrowDown",
+    "jump": "KeyX",
+    "left": "ArrowLeft",
+    "right": "ArrowRight",
+    "start": "Enter",
+    "up": "ArrowUp"
+   },
+   "labels": {
+    "attack": "Z · CALL",
+    "jump": "X · LIAR"
+   },
+   "note": "Chrono Trigger x Liars Bar: bluff, call liar, drink up. From the five-agent cabinet batch (gamepress gameboy kit), merged to main 2026-10-30.",
+   "orientation": "portrait",
+   "path": "../games/liars-tavern/index.html",
+   "thumb": "thumbs/liars-tavern.webp",
+   "title": "Liars Tavern"
+  },
+  {
+   "autostart": [],
+   "category": "Retro Arcade",
+   "extras": [
+    {
+     "key": "KeyM",
+     "label": "MUTE"
+    }
+   ],
+   "id": "spooksnap-64",
+   "keys": {
+    "attack": "KeyZ",
+    "down": "ArrowDown",
+    "jump": "KeyX",
+    "left": "ArrowLeft",
+    "right": "ArrowRight",
+    "start": "Enter",
+    "up": "ArrowUp"
+   },
+   "labels": {
+    "attack": "Z · SNAP",
+    "jump": "X · FLASH"
+   },
+   "note": "Pokemon Snap x Content Warning: film the frights, go viral. From the five-agent cabinet batch (gamepress gameboy kit), merged to main 2026-10-30.",
+   "orientation": "portrait",
+   "path": "../games/spooksnap-64/index.html",
+   "thumb": "thumbs/spooksnap-64.webp",
+   "title": "SpookSnap 64"
+  },
+  {
+   "autostart": [],
+   "category": "Retro Arcade",
+   "extras": [
+    {
+     "key": "KeyM",
+     "label": "MUTE"
+    }
+   ],
+   "id": "pet-quest-99",
+   "keys": {
+    "attack": "KeyZ",
+    "down": "ArrowDown",
+    "jump": "KeyX",
+    "left": "ArrowLeft",
+    "right": "ArrowRight",
+    "start": "Enter",
+    "up": "ArrowUp"
+   },
+   "labels": {
+    "attack": "Z · HATCH",
+    "jump": "X · FIGHT"
+   },
+   "note": "Dragon Quest x Pet Simulator 99: hatch pets, break rocks, go huge. From the five-agent cabinet batch (gamepress gameboy kit), merged to main 2026-10-30.",
+   "orientation": "portrait",
+   "path": "../games/pet-quest-99/index.html",
+   "thumb": "thumbs/pet-quest-99.webp",
+   "title": "Pet Quest 99"
+  },
+  {
+   "autostart": [],
+   "category": "Retro Arcade",
+   "extras": [
+    {
+     "key": "KeyM",
+     "label": "MUTE"
+    }
+   ],
+   "id": "deep-rock-dig-dug",
+   "keys": {
+    "attack": "KeyZ",
+    "down": "ArrowDown",
+    "jump": "KeyX",
+    "left": "ArrowLeft",
+    "right": "ArrowRight",
+    "start": "Enter",
+    "up": "ArrowUp"
+   },
+   "labels": {
+    "attack": "Z · DIG",
+    "jump": "X · BLAST"
+   },
+   "note": "Dig Dug x Deep Rock Galactic: mine gold, blast the swarm, survive. From the five-agent cabinet batch (gamepress gameboy kit), merged to main 2026-10-30.",
+   "orientation": "portrait",
+   "path": "../games/deep-rock-dig-dug/index.html",
+   "thumb": "thumbs/deep-rock-dig-dug.webp",
+   "title": "Deep Rock Dig Dug"
+  },
+  {
+   "autostart": [],
+   "category": "Retro Arcade",
+   "extras": [
+    {
+     "key": "KeyM",
+     "label": "MUTE"
+    }
+   ],
+   "id": "four-swords-murder",
+   "keys": {
+    "attack": "KeyZ",
+    "down": "ArrowDown",
+    "jump": "KeyX",
+    "left": "ArrowLeft",
+    "right": "ArrowRight",
+    "start": "Enter",
+    "up": "ArrowUp"
+   },
+   "labels": {
+    "attack": "Z · STAB",
+    "jump": "X · DASH"
+   },
+   "note": "Four Swords x Murder Mystery 2: one arrow, one killer — find them first. From the five-agent cabinet batch (gamepress gameboy kit), merged to main 2026-10-30.",
+   "orientation": "portrait",
+   "path": "../games/four-swords-murder/index.html",
+   "thumb": "thumbs/four-swords-murder.webp",
+   "title": "Four Swords Murder"
+  },
+  {
+   "autostart": [],
+   "category": "Retro Arcade",
+   "extras": [
+    {
+     "key": "KeyM",
+     "label": "MUTE"
+    }
+   ],
+   "id": "dress-to-quest",
+   "keys": {
+    "attack": "KeyZ",
+    "down": "ArrowDown",
+    "jump": "KeyX",
+    "left": "ArrowLeft",
+    "right": "ArrowRight",
+    "start": "Enter",
+    "up": "ArrowUp"
+   },
+   "labels": {
+    "attack": "Z · PICK",
+    "jump": "X · STRUT"
+   },
+   "note": "Final Fantasy VI x Dress to Impress: pick the look, wow the judges. From the five-agent cabinet batch (gamepress gameboy kit), merged to main 2026-10-30.",
+   "orientation": "portrait",
+   "path": "../games/dress-to-quest/index.html",
+   "thumb": "thumbs/dress-to-quest.webp",
+   "title": "Dress to Quest"
+  },
+  {
+   "autostart": [],
+   "category": "Retro Arcade",
+   "extras": [
+    {
+     "key": "KeyM",
+     "label": "MUTE"
+    }
+   ],
+   "id": "river-city-cartel",
+   "keys": {
+    "attack": "KeyZ",
+    "down": "ArrowDown",
+    "jump": "KeyX",
+    "left": "ArrowLeft",
+    "right": "ArrowRight",
+    "start": "Enter",
+    "up": "ArrowUp"
+   },
+   "labels": {
+    "attack": "Z · PUNCH",
+    "jump": "X · DEAL"
+   },
+   "note": "River City Ransom x crime sim: brew, deal, brawl your way up. From the five-agent cabinet batch (gamepress gameboy kit), merged to main 2026-10-30.",
+   "orientation": "portrait",
+   "path": "../games/river-city-cartel/index.html",
+   "thumb": "thumbs/river-city-cartel.webp",
+   "title": "River City Cartel"
+  },
+  {
+   "autostart": [],
+   "category": "Retro Arcade",
+   "extras": [
+    {
+     "key": "KeyM",
+     "label": "MUTE"
+    }
+   ],
+   "id": "pal-harvest",
+   "keys": {
+    "attack": "KeyZ",
+    "down": "ArrowDown",
+    "jump": "KeyX",
+    "left": "ArrowLeft",
+    "right": "ArrowRight",
+    "start": "Enter",
+    "up": "ArrowUp"
+   },
+   "labels": {
+    "attack": "Z · TEND",
+    "jump": "X · THROW"
+   },
+   "note": "Harvest Moon x Palworld: catch pals, farm, craft. From the five-agent cabinet batch (gamepress gameboy kit), merged to main 2026-10-30.",
+   "orientation": "portrait",
+   "path": "../games/pal-harvest/index.html",
+   "thumb": "thumbs/pal-harvest.webp",
+   "title": "Pal Harvest"
+  },
+  {
+   "autostart": [],
+   "category": "Originals",
+   "id": "run-the-atlas",
+   "keys": {
+    "jump": "Space",
+    "start": "Enter"
+   },
+   "labels": {
+    "jump": "JUMP"
+   },
+   "note": "One-button auto-runner through five legendary level maps — Mario 1-1, Green Hill, Cut Man, Castlevania, DuckTales' Moon. Run right, jump the gaps, grab each world's relic, warp to the next map. Full source in games/run-the-atlas/.",
+   "orientation": "landscape",
+   "path": "../games/run-the-atlas/index.html",
+   "title": "Run the Atlas"
+  },
+  {
+   "autostart": [],
+   "category": "Originals",
+   "id": "bad-city-run",
+   "keys": {
+    "jump": "Space",
+    "start": "Space"
+   },
+   "labels": {
+    "jump": "JUMP"
+   },
+   "note": "Endless runner that starts on the Bad City backdrop from Super Bonk (SNES), then tours all 100 screens from the art page — the worlds stitched together with feathered seams and glitch-warp crossings, every backdrop lazy-loaded as you reach it, and a checkpoint gate every 10 worlds. Auto-run, jump the street furniture, chase the distance. Full source in games/bad-city-run/.",
+   "orientation": "landscape",
+   "path": "../games/bad-city-run/index.html",
+   "title": "Bad City Run"
+  },
+  {
+   "autostart": [],
+   "category": "Originals",
+   "id": "bmx",
+   "keys": {
+    "start": "Enter"
+   },
+   "labels": {},
+   "note": "BMX downhill racing game.",
+   "orientation": "landscape",
+   "path": "../games/bmx/index.html",
+   "title": "BMX Downhill Rush"
+  },
+  {
+   "autostart": [],
+   "category": "Originals",
+   "id": "jungle-fury",
+   "keys": {
+    "start": "Enter"
+   },
+   "labels": {},
+   "note": "Jungle action game.",
+   "orientation": "landscape",
+   "path": "../games/jungle-fury/index.html",
+   "title": "Jungle Fury"
+  },
+  {
+   "autostart": [],
+   "category": "Originals",
+   "id": "pumpkin-patch-panic",
+   "keys": {
+    "start": "Enter"
+   },
+   "labels": {},
+   "note": "Halloween pumpkin-patch arcade game.",
+   "orientation": "landscape",
+   "path": "../games/pumpkin-patch-panic/index.html",
+   "title": "Pumpkin Patch Panic"
+  },
+  {
+   "autostart": [],
+   "category": "Originals",
+   "id": "retro-throwback-arcade",
+   "keys": {
+    "start": "Enter"
+   },
+   "labels": {},
+   "note": "Retro-style arcade game.",
+   "orientation": "landscape",
+   "path": "../games/retro-throwback-arcade/index.html",
+   "title": "Retro Throwback Arcade"
+  },
+  {
+   "autostart": [],
+   "category": "Originals",
+   "id": "tobers-nightmare",
+   "keys": {
+    "start": "Enter"
+   },
+   "labels": {},
+   "note": "Nightmare-themed arcade game.",
+   "orientation": "landscape",
+   "path": "../games/tobers-nightmare/index.html",
+   "title": "Tobers Nightmare"
+  },
+  {
+   "autostart": [],
+   "category": "Originals",
+   "id": "karen-arcade-demo",
+   "keys": {
+    "start": "Enter"
+   },
+   "labels": {},
+   "note": "Free demo of the Karen arcade games (Call of Karen: HOA Warfare).",
+   "orientation": "landscape",
+   "path": "g/karen-arcade-demo/index.html",
+   "title": "KAREN ARCADE (FREE DEMO)"
+  },
+  {
+   "autostart": [],
+   "category": "Originals",
+   "id": "karen-ballistic-bouncer",
+   "keys": {
+    "start": "Enter"
+   },
+   "labels": {},
+   "note": "Karen / HOA Warfare mini-game: lawn bouncer.",
+   "orientation": "landscape",
+   "path": "g/karen-ballistic-bouncer/index.html",
+   "title": "LAWN BOUNCER"
+  },
+  {
+   "autostart": [],
+   "category": "Originals",
+   "id": "karen-bullet-heaven",
+   "keys": {
+    "start": "Enter"
+   },
+   "labels": {},
+   "note": "Karen survivors-style bullet-heaven game.",
+   "orientation": "landscape",
+   "path": "g/karen-bullet-heaven/index.html",
+   "title": "KAREN SURVIVORS"
+  },
+  {
+   "autostart": [],
+   "category": "Originals",
+   "id": "karen-kart-racer",
+   "keys": {
+    "start": "Enter"
+   },
+   "labels": {},
+   "note": "Karen kart racer.",
+   "orientation": "landscape",
+   "path": "g/karen-kart-racer/index.html",
+   "title": "KAREN KART"
+  },
+  {
+   "autostart": [],
+   "category": "Originals",
+   "id": "karen-one-tap-reflex",
+   "keys": {
+    "start": "Enter"
+   },
+   "labels": {},
+   "note": "One-tap flap-style Karen reflex game.",
+   "orientation": "landscape",
+   "path": "g/karen-one-tap-reflex/index.html",
+   "title": "FLAP KAREN"
+  },
+  {
+   "autostart": [],
+   "category": "Originals",
+   "id": "karen-slice-swipe",
+   "keys": {
+    "start": "Enter"
+   },
+   "labels": {},
+   "note": "Karen slice-and-swipe game: coupon slicer.",
+   "orientation": "landscape",
+   "path": "g/karen-slice-swipe/index.html",
+   "title": "COUPON SLICER"
+  },
+  {
+   "autostart": [],
+   "category": "Originals",
+   "id": "mashup-cabinet",
+   "keys": {
+    "start": "Enter"
+   },
+   "labels": {},
+   "note": "Three word mashups on one screen with a dropdown picker, each a full-screen iPhone browser game: Letterfall (Tetris x Wordle — word-fragment blocks of 1-3 letters fall and stack into 5-letter words), Letter Crush (Candy Crush x spelling — boards planted from real words, one swap from spelling; swap tiles to finish words and chain cascades), Wordle-Latro (Wordle, simplified — guess the hidden word in 6 tries, color clues, every guess scores points; 10 rounds and a grade).",
+   "orientation": "portrait",
+   "path": "../games/mashup-cabinet/index.html",
+   "title": "Mashup 3-in-1"
+  },
+  {
+   "autostart": [],
+   "category": "Playable Ads",
+   "id": "ad-boilerbloom",
+   "keys": {},
+   "labels": {},
+   "note": "Playable ad sample from Scenario's library (Lane battle · 3D). One self-contained file, about 35-45 seconds: Boilerbloom.",
+   "orientation": "portrait",
+   "path": "../games/playable-ads/boilerbloom/index.html",
+   "title": "Boilerbloom"
+  },
+  {
+   "autostart": [],
+   "category": "Playable Ads",
+   "id": "ad-bounce-blaster",
+   "keys": {},
+   "labels": {},
+   "note": "Playable ad sample from Scenario's library (Trick shot · 2D). One self-contained file, about 35-45 seconds: Bounce Blaster.",
+   "orientation": "portrait",
+   "path": "../games/playable-ads/bounce-blaster/index.html",
+   "title": "Bounce Blaster"
+  },
+  {
+   "autostart": [],
+   "category": "Playable Ads",
+   "id": "ad-causeway-crush",
+   "keys": {},
+   "labels": {},
+   "note": "Playable ad sample from Scenario's library (Crowd runner · 3D). One self-contained file, about 35-45 seconds: Causeway Crush.",
+   "orientation": "portrait",
+   "path": "../games/playable-ads/causeway-crush/index.html",
+   "title": "Causeway Crush"
+  },
+  {
+   "autostart": [],
+   "category": "Playable Ads",
+   "id": "ad-cozy-bean-cafe",
+   "keys": {},
+   "labels": {},
+   "note": "Playable ad sample from Scenario's library (Idle arcade · 2D). One self-contained file, about 35-45 seconds: Cozy Bean Cafe.",
+   "orientation": "portrait",
+   "path": "../games/playable-ads/cozy-bean-cafe/index.html",
+   "title": "Cozy Bean Cafe"
+  },
+  {
+   "autostart": [],
+   "category": "Playable Ads",
+   "id": "ad-embernest",
+   "keys": {},
+   "labels": {},
+   "note": "Playable ad sample from Scenario's library (Merge · 2D). One self-contained file, about 35-45 seconds: Embernest.",
+   "orientation": "portrait",
+   "path": "../games/playable-ads/embernest/index.html",
+   "title": "Embernest"
+  },
+  {
+   "autostart": [],
+   "category": "Playable Ads",
+   "id": "ad-evolve-rush",
+   "keys": {},
+   "labels": {},
+   "note": "Playable ad sample from Scenario's library (Evolution runner · 3D). One self-contained file, about 35-45 seconds: Evolve Rush.",
+   "orientation": "portrait",
+   "path": "../games/playable-ads/evolve-rush/index.html",
+   "title": "Evolve Rush"
+  },
+  {
+   "autostart": [],
+   "category": "Playable Ads",
+   "id": "ad-glazeline",
+   "keys": {},
+   "labels": {},
+   "note": "Playable ad sample from Scenario's library (Block puzzle · 2D). One self-contained file, about 35-45 seconds: Glazeline.",
+   "orientation": "portrait",
+   "path": "../games/playable-ads/glazeline/index.html",
+   "title": "Glazeline"
+  },
+  {
+   "autostart": [],
+   "category": "Playable Ads",
+   "id": "ad-glimmerbrew",
+   "keys": {},
+   "labels": {},
+   "note": "Playable ad sample from Scenario's library (Idle arcade · 2D). One self-contained file, about 35-45 seconds: Glimmerbrew.",
+   "orientation": "portrait",
+   "path": "../games/playable-ads/glimmerbrew/index.html",
+   "title": "Glimmerbrew"
+  },
+  {
+   "autostart": [],
+   "category": "Playable Ads",
+   "id": "ad-gold-rush-rescue",
+   "keys": {},
+   "labels": {},
+   "note": "Playable ad sample from Scenario's library (Pin pull · 2D). One self-contained file, about 35-45 seconds: Gold Rush Rescue.",
+   "orientation": "portrait",
+   "path": "../games/playable-ads/gold-rush-rescue/index.html",
+   "title": "Gold Rush Rescue"
+  },
+  {
+   "autostart": [],
+   "category": "Playable Ads",
+   "id": "ad-gulp-city",
+   "keys": {},
+   "labels": {},
+   "note": "Playable ad sample from Scenario's library (Hole game · 3D). One self-contained file, about 35-45 seconds: Gulp City.",
+   "orientation": "portrait",
+   "path": "../games/playable-ads/gulp-city/index.html",
+   "title": "Gulp City"
+  },
+  {
+   "autostart": [],
+   "category": "Playable Ads",
+   "id": "ad-hopsplat",
+   "keys": {},
+   "labels": {},
+   "note": "Playable ad sample from Scenario's library (Paint train · 2D). One self-contained file, about 35-45 seconds: Hopsplat.",
+   "orientation": "portrait",
+   "path": "../games/playable-ads/hopsplat/index.html",
+   "title": "Hopsplat"
+  },
+  {
+   "autostart": [],
+   "category": "Playable Ads",
+   "id": "ad-inkwash-vigil",
+   "keys": {},
+   "labels": {},
+   "note": "Playable ad sample from Scenario's library (Survivor · 2D). One self-contained file, about 35-45 seconds: Inkwash Vigil.",
+   "orientation": "portrait",
+   "path": "../games/playable-ads/inkwash-vigil/index.html",
+   "title": "Inkwash Vigil"
+  },
+  {
+   "autostart": [],
+   "category": "Playable Ads",
+   "id": "ad-jiggle-jars",
+   "keys": {},
+   "labels": {},
+   "note": "Playable ad sample from Scenario's library (Sort puzzle · 2D). One self-contained file, about 35-45 seconds: Jiggle Jars.",
+   "orientation": "portrait",
+   "path": "../games/playable-ads/jiggle-jars/index.html",
+   "title": "Jiggle Jars"
+  },
+  {
+   "autostart": [],
+   "category": "Playable Ads",
+   "id": "ad-lantern-lift",
+   "keys": {},
+   "labels": {},
+   "note": "Playable ad sample from Scenario's library (Triple match · 2D). One self-contained file, about 35-45 seconds: Lantern Lift.",
+   "orientation": "portrait",
+   "path": "../games/playable-ads/lantern-lift/index.html",
+   "title": "Lantern Lift"
+  },
+  {
+   "autostart": [],
+   "category": "Playable Ads",
+   "id": "ad-nutbolt-legion",
+   "keys": {},
+   "labels": {},
+   "note": "Playable ad sample from Scenario's library (Lane shooter · 2D). One self-contained file, about 35-45 seconds: Nutbolt Legion.",
+   "orientation": "portrait",
+   "path": "../games/playable-ads/nutbolt-legion/index.html",
+   "title": "Nutbolt Legion"
+  },
+  {
+   "autostart": [],
+   "category": "Playable Ads",
+   "id": "ad-reefhold",
+   "keys": {},
+   "labels": {},
+   "note": "Playable ad sample from Scenario's library (Tower defense · 2D). One self-contained file, about 35-45 seconds: Reefhold.",
+   "orientation": "portrait",
+   "path": "../games/playable-ads/reefhold/index.html",
+   "title": "Reefhold"
+  },
+  {
+   "autostart": [],
+   "category": "Playable Ads",
+   "id": "ad-reeflume",
+   "keys": {},
+   "labels": {},
+   "note": "Playable ad sample from Scenario's library (Match-3 · 2D). One self-contained file, about 35-45 seconds: Reeflume.",
+   "orientation": "portrait",
+   "path": "../games/playable-ads/reeflume/index.html",
+   "title": "Reeflume"
+  },
+  {
+   "autostart": [],
+   "category": "Playable Ads",
+   "id": "ad-roost-shuffle",
+   "keys": {},
+   "labels": {},
+   "note": "Playable ad sample from Scenario's library (Sort puzzle · 2D). One self-contained file, about 35-45 seconds: Roost Shuffle.",
+   "orientation": "portrait",
+   "path": "../games/playable-ads/roost-shuffle/index.html",
+   "title": "Roost Shuffle"
+  },
+  {
+   "autostart": [],
+   "category": "Playable Ads",
+   "id": "ad-scoop-yeti",
+   "keys": {},
+   "labels": {},
+   "note": "Playable ad sample from Scenario's library (Sort puzzle · 2D). One self-contained file, about 35-45 seconds: Scoop Yeti.",
+   "orientation": "portrait",
+   "path": "../games/playable-ads/scoop-yeti/index.html",
+   "title": "Scoop Yeti"
+  },
+  {
+   "autostart": [],
+   "category": "Playable Ads",
+   "id": "ad-shardstorm-rookie",
+   "keys": {},
+   "labels": {},
+   "note": "Playable ad sample from Scenario's library (Survivor · 2D). One self-contained file, about 35-45 seconds: Shardstorm Rookie.",
+   "orientation": "portrait",
+   "path": "../games/playable-ads/shardstorm-rookie/index.html",
+   "title": "Shardstorm Rookie"
+  },
+  {
+   "autostart": [],
+   "category": "Playable Ads",
+   "id": "ad-sky-stacker",
+   "keys": {},
+   "labels": {},
+   "note": "Playable ad sample from Scenario's library (Timing stacker · 2D). One self-contained file, about 35-45 seconds: Sky Stacker.",
+   "orientation": "portrait",
+   "path": "../games/playable-ads/sky-stacker/index.html",
+   "title": "Sky Stacker"
+  },
+  {
+   "autostart": [],
+   "category": "Playable Ads",
+   "id": "ad-sunskiff",
+   "keys": {},
+   "labels": {},
+   "note": "Playable ad sample from Scenario's library (Racing · 3D). One self-contained file, about 35-45 seconds: Sunskiff.",
+   "orientation": "portrait",
+   "path": "../games/playable-ads/sunskiff/index.html",
+   "title": "Sunskiff"
+  },
+  {
+   "autostart": [],
+   "category": "Playable Ads",
+   "id": "ad-tincture-tide",
+   "keys": {},
+   "labels": {},
+   "note": "Playable ad sample from Scenario's library (Sort puzzle · 2D). One self-contained file, about 35-45 seconds: Tincture Tide.",
+   "orientation": "portrait",
+   "path": "../games/playable-ads/tincture-tide/index.html",
+   "title": "Tincture Tide"
+  },
+  {
+   "autostart": [],
+   "category": "Playable Ads",
+   "id": "ad-tug-tangle",
+   "keys": {},
+   "labels": {},
+   "note": "Playable ad sample from Scenario's library (Jam puzzle · 2D). One self-contained file, about 35-45 seconds: Tug Tangle.",
+   "orientation": "portrait",
+   "path": "../games/playable-ads/tug-tangle/index.html",
+   "title": "Tug Tangle"
+  }
+ ]
+}

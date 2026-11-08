@@ -1,2 +1,5 @@
 # Hawk-Ads
-Playable ads and overflow games from Hawk — sister site of the Hawk arcade
+
+Playable Ads, Bake-off series, and selected Arcade Originals.
+Sister repositories: [Hawk](https://github.com/bparlette/Hawk) | [Hawk-Cabinets](https://github.com/bparlette/Hawk-Cabinets)
+Split from bparlette/Hawk @ 2fdcfd55
