@@ -5640,8 +5640,8 @@ window.M_TOWER = {"pos": "esFcgqD3j8FwgeD26cLKgAcMFsL8gFAMM8DRgQ/4M8DRgQ/4CMqlgd
   // ---------- the 3-level structure: same engine, three districts ----------
   const LEVELS = [
     { name: "FIRST BITE", time: 40, need: 4.2, sky: "#cfe9ff" },
-    { name: "DOWNTOWN RUSH", time: 45, need: 5.6, sky: "#ffe0ae" },
-    { name: "THE BIG FEAST", time: 60, need: 8.0, sky: "#c9b8f2" },
+    { name: "DOWNTOWN RUSH", time: 45, need: 5.6, sky: "#ff9d5c" },
+    { name: "THE BIG FEAST", time: 60, need: 8.0, sky: "#2b1e4e" },
   ];
   let CUR = 0; // current level index
   // points eaten -> hole radius (m); the SIZE counter shows the points
@@ -5666,6 +5666,9 @@ window.M_TOWER = {"pos": "esFcgqD3j8FwgeD26cLKgAcMFsL8gFAMM8DRgQ/4M8DRgQ/4CMqlgd
     bus: { mesh: "M_BUS", tex: "tex_bus", r: 2.45, pts: 10, sound: "gulpbig", yaw: true, horn: true },
     house: { mesh: "M_HOUSE", tex: "tex_house", r: 2.6, pts: 14, sound: "boom", yaw: true },
     tower: { mesh: "M_TOWER", tex: "tex_tower", h: 15.5, pts: 40, sound: "boom" },
+    blockA: { proc: "block", w: 4.6, d: 4.6, bh: 9.5, r: 2.3, pts: 16, sound: "boom" },
+    blockB: { proc: "block", w: 5.4, d: 5.4, bh: 13.0, r: 2.7, pts: 22, sound: "boom" },
+    blockC: { proc: "block", w: 4.0, d: 4.0, bh: 7.5, r: 2.0, pts: 12, sound: "boom" },
   };
 
   let G, W3;
@@ -5772,6 +5775,7 @@ window.M_TOWER = {"pos": "esFcgqD3j8FwgeD26cLKgAcMFsL8gFAMM8DRgQ/4M8DRgQ/4CMqlgd
 
   function groundMat(slot, color, rep, order) {
     const m = new T.MeshBasicMaterial({ color: color });
+    m.userData.gk = slot || "dash";
     const t = makeTex(PA.img[slot], true, rep);
     if (t) { m.map = t; m.color.set(0xffffff); }
     // the ground never draws where the hole is (stencil 1), so what falls in shows through
@@ -5788,6 +5792,7 @@ window.M_TOWER = {"pos": "esFcgqD3j8FwgeD26cLKgAcMFsL8gFAMM8DRgQ/4M8DRgQ/4CMqlgd
     m.position.set(x, 0, z);
     m.renderOrder = order;
     W3.scene.add(m);
+    if (mat.userData && mat.userData.gk && W3.groundMats) W3.groundMats.push(mat);
     return m;
   }
   function radialTex(stops, size) {
@@ -6004,6 +6009,125 @@ window.M_TOWER = {"pos": "esFcgqD3j8FwgeD26cLKgAcMFsL8gFAMM8DRgQ/4M8DRgQ/4CMqlgd
     return mat;
   }
 
+  // ---------- per-level identity: themes, downtown blocks, streetlamps ----------
+  const THEMES = [
+    null, // FIRST BITE: the ad's sunny city, exactly as baked
+    {
+      // DOWNTOWN RUSH at dusk: warm concrete instead of lawn, dark roads, dusky buildings
+      g: { tile_lawn: 0xb9a08e, tile_walk: 0xd8b28c, tile_road: 0x8089a3, tile_plaza: 0xe0aa66, dash: 0xffd9a0 },
+      o: { tower: 0xb0a3cc, kiosk: 0xe0b184, tree: 0xa8b184, bench: 0xe3cdaa },
+      asphalt: true,
+    },
+    {
+      // THE BIG FEAST at night: moonlit suburb, lavender plaza, lamps lit
+      g: { tile_lawn: 0x517a6c, tile_walk: 0x8a86ad, tile_road: 0x5d6a8c, tile_plaza: 0xa79cd6, dash: 0xd9d4ff },
+      o: { house: 0x93a5d6, tree: 0x6f9a7d, tower: 0x8b96d6, kiosk: 0xa0aad6, bench: 0x9aa3c8 },
+    },
+  ];
+  function asphaltTex() {
+    // poured-concrete ground for downtown: speckle + slab joints, made in code
+    if (W3.asphalt) return W3.asphalt;
+    const S = 256, c = document.createElement("canvas");
+    c.width = c.height = S;
+    const x = c.getContext("2d");
+    x.fillStyle = "#7d838e";
+    x.fillRect(0, 0, S, S);
+    for (let i = 0; i < 2600; i++) {
+      const v = rnd(i * 3 + 1);
+      x.fillStyle = v > 0.5 ? "rgba(255,255,255," + (0.05 + v * 0.06) + ")" : "rgba(12,14,20," + (0.05 + v * 0.07) + ")";
+      x.fillRect(rnd(i * 7) * S, rnd(i * 11) * S, 1.6, 1.6);
+    }
+    x.strokeStyle = "rgba(30,32,40,0.55)";
+    x.lineWidth = 3;
+    x.strokeRect(0, 0, S, S);
+    x.strokeStyle = "rgba(255,255,255,0.10)";
+    x.lineWidth = 1;
+    x.strokeRect(3, 3, S - 6, S - 6);
+    const t = new T.CanvasTexture(c);
+    t.colorSpace = T.SRGBColorSpace;
+    W3.asphalt = t;
+    return t;
+  }
+  function applyTheme() {
+    const th = THEMES[CUR];
+    W3.groundMats.forEach((m) => {
+      if (m.userData.origMap === undefined) { m.userData.origMap = m.map; m.userData.baseColor = m.color.getHex(); }
+      if (th && th.asphalt && m.userData.gk === "tile_lawn" && m.userData.origMap) {
+        const t = asphaltTex();
+        t.wrapS = t.wrapT = 1002; // MirroredRepeatWrapping, same as the baked tiles
+        t.repeat.copy(m.userData.origMap.repeat);
+        t.needsUpdate = true;
+        m.map = t;
+      } else if (m.userData.origMap) m.map = m.userData.origMap;
+      const c = th && th.g[m.userData.gk];
+      m.color.set(c !== undefined && c !== false && c != null ? c : m.userData.baseColor);
+      m.needsUpdate = true;
+    });
+    Object.keys(W3.mats).forEach((k) =>
+      Object.keys(W3.mats[k]).forEach((h) => W3.mats[k][h].color.set(th && th.o[k] ? th.o[k] : 0xffffff))
+    );
+  }
+  let blockSeed = 0;
+  function blockTex(seed, base) {
+    // an office facade in code: dark tower, a grid of windows, half of them lit amber at dusk
+    const c = document.createElement("canvas");
+    c.width = 128;
+    c.height = 256;
+    const x = c.getContext("2d");
+    x.fillStyle = base;
+    x.fillRect(0, 0, 128, 256);
+    const g = x.createLinearGradient(0, 0, 128, 0);
+    g.addColorStop(0, "rgba(0,0,0,0.18)");
+    g.addColorStop(0.5, "rgba(255,255,255,0.05)");
+    g.addColorStop(1, "rgba(0,0,0,0.22)");
+    x.fillStyle = g;
+    x.fillRect(0, 0, 128, 256);
+    for (let r = 0; r < 12; r++)
+      for (let col = 0; col < 5; col++) {
+        const v = rnd(seed * 31 + r * 7 + col * 13);
+        const wx = 8 + col * 24, wy = 10 + r * 20;
+        x.fillStyle = v < 0.52 ? (v < 0.16 ? "#ffe9b0" : "#ffc46b") : "rgba(10,13,22,0.85)";
+        x.fillRect(wx, wy, 13, 11);
+        x.fillStyle = "rgba(255,255,255,0.16)";
+        x.fillRect(wx, wy, 13, 2);
+      }
+    const t = new T.CanvasTexture(c);
+    t.colorSpace = T.SRGBColorSpace;
+    return t;
+  }
+  function buildBlock(type) {
+    const ty = TYPES[type];
+    blockSeed += 1;
+    const bases = { blockA: "#4a4356", blockB: "#3c4258", blockC: "#574a42" };
+    const side = sinkPatch(new T.MeshBasicMaterial({ map: blockTex(blockSeed * 3 + type.length, bases[type] || "#46404f") }));
+    const roofM = sinkPatch(new T.MeshBasicMaterial({ color: 0x272b36 }));
+    const grp = new T.Group();
+    const box = new T.Mesh(new T.BoxGeometry(ty.w, ty.bh, ty.d), [side, side, roofM, roofM, side, side]);
+    box.position.y = ty.bh / 2;
+    box.renderOrder = 10;
+    const slab = new T.Mesh(new T.BoxGeometry(ty.w + 0.5, 0.35, ty.d + 0.5), roofM);
+    slab.position.y = ty.bh + 0.18;
+    slab.renderOrder = 10;
+    grp.add(box, slab);
+    return grp;
+  }
+  let lampGlowTex = null;
+  function addLamp(x, z) {
+    // a streetlamp for the night level: dark pole, warm bulb, soft halo (decor only, never an edible object)
+    if (!lampGlowTex) lampGlowTex = radialTex([[0, "rgba(255,222,150,0.95)"], [0.35, "rgba(255,198,105,0.42)"], [1, "rgba(255,190,90,0)"]], 128);
+    const grp = new T.Group();
+    const pole = new T.Mesh(new T.CylinderGeometry(0.06, 0.1, 3.1, 6), new T.MeshBasicMaterial({ color: 0x1f2432 }));
+    pole.position.y = 1.55;
+    const bulb = new T.Mesh(new T.SphereGeometry(0.17, 10, 8), new T.MeshBasicMaterial({ color: 0xffe9ae }));
+    bulb.position.y = 3.16;
+    const glow = new T.Sprite(new T.SpriteMaterial({ map: lampGlowTex, transparent: true, depthWrite: false, opacity: 0.9 }));
+    glow.scale.set(3.0, 3.0, 1);
+    glow.position.y = 3.16;
+    grp.add(pole, bulb, glow);
+    grp.position.set(x, 0, z);
+    W3.decor.add(grp);
+  }
+
   function buildWorld() {
     W3 = { ok: false, objs: [], geo: {}, mats: {} };
     const cv = document.createElement("canvas");
@@ -6019,6 +6143,9 @@ window.M_TOWER = {"pos": "esFcgqD3j8FwgeD26cLKgAcMFsL8gFAMM8DRgQ/4M8DRgQ/4CMqlgd
     R.setClearColor(0xcfe9ff, 1);
     const scene = (W3.scene = new T.Scene());
     scene.fog = new T.Fog(0xcfe9ff, 110, 230);
+    W3.groundMats = [];
+    W3.decor = new T.Group();
+    scene.add(W3.decor);
     W3.camera = new T.PerspectiveCamera(60, 0.5625, 1, 400);
 
     // ground: lawn, sidewalks, roads, plaza, lane dashes (layers in draw order)
@@ -6043,6 +6170,7 @@ window.M_TOWER = {"pos": "esFcgqD3j8FwgeD26cLKgAcMFsL8gFAMM8DRgQ/4M8DRgQ/4CMqlgd
     pz.position.set(0, 0, -17);
     pz.renderOrder = 4;
     scene.add(pz);
+    W3.groundMats.push(pz.material);
     const dash = groundMat(null, 0xffffff);
     const dashes = [];
     for (let z = -40; z < 20; z += 3) if (!(z > 1 && z < 8.5) && !(z > -22.5 && z < -11.5) && !(z > -34 && z < -26.5)) dashes.push([0, z, 0.22, 1.5]);
@@ -6088,7 +6216,7 @@ window.M_TOWER = {"pos": "esFcgqD3j8FwgeD26cLKgAcMFsL8gFAMM8DRgQ/4M8DRgQ/4CMqlgd
     // meshes
     Object.keys(TYPES).forEach((k) => {
       const ty = TYPES[k];
-      if (ty.rig) return;
+      if (ty.rig || ty.proc) return;
       const b = buildGeometry(k);
       if (!b) { PA.leaveOut(k, ty.tex); return; }
       W3.geo[k] = b;
@@ -6143,6 +6271,13 @@ window.M_TOWER = {"pos": "esFcgqD3j8FwgeD26cLKgAcMFsL8gFAMM8DRgQ/4M8DRgQ/4CMqlgd
       r = ty.r;
       h = ty.h;
       actor.play("walk", { t: rnd(x * 3 + z) });
+    } else if (ty.proc) {
+      root = new T.Group();
+      root.add(buildBlock(type));
+      const sc = o.s || 1;
+      root.scale.setScalar(sc);
+      r = ty.r * sc;
+      h = ty.bh * sc;
     } else {
       const b = W3.geo[type];
       if (!b) return null;
@@ -6167,6 +6302,10 @@ window.M_TOWER = {"pos": "esFcgqD3j8FwgeD26cLKgAcMFsL8gFAMM8DRgQ/4M8DRgQ/4CMqlgd
       const bb = W3.geo[type].g.boundingBox, sc = o.s || 1;
       sx = ((bb.max.x - bb.min.x) / 2) * sc * 1.25 + 0.15;
       sz = ((bb.max.z - bb.min.z) / 2) * sc * 1.25 + 0.15;
+    } else if (ty.proc) {
+      const sc = o.s || 1;
+      sx = ((ty.w * sc) / 2) * 1.15 + 0.15;
+      sz = ((ty.d * sc) / 2) * 1.15 + 0.15;
     }
     sh.scale.set(sx, sz, 1);
     sh.rotation.z = o.rot || 0;
@@ -6233,7 +6372,7 @@ window.M_TOWER = {"pos": "esFcgqD3j8FwgeD26cLKgAcMFsL8gFAMM8DRgQ/4M8DRgQ/4CMqlgd
     });
   }
 
-  // ---------- level 2: DOWNTOWN RUSH — the same streets, packed ----------
+  // ---------- level 2: DOWNTOWN RUSH — a downtown canyon at dusk: office blocks wall the streets ----------
   function buildLevel2() {
     const A = (t, x, z, o) => addObj(t, x, z, o);
     // the opening beat stays: cone row, the taxi in their line, small stuff around
@@ -6271,11 +6410,21 @@ window.M_TOWER = {"pos": "esFcgqD3j8FwgeD26cLKgAcMFsL8gFAMM8DRgQ/4M8DRgQ/4CMqlgd
     A("bus", -11.5, -30.2, { rot: 0 });
     A("car", 8.0, -29.8, { rot: Math.PI, hue: 60 }); A("car", -6.0, -31.0, { rot: 0, hue: 180 }); A("car", 13.0, -29.5, { rot: Math.PI, hue: 300 });
     A("bus", 1.6, -36.5, { rot: 0 });
-    // houses on the lots, two more than level 1, and a fuller tree line
-    const houses = [[-10.5, -6.5, 0], [10.5, -6.5, 150], [-10.5, -16, 60], [10.5, -16, 250], [-10.5, -23.5, 300], [10.5, -23.5, 30], [-10.5, 15, 200], [10.5, 15, 100], [-10.5, -35.5, 90], [10.5, -35.5, 210]];
-    houses.forEach((h) => A("house", h[0], h[1], { rot: h[0] < 0 ? Math.PI / 2 : -Math.PI / 2, hue: h[2] }));
-    [[-6.4, -3.2], [6.4, -3.2], [-6.6, -11.2], [6.6, -11.2], [-6.4, -19.8], [6.4, -19.8], [-15.2, -11.2], [15.2, -11.2],
-      [-6.4, 12.5], [6.4, 12.5], [-14.8, 12], [14.8, 12], [-6.6, -36], [6.6, -36], [-15.2, -20], [15.2, -20], [-6.5, 17.5], [6.5, 17.5]].forEach((p, i) => A("tree", p[0], p[1], { s: 0.85 + rnd(i) * 0.3, rot: rnd(i + 4) * 6 }));
+    // the downtown canyon: office blocks with lit windows, two rows deep on both sides of the
+    // main street. No houses downtown — a different district, not a denser copy of level 1.
+    const blocks = [
+      ["blockB", -8.6, -7], ["blockA", -14, -7.5], ["blockA", -8.6, -15], ["blockC", -14, -16],
+      ["blockB", -8.6, -23], ["blockA", -14.5, -22.5],
+      ["blockA", 8.6, -7.5], ["blockC", 14, -7], ["blockB", 8.6, -15.5], ["blockA", 14, -15],
+      ["blockA", 8.6, -23.5], ["blockB", 14, -22],
+    ];
+    blocks.forEach((b, i) => A(b[0], b[1], b[2], { rot: (i % 4) * (Math.PI / 2) }));
+    // a parking lot fills the south lots where level 1 has front yards
+    A("car", -8, 14.5, { rot: Math.PI / 2, hue: 200 }); A("car", -8, 18.3, { rot: Math.PI / 2, hue: 320 });
+    A("car", 8, 14.5, { rot: -Math.PI / 2, hue: 60 }); A("car", 8, 18.3, { rot: -Math.PI / 2, hue: 140 });
+    A("bin", -3.5, 16.5); A("bin", 3.5, 16.5);
+    // planter trees only — downtown has no yards
+    [[-6.2, -3.4], [6.2, -3.4], [-6.2, -27.5], [6.2, -27.5], [-15.2, -11.2], [15.2, -11.2]].forEach((p, i) => A("tree", p[0], p[1], { s: 0.85 + rnd(i) * 0.3, rot: rnd(i + 4) * 6 }));
     // the skyscraper on its plaza
     G.tower = A("tower", 0, -17);
     // pedestrians, a busier city than level 1
@@ -6291,7 +6440,7 @@ window.M_TOWER = {"pos": "esFcgqD3j8FwgeD26cLKgAcMFsL8gFAMM8DRgQ/4M8DRgQ/4CMqlgd
     });
   }
 
-  // ---------- level 3: THE BIG FEAST — suburb opens south, jams on both cross streets ----------
+  // ---------- level 3: THE BIG FEAST — the suburb at night: lamp-lit streets, the plaza ringed for the final course ----------
   function buildLevel3() {
     const A = (t, x, z, o) => addObj(t, x, z, o);
     // opening beat, mirrored: the cone row and taxi wait on the east side this time
@@ -6343,6 +6492,9 @@ window.M_TOWER = {"pos": "esFcgqD3j8FwgeD26cLKgAcMFsL8gFAMM8DRgQ/4M8DRgQ/4CMqlgd
     houses.forEach((h) => A("house", h[0], h[1], { rot: h[0] < 0 ? Math.PI / 2 : -Math.PI / 2, hue: h[2] }));
     [[-6.4, -3.2], [6.4, -3.2], [-6.6, -11.2], [6.6, -11.2], [-6.4, -19.8], [6.4, -19.8], [-15.2, -11.2], [15.2, -11.2],
       [-15.2, -20], [15.2, -20], [-6.6, -36], [6.6, -36]].forEach((p, i) => A("tree", p[0], p[1], { s: 0.85 + rnd(i) * 0.3, rot: rnd(i + 4) * 6 }));
+    // streetlamps: pools of warm light down the main street, through the suburb, around the plaza
+    [[-5.3, 5.5], [5.3, 5.5], [-5.3, -3.5], [5.3, -3.5], [-5.3, 11.8], [5.3, 11.8], [-5.6, 16.8], [5.6, 16.8],
+      [6.6, -17], [-6.6, -17], [0, -23.9]].forEach((p) => addLamp(p[0], p[1]));
     // the skyscraper on its plaza: the last course
     G.tower = A("tower", 0, -17);
     // pedestrians everywhere, including a stroll through the suburb
@@ -6368,6 +6520,7 @@ window.M_TOWER = {"pos": "esFcgqD3j8FwgeD26cLKgAcMFsL8gFAMM8DRgQ/4M8DRgQ/4CMqlgd
         if (o.actor) o.actor.dispose();
       });
       W3.objs.length = 0;
+      if (W3.decor) while (W3.decor.children.length) W3.decor.remove(W3.decor.children[0]);
     }
     G = {
       started: false, t: 0, phase: "wait", size: 0, eaten: 0, R: SIZE_TABLE[0][1], Rshow: SIZE_TABLE[0][1], pulse: 0,
@@ -6383,6 +6536,7 @@ window.M_TOWER = {"pos": "esFcgqD3j8FwgeD26cLKgAcMFsL8gFAMM8DRgQ/4M8DRgQ/4CMqlgd
       TOWER_NEED = LEVELS[CUR].need;
       if (W3.scene) { W3.scene.fog.color.set(LEVELS[CUR].sky); W3.renderer.setClearColor(LEVELS[CUR].sky, 1); }
       buildLevel();
+      applyTheme();
       warm();
     }
     PA.tween(G, { hookA: 1, hookS: 1 }, 0.45, { ease: "outBack", delay: 0.1, real: true });
