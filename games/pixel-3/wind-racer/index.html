@@ -5426,10 +5426,10 @@ window.SKIFF_MESH = {"pos": "Mez2vM0UeNb2vNMt3MB+vmQae9X7vRUBMuh+vobr6f77vT7/PRV
   'use strict';
   const D = PA.draw, THREE = window.THREE, SKF = window.SKF, T = SKF.T;
 
-  // ---------- 3 courses (level structure; physics in SKF unchanged) ----------
+  // ---------- 4 courses (level structure; physics in SKF unchanged) ----------
   const COURSES = [
-    { name: 'THE SUN RUN', target: 34.8, roundS: 45, gust: null, tune: null,
-      goal: 'The classic causeway under the low sun. Clean gates fill WIND — beat the record!',
+    { name: "THE SUN RUN", target: 34.8, roundS: 45, gust: null, tune: null,
+      goal: "The classic causeway under the low sun. Clean gates fill WIND \u2014 beat the record!",
       gates: [70, 265, 560, 605, 990, 1050],
       segs: [
         { len: 100, yaw: 0, pitch: 0, bank: 0, arches: true },
@@ -5444,62 +5444,89 @@ window.SKIFF_MESH = {"pos": "Mez2vM0UeNb2vNMt3MB+vmQae9X7vRUBMuh+vobr6f77vT7/PRV
         { len: 90, yaw: 40, pitch: 0, bank: 10 },
         { len: 300, yaw: 0, pitch: 0, bank: 0, arches: true },
       ] },
-    { name: 'THE GUSTY REACHES', target: 43.2, roundS: 60, gust: { base: 1.3, amp: 0.30, rate: 0.45 }, tune: null,
-      goal: 'A longer road — and the crosswind keeps shifting. Hold your line through the S-curves!',
+    { name: "THE BEACH RUN", target: 43.2, roundS: 60, gust: { base: 1.3, amp: 0.3, rate: 0.45 }, tune: null,
+      goal: "A coast road along the beach \u2014 sand and palms on one side, surf on the other. Clean gates fill WIND \u2014 beat the record!",
       gates: [80, 275, 500, 660, 880, 1100, 1350, 1650],
       segs: [
         { len: 110, yaw: 0, pitch: 0, bank: 0, arches: true },
         { len: 130, yaw: -70, pitch: 3, bank: -14 },
-        { len: 70, yaw: 45, pitch: 0, bank: 10 },
-        { len: 90, yaw: -40, pitch: -4, bank: -10, sign: true },
-        { len: 200, yaw: 0, pitch: 0, bank: 0 },
-        { len: 120, yaw: 85, pitch: 6, bank: 16 },
-        { len: 80, yaw: -60, pitch: -8, bank: -14, sign: true },
-        { len: 150, yaw: 0, pitch: 0, bank: 0 },
-        { len: 100, yaw: 55, pitch: 2, bank: 12 },
-        { len: 100, yaw: -55, pitch: 0, bank: -12 },
+        { len: 70, yaw: 45, pitch: 4, bank: 10 },
+        { len: 90, yaw: -40, pitch: -2, bank: -10, sign: true },
+        { len: 200, yaw: 0, pitch: -4, bank: 0 },
+        { len: 120, yaw: 85, pitch: 2, bank: 16 },
+        { len: 80, yaw: -60, pitch: 5, bank: -14, sign: true },
+        { len: 150, yaw: 0, pitch: -3, bank: 0 },
+        { len: 100, yaw: 55, pitch: -5, bank: 12 },
+        { len: 100, yaw: -55, pitch: 2, bank: -12 },
         { len: 260, yaw: 0, pitch: 0, bank: 0 },
-        { len: 90, yaw: 40, pitch: -5, bank: 10, sign: true },
+        { len: 90, yaw: 40, pitch: -2, bank: 10, sign: true },
         { len: 320, yaw: 0, pitch: 0, bank: 0, arches: true },
       ] },
-    { name: 'THE STORM RUN', target: 39.0, roundS: 58, gust: { base: 1.6, amp: 0.5, rate: 0.7 },
-      tune: { HALF_W: 3.1, XMAX: 2.3, CLEAN_X: 1.6, PUSH_C: 1.6, V_BASE: 34 },
-      goal: 'A narrower road, hairpin switchbacks and a full storm crosswind. Just finishing is glory!',
+    { name: "THE SNOW RUN", target: 39, roundS: 58, gust: { base: 1.6, amp: 0.5, rate: 0.7 }, tune: { HALF_W: 3.1, XMAX: 2.3, CLEAN_X: 1.6, PUSH_C: 1.6, V_BASE: 34 },
+      goal: "A snow-packed alpine pass \u2014 real climbs and descents under falling snow, and the crosswind keeps shifting. Hold your line!",
       gates: [60, 150, 270, 460, 580, 720, 855, 965],
       segs: [
         { len: 90, yaw: 0, pitch: 0, bank: 0, arches: true },
-        { len: 120, yaw: 90, pitch: 4, bank: 17 },
-        { len: 120, yaw: -90, pitch: -3, bank: -17, sign: true },
-        { len: 70, yaw: 0, pitch: 0, bank: 0 },
-        { len: 120, yaw: -75, pitch: 7, bank: -15 },
-        { len: 120, yaw: 75, pitch: -7, bank: 15, sign: true },
+        { len: 120, yaw: 90, pitch: 8, bank: 17 },
+        { len: 120, yaw: -90, pitch: 8, bank: -17, sign: true },
+        { len: 70, yaw: 0, pitch: 2, bank: 0 },
+        { len: 120, yaw: -75, pitch: -7, bank: -15 },
+        { len: 120, yaw: 75, pitch: -8, bank: 15, sign: true },
         { len: 160, yaw: 0, pitch: 0, bank: 0 },
-        { len: 110, yaw: 95, pitch: 0, bank: 19 },
-        { len: 110, yaw: -95, pitch: 0, bank: -19 },
-        { len: 90, yaw: 55, pitch: -6, bank: 12, sign: true },
-        { len: 280, yaw: 0, pitch: 0, bank: 0, arches: true },
+        { len: 110, yaw: 95, pitch: 6, bank: 19 },
+        { len: 110, yaw: -95, pitch: 5, bank: -19 },
+        { len: 90, yaw: 55, pitch: -3, bank: 12, sign: true },
+        { len: 280, yaw: 0, pitch: -2, bank: 0, arches: true },
+      ] },
+    { name: "THE STORM COAST", target: 40.5, roundS: 58, gust: { base: 1.6, amp: 0.5, rate: 0.7 }, tune: { HALF_W: 3.1, XMAX: 2.3, CLEAN_X: 1.6, PUSH_C: 1.6, V_BASE: 34 },
+      goal: "A cliff road over a rough sea in driving rain \u2014 hairpin switchbacks and a full storm crosswind. Just finishing is glory!",
+      gates: [65, 240, 430, 590, 760, 940, 1080, 1240],
+      segs: [
+        { len: 100, yaw: 0, pitch: 0, bank: 0, arches: true },
+        { len: 110, yaw: -80, pitch: 3, bank: -15 },
+        { len: 110, yaw: 80, pitch: -4, bank: 15, sign: true },
+        { len: 80, yaw: 0, pitch: 0, bank: 0 },
+        { len: 130, yaw: 65, pitch: 6, bank: 13 },
+        { len: 130, yaw: -65, pitch: -6, bank: -13, sign: true },
+        { len: 170, yaw: 0, pitch: 0, bank: 0 },
+        { len: 100, yaw: -95, pitch: 2, bank: -18 },
+        { len: 100, yaw: 95, pitch: -2, bank: 18, sign: true },
+        { len: 90, yaw: -45, pitch: 0, bank: -11 },
+        { len: 300, yaw: 0, pitch: 0, bank: 0, arches: true },
       ] },
   ];
-  // ---------- per-level visual themes (presentation ONLY: no physics, timing or course data) ----------
+  // ---------- per-level ENVIRONMENTS (presentation ONLY: no physics, timing or course data) ----------
+  // v2 (Cherie): each level is a completely different PLACE — painted sky, road surface, roadside
+  // terrain, props, weather — not a palette shift. env drives buildEnvironment() below.
   const THEMES = [
-    { // L1 THE SUN RUN — the sunny baseline, unchanged
+    { // L1 THE SUN RUN — the ORIGINAL sunny lagoon, kept exactly as the ad shipped (Cherie: it stays)
+      env: null,
       fog: 0xf4c48a, fogNear: 90, fogFar: 560, skyTint: 0xffffff, sunTint: 0xffffff, sunScale: 520, sunY: 0.16,
-      road: 0xffffff, wall: 0xc98448, under: 0x8c4f26, pillar: 0xb8703c, edge: 0xffd25a,
+      road: 0xffffff, wall: 0xc98448, under: 0x8c4f26, pillar: 0xb8703c, edge: 0xffd25a, pillars: true,
       archTint: 0xffffff, signTint: 0xffffff, gate: 0x46e6d6, gateRim: null,
       glintIn: 'rgba(255,240,170,1)', glintOut: 'rgba(255,190,60,0)',
-      sea: null, rocks: 0, rock: 0x000000, rain: false, bolt: false },
-    { // L2 THE GUSTY REACHES — golden-hour sunset, amber water below, rocky islets, amber gates
-      fog: 0xdd8a52, fogNear: 80, fogFar: 500, skyTint: 0xffb066, sunTint: 0xffbe78, sunScale: 660, sunY: 0.09,
-      road: 0xffc79a, wall: 0xa8632f, under: 0x6e3a1c, pillar: 0x7d4e2a, edge: 0xffab3d,
-      archTint: 0xffcf9e, signTint: 0xffdcb5, gate: 0xff9435, gateRim: null,
-      glintIn: 'rgba(255,220,170,1)', glintOut: 'rgba(255,140,50,0)',
-      sea: { base: '#8a4d1c', streak: '255,196,96', caps: false, drift: 0.006 }, rocks: 16, rock: 0x8a6248, rain: false, bolt: false },
-    { // L3 THE STORM RUN — slate storm, grey-green whitecap sea, rain, lightning, dark gates with bright rims
-      fog: 0x59666e, fogNear: 55, fogFar: 400, skyTint: 0x5f6d78, sunTint: 0x93a7b4, sunScale: 260, sunY: 0.16,
-      road: 0x87969c, wall: 0x59544a, under: 0x35322c, pillar: 0x474239, edge: 0xcfe0e6,
+      sea: null, rocks: 0, rock: 0x000000, rain: false, snow: false, bolt: false },
+    { // L2 THE BEACH RUN — a coast road: sand + palms one side, surf the other, bright coastal sky
+      env: 'beach',
+      fog: 0xcfe9f2, fogNear: 100, fogFar: 640, skyTint: 0xffffff, sunTint: 0xfff2c8, sunScale: 560, sunY: 0.15,
+      road: 0xffffff, wall: 0xd9c08f, under: 0xbfae86, pillar: 0xb8703c, edge: 0xffe9a8, pillars: false,
+      archTint: 0xffffff, signTint: 0xffffff, gate: 0x46e6d6, gateRim: null,
+      glintIn: 'rgba(255,240,170,1)', glintOut: 'rgba(255,190,60,0)',
+      sea: null, rocks: 6, rock: 0x7a7f7d, rain: false, snow: false, bolt: false },
+    { // L3 THE SNOW RUN — a snow-packed alpine pass: white track, pines, mountain backdrop, falling snow
+      env: 'snow',
+      fog: 0xe2ecf6, fogNear: 80, fogFar: 520, skyTint: 0xffffff, sunTint: 0xdfeaf5, sunScale: 300, sunY: 0.22,
+      road: 0xffffff, wall: 0xdfe9f2, under: 0xc9d8e6, pillar: 0xb8703c, edge: 0x7fb2dd, pillars: false,
+      archTint: 0xe8eef4, signTint: 0xf0f4f8, gate: 0xff3d5e, gateRim: 0x20344d,
+      glintIn: 'rgba(255,235,242,1)', glintOut: 'rgba(255,90,130,0)',
+      sea: null, rocks: 0, rock: 0x000000, rain: false, snow: true, bolt: false },
+    { // L4 THE STORM COAST — a cliff road over a rough sea: wet dark track, cliffs, rain (Cherie: keep), lightning
+      env: 'storm',
+      fog: 0x59666e, fogNear: 55, fogFar: 400, skyTint: 0xffffff, sunTint: 0x8fa3ad, sunScale: 240, sunY: 0.16,
+      road: 0xffffff, wall: 0x59544a, under: 0x35322c, pillar: 0x474239, edge: 0xcfe0e6, pillars: true,
       archTint: 0x93a7b0, signTint: 0xa7bcc5, gate: 0x146068, gateRim: 0x9feeff,
       glintIn: 'rgba(210,245,255,1)', glintOut: 'rgba(120,200,230,0)',
-      sea: { base: '#22373a', streak: '150,190,180', caps: true, drift: 0.02 }, rocks: 8, rock: 0x3f4448, rain: true, bolt: true },
+      sea: { base: '#22373a', streak: '150,190,180', caps: true, drift: 0.03 }, rocks: 10, rock: 0x3f4448, rain: true, snow: false, bolt: true },
   ];
   const fr1 = function (x) { return x - Math.floor(x); };
   let TRK = SKF.build(COURSES[0]);
@@ -5561,6 +5588,256 @@ window.SKIFF_MESH = {"pos": "Mez2vM0UeNb2vNMt3MB+vmQae9X7vRUBMuh+vobr6f77vT7/PRV
     });
     t.wrapS = t.wrapT = THREE.RepeatWrapping; t.repeat.set(7, 7);
     return t;
+  }
+  // ---------- environment painters + builders (v2: every level is a different place) ----------
+  const rnd = function (i, salt) { return fr1(Math.sin(i * 12.9898 + (salt || 0)) * 43758.5453); };
+  function speck(c, w, h, n, cols, s0, s1, seed) {
+    for (let i = 0; i < n; i++) {
+      c.fillStyle = cols[i % cols.length]; c.globalAlpha = 0.25 + rnd(i, seed) * 0.5;
+      const s = s0 + rnd(i, seed + 9) * (s1 - s0);
+      c.fillRect(rnd(i, seed + 1) * w, rnd(i, seed + 2) * h, s, s);
+    }
+    c.globalAlpha = 1;
+  }
+  // a painted sky panorama per environment (the sphere's horizon sits near 56% of the canvas)
+  function skyPaintTexture(env) {
+    const t = canvasTex(1024, 512, function (c, w, h) {
+      const HZ = 0.565 * h;
+      function grad(stops) { const g = c.createLinearGradient(0, 0, 0, h); stops.forEach(function (s) { g.addColorStop(s[0], s[1]); }); c.fillStyle = g; c.fillRect(0, 0, w, h); }
+      function blob(x, y, rx, ry, col, a) {
+        c.fillStyle = col; c.globalAlpha = a;
+        [-w, 0, w].forEach(function (ox) { c.beginPath(); c.ellipse(x + ox, y, rx, ry, 0, 0, 7); c.fill(); });
+        c.globalAlpha = 1;
+      }
+      function range(seed, baseY, amp, col, caps) {
+        c.fillStyle = col; c.beginPath(); c.moveTo(-4, h);
+        const pts = [];
+        for (let x = -4; x <= w + 4; x += 16) {
+          const u = x / w, y = baseY - amp * (0.35 + 0.65 * Math.abs(Math.sin(Math.PI * (3 * u + seed)))) * (0.55 + 0.45 * Math.sin(Math.PI * (14 * u + seed * 3)));
+          pts.push([x, y]); c.lineTo(x, y);
+        }
+        c.lineTo(w + 4, h); c.closePath(); c.fill();
+        if (caps) { c.fillStyle = '#f6fafd'; pts.forEach(function (p, i) { if (i > 0 && i < pts.length - 1 && p[1] <= pts[i - 1][1] && p[1] <= pts[i + 1][1]) { c.beginPath(); c.moveTo(p[0] - 17, p[1] + 20); c.lineTo(p[0], p[1] - 2); c.lineTo(p[0] + 17, p[1] + 20); c.lineTo(p[0] + 4, p[1] + 13); c.lineTo(p[0] - 5, p[1] + 17); c.closePath(); c.fill(); } }); }
+      }
+      if (env === 'beach') {
+        grad([[0, '#2b74c8'], [0.34, '#6db6ec'], [0.52, '#bfe6f7'], [0.565, '#eafafc'], [0.60, '#57c3d4'], [0.64, '#8fd0dd'], [1, '#cfe9f2']]);
+        c.fillStyle = '#2a9db8'; c.fillRect(0, HZ, w, 0.035 * h);
+        for (let i = 0; i < 16; i++) { const x = rnd(i, 3) * w, y = 36 + rnd(i, 4) * 165, s = 26 + rnd(i, 5) * 52; blob(x, y, s, s * 0.30, '#ffffff', 0.55); blob(x + s * 0.5, y + 5, s * 0.7, s * 0.2, '#ffffff', 0.45); blob(x - s * 0.5, y + 7, s * 0.6, s * 0.18, '#ffffff', 0.4); }
+        const g2 = c.createRadialGradient(w * 0.72, h * 0.24, 8, w * 0.72, h * 0.24, 190);
+        g2.addColorStop(0, 'rgba(255,250,215,0.5)'); g2.addColorStop(1, 'rgba(255,250,215,0)');
+        c.fillStyle = g2; c.fillRect(0, 0, w, h);
+      } else if (env === 'snow') {
+        grad([[0, '#6f9fd0'], [0.40, '#b9d4ee'], [0.56, '#eef5fb'], [0.60, '#dde9f4'], [1, '#e2ecf6']]);
+        range(0.13, HZ + 8, 92, '#a9c0d8', true);
+        range(0.47, HZ + 16, 58, '#7ea3c6', true);
+        for (let i = 0; i < 11; i++) { const x = rnd(i, 6) * w, y = 30 + rnd(i, 7) * 130, s = 34 + rnd(i, 8) * 60; blob(x, y, s, s * 0.26, '#ffffff', 0.32); blob(x + s * 0.4, y + 6, s * 0.66, s * 0.18, '#ffffff', 0.26); }
+      } else { // storm
+        grad([[0, '#232e38'], [0.35, '#45525e'], [0.55, '#6d7c86'], [0.60, '#525f68'], [1, '#59666e']]);
+        for (let i = 0; i < 22; i++) { const x = rnd(i, 10) * w, y = rnd(i, 11) * h * 0.42, s = 50 + rnd(i, 12) * 110; blob(x, y, s, s * 0.34, '#1b242e', 0.45); }
+        for (let i = 0; i < 12; i++) { const x = rnd(i, 13) * w, y = rnd(i, 14) * h * 0.4, s = 36 + rnd(i, 15) * 70; blob(x, y, s, s * 0.3, '#5a6a74', 0.35); }
+        c.fillStyle = 'rgba(205,220,226,0.10)'; c.fillRect(0, HZ - 8, w, 13);
+      }
+    });
+    return t;
+  }
+  // the road surface itself per environment (u = across the road, v = along it, tile = VLEN metres)
+  function roadPaintTexture(env) {
+    const t = canvasTex(256, 256, function (c, w, h) {
+      function dash(col) { c.fillStyle = col; [0.07, 0.57].forEach(function (v) { c.fillRect(w * 0.478, h * v, w * 0.044, h * 0.30); }); }
+      function edgeFade(col, a) { const gl = c.createLinearGradient(0, 0, w * 0.13, 0); gl.addColorStop(0, col); gl.addColorStop(1, 'rgba(0,0,0,0)'); c.globalAlpha = a; c.fillStyle = gl; c.fillRect(0, 0, w * 0.13, h); const gr = c.createLinearGradient(w, 0, w * 0.87, 0); gr.addColorStop(0, col); gr.addColorStop(1, 'rgba(0,0,0,0)'); c.fillStyle = gr; c.fillRect(w * 0.87, 0, w * 0.13, h); c.globalAlpha = 1; }
+      if (env === 'beach') {
+        c.fillStyle = '#c2a878'; c.fillRect(0, 0, w, h);
+        speck(c, w, h, 700, ['#b39a68', '#d3ba8a', '#a98f5e'], 1, 3, 21);
+        c.fillStyle = 'rgba(96,74,44,0.10)'; c.fillRect(w * 0.24, 0, w * 0.14, h); c.fillRect(w * 0.62, 0, w * 0.14, h);
+        dash('rgba(255,252,240,0.85)');
+        edgeFade('#f0db9b', 0.65);
+        speck(c, w, h, 160, ['#f0db9b'], 1, 3, 22);
+      } else if (env === 'snow') {
+        c.fillStyle = '#edf2f7'; c.fillRect(0, 0, w, h);
+        for (let i = 0; i < 42; i++) { c.fillStyle = 'rgba(165,185,210,0.18)'; c.beginPath(); c.ellipse(rnd(i, 23) * w, rnd(i, 24) * h, 14 + rnd(i, 25) * 30, 8 + rnd(i, 26) * 16, 0, 0, 7); c.fill(); }
+        c.fillStyle = 'rgba(118,140,168,0.32)'; c.fillRect(w * 0.22, 0, w * 0.18, h); c.fillRect(w * 0.60, 0, w * 0.18, h);
+        c.fillStyle = 'rgba(255,255,255,0.35)'; c.fillRect(w * 0.29, 0, w * 0.04, h); c.fillRect(w * 0.67, 0, w * 0.04, h);
+        dash('rgba(130,155,185,0.55)');
+        speck(c, w, h, 300, ['#ffffff'], 1, 2, 27);
+        edgeFade('#ffffff', 0.5);
+      } else { // storm: dark wet asphalt, puddle glints, worn dashes
+        c.fillStyle = '#31373d'; c.fillRect(0, 0, w, h);
+        speck(c, w, h, 500, ['#272d33', '#3c444c', '#20262b'], 1, 4, 31);
+        for (let i = 0; i < 46; i++) { c.fillStyle = 'rgba(175,195,205,' + (0.06 + rnd(i, 32) * 0.10).toFixed(3) + ')'; c.fillRect(rnd(i, 33) * w, rnd(i, 34) * h, 2 + rnd(i, 35) * 3, 26 + rnd(i, 36) * 60); }
+        for (let i = 0; i < 9; i++) { c.fillStyle = 'rgba(200,218,228,0.15)'; c.beginPath(); c.ellipse(rnd(i, 37) * w, rnd(i, 38) * h, 10 + rnd(i, 39) * 20, 3 + rnd(i, 40) * 5, 0, 0, 7); c.fill(); }
+        dash('rgba(228,234,238,0.40)');
+        edgeFade('#0c1014', 0.4);
+      }
+    });
+    t.wrapS = t.wrapT = THREE.RepeatWrapping;
+    return t;
+  }
+  // roadside ground per environment
+  function groundPaintTexture(env) {
+    const t = canvasTex(256, 256, function (c, w, h) {
+      if (env === 'beach') {
+        c.fillStyle = '#eed9a0'; c.fillRect(0, 0, w, h);
+        speck(c, w, h, 1000, ['#e2c887', '#f7e7ba', '#d9bd7c', '#fff6d8'], 1, 3, 41);
+        speck(c, w, h, 26, ['#ffffff', '#b09a6a'], 2, 3, 42);
+      } else if (env === 'snow') {
+        c.fillStyle = '#f2f7fc'; c.fillRect(0, 0, w, h);
+        for (let i = 0; i < 34; i++) { c.fillStyle = 'rgba(183,203,228,0.28)'; c.beginPath(); c.ellipse(rnd(i, 43) * w, rnd(i, 44) * h, 16 + rnd(i, 45) * 34, 8 + rnd(i, 46) * 18, 0, 0, 7); c.fill(); }
+        speck(c, w, h, 220, ['#ffffff'], 1, 2, 47);
+      } else {
+        c.fillStyle = '#453e36'; c.fillRect(0, 0, w, h);
+        speck(c, w, h, 700, ['#38312a', '#544a3e', '#2e2a24'], 1, 4, 51);
+        for (let i = 0; i < 26; i++) { c.fillStyle = 'rgba(160,175,185,0.09)'; c.fillRect(rnd(i, 52) * w, rnd(i, 53) * h, 2, 18 + rnd(i, 54) * 40); }
+        speck(c, w, h, 120, ['#6a6258'], 1, 3, 55);
+      }
+    });
+    t.wrapS = t.wrapT = THREE.RepeatWrapping;
+    return t;
+  }
+  // surf water for the beach ribbon: foam painted at u=0 (the shoreline edge)
+  function waterPaintTexture() {
+    const t = canvasTex(256, 256, function (c, w, h) {
+      c.fillStyle = '#1f9db4'; c.fillRect(0, 0, w, h);
+      const g = c.createLinearGradient(0, 0, w, 0); g.addColorStop(0.55, 'rgba(0,0,0,0)'); g.addColorStop(1, 'rgba(8,84,112,0.35)');
+      c.fillStyle = g; c.fillRect(0, 0, w, h);
+      for (let i = 0; i < 130; i++) { c.strokeStyle = 'rgba(255,255,255,' + (0.06 + rnd(i, 61) * 0.13).toFixed(3) + ')'; c.lineWidth = 1 + rnd(i, 62) * 2; const y = rnd(i, 63) * h, x = 20 + rnd(i, 64) * (w - 40); c.beginPath(); c.moveTo(x, y); c.lineTo(x + 14 + rnd(i, 65) * 30, y + (rnd(i, 66) - 0.5) * 4); c.stroke(); }
+      for (let i = 0; i < 240; i++) { const x = Math.pow(rnd(i, 67), 2.2) * 30, y = rnd(i, 68) * h; c.fillStyle = 'rgba(255,255,255,' + (0.35 + rnd(i, 69) * 0.5).toFixed(3) + ')'; c.beginPath(); c.arc(x, y, 1 + rnd(i, 70) * 3.4, 0, 7); c.fill(); }
+      c.fillStyle = 'rgba(255,255,255,0.5)'; c.fillRect(0, 0, 3, h);
+    });
+    t.wrapS = t.wrapT = THREE.RepeatWrapping;
+    return t;
+  }
+  function coneGeo(r, h, seg) { const g = new THREE.CylinderGeometry(0, r, h, seg || 7); g.translate(0, h / 2, 0); return g; }
+  function makePalm(seed) {
+    const g = new THREE.Group();
+    const trunk = new THREE.Mesh(new THREE.CylinderGeometry(0.10, 0.17, 3.4, 5), new THREE.MeshBasicMaterial({ color: 0x8a6a44 }));
+    trunk.position.y = 1.7; trunk.rotation.z = 0.10; g.add(trunk);
+    const top = new THREE.Group(); top.position.set(0.34, 3.32, 0); g.add(top);
+    const frondMat = new THREE.MeshBasicMaterial({ color: seed % 2 ? 0x3f9e4d : 0x35924a, side: THREE.DoubleSide });
+    for (let i = 0; i < 6; i++) {
+      const piv = new THREE.Group(); piv.rotation.y = i * Math.PI / 3 + rnd(seed, i) * 0.5;
+      const f = new THREE.Mesh(coneGeo(0.30, 2.5, 4), frondMat);
+      f.scale.set(1, 1, 0.16); f.rotation.z = -1.92; piv.add(f); top.add(piv);
+    }
+    const nutMat = new THREE.MeshBasicMaterial({ color: 0x6a4a26 });
+    [[0.13, -0.1, 0.06], [-0.1, -0.14, -0.08]].forEach(function (p) { const n = new THREE.Mesh(new THREE.SphereGeometry(0.12, 6, 5), nutMat); n.position.set(p[0], p[1], p[2]); top.add(n); });
+    return g;
+  }
+  function makePine() {
+    const g = new THREE.Group();
+    const trunk = new THREE.Mesh(new THREE.CylinderGeometry(0.10, 0.17, 0.9, 5), new THREE.MeshBasicMaterial({ color: 0x5a4030 }));
+    trunk.position.y = 0.45; g.add(trunk);
+    const fol = new THREE.MeshBasicMaterial({ color: 0x2e5d43 }), snowM = new THREE.MeshBasicMaterial({ color: 0xf4f9fd });
+    [[1.18, 1.8, 0.75], [0.90, 1.55, 1.65], [0.60, 1.35, 2.5]].forEach(function (s) { const m = new THREE.Mesh(coneGeo(s[0], s[1], 8), fol); m.position.y = s[2]; g.add(m); });
+    const cap = new THREE.Mesh(coneGeo(0.36, 0.62, 8), snowM); cap.position.y = 3.28; g.add(cap);
+    const dust = new THREE.Mesh(coneGeo(0.94, 0.5, 8), snowM); dust.position.y = 2.06; g.add(dust);
+    return g;
+  }
+  function makeUmbrella(col) {
+    const g = new THREE.Group();
+    const pole = new THREE.Mesh(new THREE.CylinderGeometry(0.035, 0.035, 1.9, 5), new THREE.MeshBasicMaterial({ color: 0xe8e2d4 }));
+    pole.position.y = 0.95; g.add(pole);
+    const can = new THREE.Mesh(coneGeo(1.3, 0.45, 8), new THREE.MeshBasicMaterial({ color: col }));
+    can.position.y = 1.82; g.add(can);
+    return g;
+  }
+  function makeLighthouse() {
+    const g = new THREE.Group();
+    const rock = new THREE.Mesh(coneGeo(7, 6, 7), new THREE.MeshBasicMaterial({ color: 0x3a4147 })); g.add(rock);
+    const bandTex = canvasTex(64, 64, function (c, w, h) { c.fillStyle = '#e8e4da'; c.fillRect(0, 0, w, h); c.fillStyle = '#c8402f'; c.fillRect(0, h * 0.30, w, h * 0.17); c.fillRect(0, h * 0.66, w, h * 0.17); });
+    bandTex.wrapS = THREE.RepeatWrapping; bandTex.repeat.set(3, 1);
+    const tower = new THREE.Mesh(new THREE.CylinderGeometry(1.5, 2.1, 13, 10), new THREE.MeshBasicMaterial({ map: bandTex }));
+    tower.position.y = 4.6; g.add(tower);
+    const cab = new THREE.Mesh(new THREE.CylinderGeometry(0.95, 0.95, 1.3, 8), new THREE.MeshBasicMaterial({ color: 0x22282e }));
+    cab.position.y = 11.7; g.add(cab);
+    const lampBall = new THREE.Mesh(new THREE.SphereGeometry(0.55, 8, 6), new THREE.MeshBasicMaterial({ color: 0xffe9a8 }));
+    lampBall.position.y = 11.7; g.add(lampBall);
+    const lamp = new THREE.Sprite(new THREE.SpriteMaterial({ map: radial('rgba(255,240,190,0.95)', 'rgba(255,210,110,0)'), transparent: true, depthWrite: false, blending: THREE.AdditiveBlending }));
+    lamp.position.y = 11.7; lamp.scale.set(6.5, 6.5, 1); g.add(lamp);
+    W3.lamp = lamp;
+    return g;
+  }
+  // a ribbon that stays LEVEL across its width (yaw-only frame, road height): for water, which must not tilt
+  function ribbonFlat(o) {
+    const pos = [], uv = [], idx = [];
+    const step = o.step || 2;
+    let last = -1;
+    for (let s = 0; s <= TRK.len; s += step) {
+      const p = TRK.P[s], f = TRK.F[s];
+      const yaw = Math.atan2(f[0], -f[2]), rx = Math.cos(yaw), rz = Math.sin(yaw);
+      pos.push(p[0] + rx * o.xa, p[1] + (o.y || 0), p[2] + rz * o.xa);
+      pos.push(p[0] + rx * o.xb, p[1] + (o.y || 0), p[2] + rz * o.xb);
+      uv.push(0, s / (o.vLen || VLEN), 1, s / (o.vLen || VLEN));
+      const n = pos.length / 3 - 2;
+      if (last >= 0) idx.push(last, last + 1, n, last + 1, n + 1, n);
+      last = n;
+    }
+    const g = new THREE.BufferGeometry();
+    g.setAttribute('position', new THREE.Float32BufferAttribute(pos, 3));
+    g.setAttribute('uv', new THREE.Float32BufferAttribute(uv, 2));
+    g.setIndex(idx);
+    return g;
+  }
+  // the place beside the road: terrain ribbons, water, props — different on every level
+  function buildEnvironment(world, TH) {
+    const HW = T.HALF_W, env = TH.env;
+    W3.sea = null; W3.seaTex = null; W3.oceanTex = null; W3.lamp = null;
+    if (!env) return;   // the original level: bare causeway over the canyon, exactly as shipped
+    function groundRibbon(xa, xb, y) {
+      const gt = groundPaintTexture(env); gt.repeat.set(3, 1);
+      const m = new THREE.Mesh(ribbon({ xa: xa, xb: xb, y: y, step: 4 }), new THREE.MeshBasicMaterial({ map: gt, side: THREE.DoubleSide }));
+      world.add(m);
+    }
+    if (env === 'beach') {
+      groundRibbon(-(HW + 66), -HW, -0.22);
+      groundRibbon(HW, HW + 36, -0.22);
+      const wt = waterPaintTexture(); W3.oceanTex = wt;
+      world.add(new THREE.Mesh(ribbonFlat({ xa: HW + 36, xb: HW + 150, y: -0.6, step: 4 }), new THREE.MeshBasicMaterial({ map: wt, side: THREE.DoubleSide })));
+      const duneMat = new THREE.MeshBasicMaterial({ color: 0xe6cf96 });
+      for (let i = 0; i < 10; i++) { const d = new THREE.Mesh(coneGeo(4 + rnd(i, 71) * 5, 1.3 + rnd(i, 72) * 1.4, 8), duneMat); frameAt(d, 120 + i * (TRK.len - 240) / 10 + rnd(i, 73) * 40, -(24 + rnd(i, 74) * 32), -0.35); world.add(d); }
+      const grassMat = new THREE.MeshBasicMaterial({ color: 0x6f9a4e });
+      for (let i = 0; i < 26; i++) { const gr = new THREE.Mesh(coneGeo(0.5, 0.95, 4), grassMat); frameAt(gr, 40 + i * (TRK.len - 80) / 26 + rnd(i, 75) * 26, (i % 3 ? -1 : 1) * (9 + rnd(i, 76) * 20), -0.25); world.add(gr); }
+      for (let i = 0; i < 16; i++) { const p = makePalm(i); const sc = 0.85 + rnd(i, 77) * 0.45; p.scale.setScalar(sc); frameAt(p, 60 + i * (TRK.len - 120) / 16 + rnd(i, 78) * 30, (i % 2 ? 1 : -1) * (8.5 + rnd(i, 79) * 8.5), -0.25); p.rotateY(rnd(i, 80) * 6.28); world.add(p); }
+      const umCols = [0xff6a5e, 0x2ec4b6, 0xffd25a, 0xff9f68];
+      for (let i = 0; i < 7; i++) { const u = makeUmbrella(umCols[i % 4]); frameAt(u, 150 + i * (TRK.len - 300) / 7 + rnd(i, 81) * 36, 11 + rnd(i, 82) * 15, -0.25); world.add(u); }
+    } else if (env === 'snow') {
+      groundRibbon(-(HW + 88), -HW, -0.3);
+      groundRibbon(HW, HW + 88, -0.3);
+      const moundMat = new THREE.MeshBasicMaterial({ color: 0xeef4fa });
+      for (let i = 0; i < 16; i++) { const md = new THREE.Mesh(new THREE.SphereGeometry(1, 10, 7), moundMat); md.scale.set(3 + rnd(i, 83) * 4, 0.8 + rnd(i, 84) * 0.9, 2.5 + rnd(i, 85) * 2.5); frameAt(md, 70 + i * (TRK.len - 140) / 16 + rnd(i, 86) * 34, (i % 2 ? 1 : -1) * (9 + rnd(i, 87) * 32), -0.35); world.add(md); }
+      for (let i = 0; i < 30; i++) { const p = makePine(); p.scale.setScalar(0.85 + rnd(i, 88) * 0.75); frameAt(p, 45 + i * (TRK.len - 90) / 30 + rnd(i, 89) * 24, (i % 2 ? 1 : -1) * (7.5 + rnd(i, 90) * 22), -0.3); p.rotateY(rnd(i, 91) * 6.28); world.add(p); }
+      const farMat = new THREE.MeshBasicMaterial({ color: 0xe8f0f8 }), midMat = new THREE.MeshBasicMaterial({ color: 0xa9c2da });
+      for (let i = 0; i < 14; i++) { const mt = new THREE.Mesh(coneGeo(50 + rnd(i, 92) * 45, 75 + rnd(i, 93) * 75, 6), i % 2 ? farMat : midMat); frameAt(mt, 80 + i * (TRK.len - 160) / 14 + rnd(i, 94) * 60, (i % 2 ? 1 : -1) * (95 + rnd(i, 95) * 130), -34); world.add(mt); }
+      const nearMat = new THREE.MeshBasicMaterial({ color: 0xc7d8ea });
+      for (let i = 0; i < 10; i++) { const mt = new THREE.Mesh(coneGeo(26 + rnd(i, 96) * 18, 30 + rnd(i, 97) * 28, 6), nearMat); frameAt(mt, 130 + i * (TRK.len - 260) / 10 + rnd(i, 98) * 70, (i % 2 ? -1 : 1) * (54 + rnd(i, 99) * 24), -16); world.add(mt); }
+    } else { // storm coast
+      groundRibbon(-(HW + 58), -HW, -0.3);
+      groundRibbon(HW, HW + 58, -0.3);
+      const cliffMat = new THREE.MeshBasicMaterial({ color: 0x39414a });
+      for (let i = 0; i < 12; i++) { const cf = new THREE.Mesh(coneGeo(5 + rnd(i, 101) * 5, 7 + rnd(i, 102) * 13, 6), cliffMat); frameAt(cf, 60 + i * (TRK.len - 120) / 12 + rnd(i, 103) * 30, -(13 + rnd(i, 104) * 17), -0.4); world.add(cf); }
+      for (let i = 0; i < 5; i++) { const cf = new THREE.Mesh(coneGeo(4 + rnd(i, 105) * 4, 5 + rnd(i, 106) * 8, 6), cliffMat); frameAt(cf, 200 + i * (TRK.len - 400) / 5 + rnd(i, 107) * 40, 14 + rnd(i, 108) * 14, -0.4); world.add(cf); }
+      const lh = makeLighthouse();
+      frameAt(lh, Math.max(320, TRK.finish - 240), 48, -3); world.add(lh);
+    }
+    // the sea far below (storm): a streaked water disc that follows the camera
+    if (TH.sea) {
+      const stx = seaTexture(TH.sea);
+      const sea = new THREE.Mesh(new THREE.CircleGeometry(780, 40), new THREE.MeshBasicMaterial({ map: stx }));
+      sea.rotation.x = -Math.PI / 2; sea.position.y = -56;
+      world.add(sea); W3.sea = sea; W3.seaTex = stx;
+    }
+    // rocky islets / sea stacks rising out of the water beside the road (beach + storm)
+    if (TH.rocks) {
+      const rockGeo = coneGeo(1, 1, 7);
+      const rockMat = new THREE.MeshBasicMaterial({ color: TH.rock });
+      for (let i = 0; i < TH.rocks; i++) {
+        const s = 60 + i * (TRK.len - 140) / TH.rocks + rnd(i, 111) * 30;
+        const lat = (i % 2 ? 1 : -1) * (17 + rnd(i, 112) * 15);
+        const rk = new THREE.Mesh(rockGeo, rockMat);
+        rk.scale.set(5 + rnd(i, 113) * 5, 34 + rnd(i, 114) * 40, 5 + rnd(i, 115) * 5);
+        frameAt(rk, s, lat, -57); rk.rotateY(i * 1.7);
+        world.add(rk);
+      }
+    }
   }
   // place an object on the course frame at distance s, lateral x, height y (object -Z = road forward)
   const _m = new THREE.Matrix4();
@@ -5647,9 +5924,9 @@ window.SKIFF_MESH = {"pos": "Mez2vM0UeNb2vNMt3MB+vmQae9X7vRUBMuh+vobr6f77vT7/PRV
     const TH = THEMES[LV.i] || THEMES[0]; W3.theme = TH;
     scene.fog.color.setHex(TH.fog); scene.fog.near = TH.fogNear; scene.fog.far = TH.fogFar;
 
-    // the canyon panorama on an inside-out sphere that follows the camera; its sun faces the long straight
+    // the sky panorama on an inside-out sphere that follows the camera: a painted sky per environment
     const sky = new THREE.Mesh(new THREE.SphereGeometry(1000, 40, 20),
-      new THREE.MeshBasicMaterial({ map: texOf('sky'), side: THREE.BackSide, fog: false, depthWrite: false }));
+      new THREE.MeshBasicMaterial({ map: TH.env ? skyPaintTexture(TH.env) : texOf('sky'), side: THREE.BackSide, fog: false, depthWrite: false }));
     sky.material.color.setHex(TH.skyTint); W3.skyMat = sky.material;
     const sf = SKF.lerp3(TRK.F, 520);
     sky.rotation.y = Math.atan2(-sf[2], sf[0]);
@@ -5660,9 +5937,9 @@ window.SKIFF_MESH = {"pos": "Mez2vM0UeNb2vNMt3MB+vmQae9X7vRUBMuh+vobr6f77vT7/PRV
     sun.scale.set(TH.sunScale, TH.sunScale, 1); sun.renderOrder = -1; world.add(sun); W3.sun = sun;
     W3.sunDir = new THREE.Vector3(sf[0], TH.sunY, sf[2]).normalize();
 
-    // the causeway: sandstone road, side walls and underside, a gold edge line
+    // the road: a painted surface per environment (coast concrete / packed snow / wet asphalt)
     world.add(new THREE.Mesh(ribbon({ xa: -T.HALF_W, xb: T.HALF_W, y: 0 }),
-      new THREE.MeshBasicMaterial({ map: texOf('track', { repeat: true }), color: TH.road })));
+      new THREE.MeshBasicMaterial({ map: TH.env ? roadPaintTexture(TH.env) : texOf('track', { repeat: true }), color: TH.road })));
     const wall = new THREE.MeshBasicMaterial({ color: TH.wall, side: THREE.DoubleSide });
     const under = new THREE.MeshBasicMaterial({ color: TH.under, side: THREE.DoubleSide });
     world.add(new THREE.Mesh(ribbon({ xa: -T.HALF_W, xb: -T.HALF_W, ya: 0, yb: -1.3 }), wall));
@@ -5672,33 +5949,18 @@ window.SKIFF_MESH = {"pos": "Mez2vM0UeNb2vNMt3MB+vmQae9X7vRUBMuh+vobr6f77vT7/PRV
     [-1, 1].forEach(function (sd) {
       world.add(new THREE.Mesh(ribbon({ xa: sd * T.HALF_W - 0.07, xb: sd * T.HALF_W + 0.07, y: 0.03 }), edge));
     });
-    // sandstone pillars down to the canyon floor, every 36 m: the road floats high above the valley
-    const pillarGeo = new THREE.BoxGeometry(2.2, 90, 2.2); pillarGeo.translate(0, -46, 0);
-    const pillarMat = new THREE.MeshBasicMaterial({ color: TH.pillar });
-    for (let s = 30; s < TRK.len - 10; s += 36) {
-      const m = new THREE.Mesh(pillarGeo, pillarMat); frameAt(m, s, 0, 0); m.quaternion.identity(); world.add(m);
-    }
-
-    // the sea far below (sunset + storm themes): a streaked water disc that follows the camera
-    if (TH.sea) {
-      const stx = seaTexture(TH.sea);
-      const sea = new THREE.Mesh(new THREE.CircleGeometry(780, 40), new THREE.MeshBasicMaterial({ map: stx }));
-      sea.rotation.x = -Math.PI / 2; sea.position.y = -56;
-      world.add(sea); W3.sea = sea; W3.seaTex = stx;
-    } else { W3.sea = null; W3.seaTex = null; }
-    // rocky islets rising out of the water beside the causeway (sunset + storm themes)
-    if (TH.rocks) {
-      const rockGeo = new THREE.CylinderGeometry(0, 1, 1, 7); rockGeo.translate(0, 0.5, 0);   // a cone (this three build has no ConeGeometry)
-      const rockMat = new THREE.MeshBasicMaterial({ color: TH.rock });
-      for (let i = 0; i < TH.rocks; i++) {
-        const s = 60 + i * (TRK.len - 140) / TH.rocks + fr1(Math.sin(i * 31.7) * 43758.5453) * 30;
-        const lat = (i % 2 ? 1 : -1) * (17 + fr1(Math.sin(i * 17.3) * 24634.63) * 15);
-        const rk = new THREE.Mesh(rockGeo, rockMat);
-        rk.scale.set(5 + fr1(Math.sin(i * 7.9) * 12543.2) * 5, 34 + fr1(Math.sin(i * 5.1) * 9871.4) * 40, 5 + fr1(Math.sin(i * 9.4) * 31231.7) * 5);
-        frameAt(rk, s, lat, -57); rk.rotateY(i * 1.7);
-        world.add(rk);
+    // support pillars every 36 m where the road is a true causeway (storm coast); on the beach and
+    // in the snow pass the road sits on the ground instead, so no pillars there
+    if (TH.pillars) {
+      const pillarGeo = new THREE.BoxGeometry(2.2, 90, 2.2); pillarGeo.translate(0, -46, 0);
+      const pillarMat = new THREE.MeshBasicMaterial({ color: TH.pillar });
+      for (let s = 30; s < TRK.len - 10; s += 36) {
+        const m = new THREE.Mesh(pillarGeo, pillarMat); frameAt(m, s, 0, 0); m.quaternion.identity(); world.add(m);
       }
     }
+
+    // the place beside the road: terrain, water, props, weather scenery — a different world per level
+    buildEnvironment(world, TH);
 
     // stone arches over the road at the start and on the last straight
     for (let s = 6; s < TRK.len; s += 24) {
@@ -5831,13 +6093,19 @@ window.SKIFF_MESH = {"pos": "Mez2vM0UeNb2vNMt3MB+vmQae9X7vRUBMuh+vobr6f77vT7/PRV
       W3.sea.position.set(c.position.x, -56, c.position.z);
       if (W3.seaTex) { const dr = W3.theme.sea.drift; W3.seaTex.offset.set(t * dr, t * dr * 1.6); }
     }
+    // beach surf: the shoreline water slides along the coast and breathes in and out
+    if (W3.oceanTex) W3.oceanTex.offset.set(Math.sin(t * 0.45) * 0.006, t * 0.012);
+    // the storm-coast lighthouse lamp breathes
+    if (W3.lamp) W3.lamp.material.opacity = 0.55 + 0.45 * Math.sin(t * 2.2);
     // storm lightning: a brief ambient lift on the sky dome only — never a screen flash
     if (W3.theme && W3.theme.bolt && W3.skyMat) {
       if (W3.boltNext == null || t > W3.boltNext) { W3.boltAt = t; W3.boltNext = t + 3.5 + fr1(Math.sin(t * 7.31) * 43758.5453) * 5; }
       const bt = t - (W3.boltAt == null ? -99 : W3.boltAt);
       let env = 0;
       if (bt >= 0 && bt < 0.55) env = Math.max(Math.exp(-bt * 13), (bt > 0.16 && bt < 0.4) ? Math.exp(-(bt - 0.16) * 15) * 0.75 : 0);
-      W3.skyMat.color.setHex(W3.theme.skyTint).lerp(_boltWhite, env * 0.5);
+      // painted skies sit at full brightness (tint white), so the lift overdrives the dome colour past 1
+      if (W3.theme.env) { const lk = 1 + env * 0.55; W3.skyMat.color.setRGB(lk, lk, lk); }
+      else W3.skyMat.color.setHex(W3.theme.skyTint).lerp(_boltWhite, env * 0.5);
     }
   }
   // logical screen position of a point on the course (for sand bursts and floating text)
@@ -6058,6 +6326,21 @@ window.SKIFF_MESH = {"pos": "Mez2vM0UeNb2vNMt3MB+vmQae9X7vRUBMuh+vobr6f77vT7/PRV
     c.stroke();
     c.restore();
   }
+  function drawSnow(c) {
+    // falling snow: soft flakes drifting down and sideways, drawn over the world, under the HUD
+    const v = PA.view, t = PA.realTime;
+    c.save();
+    for (let i = 0; i < 150; i++) {
+      const rx = fr1(Math.sin(i * 12.9898 + 2.3) * 43758.5453), ry = fr1(Math.sin(i * 78.233 + 9.1) * 12543.21);
+      const sp = 0.055 + ry * 0.075, big = i % 9 === 0;
+      const y = fr1(ry + t * sp) * (v.h + 36) - 18;
+      const x = rx * (v.w + 48) - 24 + Math.sin(t * 0.9 + i * 1.7) * 13 + y * 0.045;
+      c.globalAlpha = big ? 0.30 : 0.45 + ry * 0.45;
+      c.fillStyle = '#ffffff';
+      c.beginPath(); c.arc(x, y, big ? 5 : 1.4 + ry * 2.1, 0, 7); c.fill();
+    }
+    c.restore();
+  }
   function drawButton(c) {
     const y = btnY(), r = BTN.r, x = BTN.x, t = PA.realTime;
     const ready = st.charges > 0 && !st.boost && G.phase !== 'result';
@@ -6210,6 +6493,7 @@ window.SKIFF_MESH = {"pos": "Mez2vM0UeNb2vNMt3MB+vmQae9X7vRUBMuh+vobr6f77vT7/PRV
     drawSpeed(c);
     fx.draw(c);
     if (W3.theme && W3.theme.rain) drawRain(c);
+    if (W3.theme && W3.theme.snow) drawSnow(c);
     drawHud(c);
     drawButton(c);
     drawStick(c);
@@ -6241,14 +6525,14 @@ window.SKIFF_MESH = {"pos": "Mez2vM0UeNb2vNMt3MB+vmQae9X7vRUBMuh+vobr6f77vT7/PRV
       return '<div class="wrRow"><span>LEVEL ' + (i + 1) + '</span><b>' + c.name + '</b><span>RECORD ' + fmt(c.target) + '</span></div>';
     }).join('');
     const card = wrEl('<div class="wrKicker">WIND RACER!</div>' +
-      '<div class="wrSub">THREE COURSES · ONE SKIFF</div>' + rows +
+      '<div class="wrSub">FOUR COURSES · ONE SKIFF</div>' + rows +
       '<div class="wrGoal">Drag to steer. Clean gates fill WIND — tap it to fly the sun ring.</div>' +
       '<button class="wrBtn" data-a="go">▶ START</button>');
     wrBtn(card, '[data-a=go]', function () { loadLevel(0); });
   }
   function showIntro(n) {
     const c = COURSES[n];
-    const card = wrEl('<div class="wrKicker">LEVEL ' + (n + 1) + ' OF 3</div>' +
+    const card = wrEl('<div class="wrKicker">LEVEL ' + (n + 1) + ' OF ' + COURSES.length + '</div>' +
       '<div class="wrName">' + c.name + '</div>' +
       '<div class="wrGoal">' + c.goal + '</div>' +
       '<div class="wrChip">RECORD ' + fmt(c.target) + ' · ' + TRK.gates.length + ' GATES · ' + TRK.len + ' m</div>' +
@@ -6280,7 +6564,7 @@ window.SKIFF_MESH = {"pos": "Mez2vM0UeNb2vNMt3MB+vmQae9X7vRUBMuh+vobr6f77vT7/PRV
       return '<div class="wrRow"><span>LEVEL ' + (i + 1) + '</span><b>' + c.name + '</b><span>' + fmt(t) + star + '</span></div>';
     }).join('');
     const card = wrEl('<div class="wrKicker">🏆 MASTER OF THE WINDS!</div>' +
-      '<div class="wrSub">ALL THREE COURSES CLEAR</div>' + rows +
+      '<div class="wrSub">ALL FOUR COURSES CLEAR</div>' + rows +
       '<div class="wrTime">TOTAL ' + fmt(total) + '</div>' +
       '<button class="wrBtn" data-a="go">↻ PLAY AGAIN</button>');
     wrBtn(card, '[data-a=go]', function () { showStart(); });
