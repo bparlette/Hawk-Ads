@@ -2462,6 +2462,17 @@
    "orientation": "portrait",
    "path": "../games/pixel-3/ricochet/index.html",
    "title": "RICOCHET — 3 LEVELS"
+  },
+  {
+   "autostart": [],
+   "category": "Pixel Marathon",
+   "id": "pixel3-snack-hole",
+   "keys": {},
+   "labels": {},
+   "note": "The 3-level SNACK HOLE!: First Bite (the ad city), Downtown Rush (denser, traffic jams, goal SIZE 220), The Big Feast (dusk suburb + plaza, goal SIZE 320). Score banks across levels; swallow each tower to advance; final card: YOU ATE THE CITY!",
+   "orientation": "portrait",
+   "path": "../games/pixel-3/snack-hole/index.html",
+   "title": "SNACK HOLE! - 3 LEVELS"
   }
  ]
 }
