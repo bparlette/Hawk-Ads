@@ -2440,6 +2440,28 @@
    "orientation": "portrait",
    "path": "../games/pixel-marathon/reef-guard/index.html",
    "title": "REEF GUARD!"
+  },
+  {
+   "autostart": [],
+   "category": "Pixel Marathon",
+   "id": "pixel3-wind-racer",
+   "keys": {},
+   "labels": {},
+   "note": "The full 3-level WIND RACER!: the ad course, The Gusty Reaches, and The Storm Run — shifting crosswinds and hairpins, one campaign timer. Cherie picked it as a favorite; expanded from the pixel remake.",
+   "orientation": "portrait",
+   "path": "../games/pixel-3/wind-racer/index.html",
+   "title": "WIND RACER! — 3 LEVELS"
+  },
+  {
+   "autostart": [],
+   "category": "Pixel Marathon",
+   "id": "pixel3-ricochet",
+   "keys": {},
+   "labels": {},
+   "note": "The full 3-level RICOCHET: the ad waves, Movers (patrolling robots), and Bank Vault (every target shielded — bank shots only). 36 robots, 12 shots, combo scoring.",
+   "orientation": "portrait",
+   "path": "../games/pixel-3/ricochet/index.html",
+   "title": "RICOCHET — 3 LEVELS"
   }
  ]
 }
