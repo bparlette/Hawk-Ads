@@ -5480,6 +5480,28 @@ window.SKIFF_MESH = {"pos": "Mez2vM0UeNb2vNMt3MB+vmQae9X7vRUBMuh+vobr6f77vT7/PRV
         { len: 280, yaw: 0, pitch: 0, bank: 0, arches: true },
       ] },
   ];
+  // ---------- per-level visual themes (presentation ONLY: no physics, timing or course data) ----------
+  const THEMES = [
+    { // L1 THE SUN RUN — the sunny baseline, unchanged
+      fog: 0xf4c48a, fogNear: 90, fogFar: 560, skyTint: 0xffffff, sunTint: 0xffffff, sunScale: 520, sunY: 0.16,
+      road: 0xffffff, wall: 0xc98448, under: 0x8c4f26, pillar: 0xb8703c, edge: 0xffd25a,
+      archTint: 0xffffff, signTint: 0xffffff, gate: 0x46e6d6, gateRim: null,
+      glintIn: 'rgba(255,240,170,1)', glintOut: 'rgba(255,190,60,0)',
+      sea: null, rocks: 0, rock: 0x000000, rain: false, bolt: false },
+    { // L2 THE GUSTY REACHES — golden-hour sunset, amber water below, rocky islets, amber gates
+      fog: 0xdd8a52, fogNear: 80, fogFar: 500, skyTint: 0xffb066, sunTint: 0xffbe78, sunScale: 660, sunY: 0.09,
+      road: 0xffc79a, wall: 0xa8632f, under: 0x6e3a1c, pillar: 0x7d4e2a, edge: 0xffab3d,
+      archTint: 0xffcf9e, signTint: 0xffdcb5, gate: 0xff9435, gateRim: null,
+      glintIn: 'rgba(255,220,170,1)', glintOut: 'rgba(255,140,50,0)',
+      sea: { base: '#8a4d1c', streak: '255,196,96', caps: false, drift: 0.006 }, rocks: 16, rock: 0x8a6248, rain: false, bolt: false },
+    { // L3 THE STORM RUN — slate storm, grey-green whitecap sea, rain, lightning, dark gates with bright rims
+      fog: 0x59666e, fogNear: 55, fogFar: 400, skyTint: 0x5f6d78, sunTint: 0x93a7b4, sunScale: 260, sunY: 0.16,
+      road: 0x87969c, wall: 0x59544a, under: 0x35322c, pillar: 0x474239, edge: 0xcfe0e6,
+      archTint: 0x93a7b0, signTint: 0xa7bcc5, gate: 0x146068, gateRim: 0x9feeff,
+      glintIn: 'rgba(210,245,255,1)', glintOut: 'rgba(120,200,230,0)',
+      sea: { base: '#22373a', streak: '150,190,180', caps: true, drift: 0.02 }, rocks: 8, rock: 0x3f4448, rain: true, bolt: true },
+  ];
+  const fr1 = function (x) { return x - Math.floor(x); };
   let TRK = SKF.build(COURSES[0]);
   const PX_PER_M = 55;            // drag distance (logical px) per metre of steering
   const SKIFF_R = 0.95;           // mesh scale (radius 1 after packing): about 1.9 m long
@@ -5521,6 +5543,25 @@ window.SKIFF_MESH = {"pos": "Mez2vM0UeNb2vNMt3MB+vmQae9X7vRUBMuh+vobr6f77vT7/PRV
       c.fillStyle = g; c.fillRect(0, 0, w, h);
     });
   };
+  // the sea far below the causeway: streaked water, whitecaps on the storm theme
+  function seaTexture(sea) {
+    const t = canvasTex(256, 256, function (c, w, h) {
+      c.fillStyle = sea.base; c.fillRect(0, 0, w, h);
+      for (let i = 0; i < 260; i++) {
+        const rx = fr1(Math.sin(i * 12.9898) * 43758.5453), ry = fr1(Math.sin(i * 78.233) * 12543.21);
+        c.strokeStyle = 'rgba(' + sea.streak + ',' + (0.05 + ry * 0.13).toFixed(3) + ')';
+        c.lineWidth = 1 + rx * 2;
+        c.beginPath(); c.moveTo(fr1(rx * 7919) * w, ry * h); c.lineTo(fr1(rx * 7919) * w + 8 + rx * 30, ry * h + (rx - 0.5) * 3); c.stroke();
+      }
+      if (sea.caps) for (let i = 0; i < 120; i++) {
+        const rx = fr1(Math.sin(i * 39.37 + 7) * 24634.63), ry = fr1(Math.sin(i * 11.13 + 3) * 9871.4);
+        c.fillStyle = 'rgba(235,246,250,' + (0.25 + ry * 0.45).toFixed(3) + ')';
+        c.fillRect(rx * w, ry * h, 3 + rx * 9, 1.4 + rx * 1.4);
+      }
+    });
+    t.wrapS = t.wrapT = THREE.RepeatWrapping; t.repeat.set(7, 7);
+    return t;
+  }
   // place an object on the course frame at distance s, lateral x, height y (object -Z = road forward)
   const _m = new THREE.Matrix4();
   function frameAt(obj, s, x, y) {
@@ -5568,10 +5609,13 @@ window.SKIFF_MESH = {"pos": "Mez2vM0UeNb2vNMt3MB+vmQae9X7vRUBMuh+vobr6f77vT7/PRV
   }
   // a flat picture standing across the road, bottom on the road surface (arches, finish)
   function standee(name, width, opts) {
+    opts = opts || {};
     const im = PA.img[name], h = width * im.height / im.width;
     const geo = new THREE.PlaneGeometry(width, h);
     geo.translate(0, h / 2, 0);
-    const mat = new THREE.MeshBasicMaterial(Object.assign({ map: texOf(name), transparent: true, alphaTest: 0.35, side: THREE.DoubleSide }, opts || {}));
+    const o2 = Object.assign({}, opts), tint = o2.tint; delete o2.tint;
+    const mat = new THREE.MeshBasicMaterial(Object.assign({ map: texOf(name), transparent: true, alphaTest: 0.35, side: THREE.DoubleSide }, o2));
+    if (tint != null) mat.color.setHex(tint);
     return new THREE.Mesh(geo, mat);
   }
 
@@ -5600,55 +5644,85 @@ window.SKIFF_MESH = {"pos": "Mez2vM0UeNb2vNMt3MB+vmQae9X7vRUBMuh+vobr6f77vT7/PRV
       scene.remove(W3.course);
     }
     const world = new THREE.Group(); scene.add(world); W3.course = world;
+    const TH = THEMES[LV.i] || THEMES[0]; W3.theme = TH;
+    scene.fog.color.setHex(TH.fog); scene.fog.near = TH.fogNear; scene.fog.far = TH.fogFar;
 
     // the canyon panorama on an inside-out sphere that follows the camera; its sun faces the long straight
     const sky = new THREE.Mesh(new THREE.SphereGeometry(1000, 40, 20),
       new THREE.MeshBasicMaterial({ map: texOf('sky'), side: THREE.BackSide, fog: false, depthWrite: false }));
+    sky.material.color.setHex(TH.skyTint); W3.skyMat = sky.material;
     const sf = SKF.lerp3(TRK.F, 520);
     sky.rotation.y = Math.atan2(-sf[2], sf[0]);
     sky.renderOrder = -2; world.add(sky); W3.sky = sky;
     // a warm bloom on the low sun (code)
     const sun = new THREE.Sprite(new THREE.SpriteMaterial({ map: radial('rgba(255,236,170,0.95)', 'rgba(255,170,60,0)'), fog: false, depthWrite: false, transparent: true, blending: THREE.AdditiveBlending }));
-    sun.scale.set(520, 520, 1); sun.renderOrder = -1; world.add(sun); W3.sun = sun;
-    W3.sunDir = new THREE.Vector3(sf[0], 0.16, sf[2]).normalize();
+    sun.material.color.setHex(TH.sunTint);
+    sun.scale.set(TH.sunScale, TH.sunScale, 1); sun.renderOrder = -1; world.add(sun); W3.sun = sun;
+    W3.sunDir = new THREE.Vector3(sf[0], TH.sunY, sf[2]).normalize();
 
     // the causeway: sandstone road, side walls and underside, a gold edge line
     world.add(new THREE.Mesh(ribbon({ xa: -T.HALF_W, xb: T.HALF_W, y: 0 }),
-      new THREE.MeshBasicMaterial({ map: texOf('track', { repeat: true }) })));
-    const wall = new THREE.MeshBasicMaterial({ color: 0xc98448, side: THREE.DoubleSide });
-    const under = new THREE.MeshBasicMaterial({ color: 0x8c4f26, side: THREE.DoubleSide });
+      new THREE.MeshBasicMaterial({ map: texOf('track', { repeat: true }), color: TH.road })));
+    const wall = new THREE.MeshBasicMaterial({ color: TH.wall, side: THREE.DoubleSide });
+    const under = new THREE.MeshBasicMaterial({ color: TH.under, side: THREE.DoubleSide });
     world.add(new THREE.Mesh(ribbon({ xa: -T.HALF_W, xb: -T.HALF_W, ya: 0, yb: -1.3 }), wall));
     world.add(new THREE.Mesh(ribbon({ xa: T.HALF_W, xb: T.HALF_W, ya: 0, yb: -1.3 }), wall));
     world.add(new THREE.Mesh(ribbon({ xa: -T.HALF_W, xb: T.HALF_W, y: -1.3 }), under));
-    const edge = new THREE.MeshBasicMaterial({ color: 0xffd25a });
+    const edge = new THREE.MeshBasicMaterial({ color: TH.edge });
     [-1, 1].forEach(function (sd) {
       world.add(new THREE.Mesh(ribbon({ xa: sd * T.HALF_W - 0.07, xb: sd * T.HALF_W + 0.07, y: 0.03 }), edge));
     });
     // sandstone pillars down to the canyon floor, every 36 m: the road floats high above the valley
     const pillarGeo = new THREE.BoxGeometry(2.2, 90, 2.2); pillarGeo.translate(0, -46, 0);
-    const pillarMat = new THREE.MeshBasicMaterial({ color: 0xb8703c });
+    const pillarMat = new THREE.MeshBasicMaterial({ color: TH.pillar });
     for (let s = 30; s < TRK.len - 10; s += 36) {
       const m = new THREE.Mesh(pillarGeo, pillarMat); frameAt(m, s, 0, 0); m.quaternion.identity(); world.add(m);
+    }
+
+    // the sea far below (sunset + storm themes): a streaked water disc that follows the camera
+    if (TH.sea) {
+      const stx = seaTexture(TH.sea);
+      const sea = new THREE.Mesh(new THREE.CircleGeometry(780, 40), new THREE.MeshBasicMaterial({ map: stx }));
+      sea.rotation.x = -Math.PI / 2; sea.position.y = -56;
+      world.add(sea); W3.sea = sea; W3.seaTex = stx;
+    } else { W3.sea = null; W3.seaTex = null; }
+    // rocky islets rising out of the water beside the causeway (sunset + storm themes)
+    if (TH.rocks) {
+      const rockGeo = new THREE.CylinderGeometry(0, 1, 1, 7); rockGeo.translate(0, 0.5, 0);   // a cone (this three build has no ConeGeometry)
+      const rockMat = new THREE.MeshBasicMaterial({ color: TH.rock });
+      for (let i = 0; i < TH.rocks; i++) {
+        const s = 60 + i * (TRK.len - 140) / TH.rocks + fr1(Math.sin(i * 31.7) * 43758.5453) * 30;
+        const lat = (i % 2 ? 1 : -1) * (17 + fr1(Math.sin(i * 17.3) * 24634.63) * 15);
+        const rk = new THREE.Mesh(rockGeo, rockMat);
+        rk.scale.set(5 + fr1(Math.sin(i * 7.9) * 12543.2) * 5, 34 + fr1(Math.sin(i * 5.1) * 9871.4) * 40, 5 + fr1(Math.sin(i * 9.4) * 31231.7) * 5);
+        frameAt(rk, s, lat, -57); rk.rotateY(i * 1.7);
+        world.add(rk);
+      }
     }
 
     // stone arches over the road at the start and on the last straight
     for (let s = 6; s < TRK.len; s += 24) {
       if (!TRK.ARCH[s] || Math.abs(s - TRK.finish) < 30) continue;
       if (TRK.gates.some(function (g) { return Math.abs(g - s) < 14; })) continue;
-      const a = standee('arch', 9.4); frameAt(a, s, 0, 0); world.add(a);
+      const a = standee('arch', 9.4, { tint: TH.archTint }); frameAt(a, s, 0, 0); world.add(a);
     }
     // the finish: the checkered arch and a checkered strip on the road
-    const fin = standee('finish', 10.4); frameAt(fin, TRK.finish, 0, 0); world.add(fin);
+    const fin = standee('finish', 10.4, { tint: TH.archTint }); frameAt(fin, TRK.finish, 0, 0); world.add(fin);
     const chk = canvasTex(64, 8, function (c) { for (let i = 0; i < 16; i++) for (let j = 0; j < 2; j++) { c.fillStyle = (i + j) % 2 ? '#2a1a10' : '#fff8ea'; c.fillRect(i * 4, j * 4, 4, 4); } });
     const finStrip = new THREE.Mesh(new THREE.PlaneGeometry(T.HALF_W * 2, 1.6), new THREE.MeshBasicMaterial({ map: chk }));
     frameAt(finStrip, TRK.finish, 0, 0.05); finStrip.rotateX(-Math.PI / 2); world.add(finStrip);
 
     // the gates: arches with a glowing turquoise threshold and a sun glint on the keystone
-    const threshMat = new THREE.MeshBasicMaterial({ map: glowAcross(), color: 0x46e6d6, transparent: true, opacity: 0.8, blending: THREE.AdditiveBlending, depthWrite: false, side: THREE.DoubleSide });
-    const glintMat = new THREE.SpriteMaterial({ map: radial('rgba(255,240,170,1)', 'rgba(255,190,60,0)'), blending: THREE.AdditiveBlending, depthWrite: false });
+    const threshMat = new THREE.MeshBasicMaterial({ map: glowAcross(), color: TH.gate, transparent: true, opacity: 0.8, blending: THREE.AdditiveBlending, depthWrite: false, side: THREE.DoubleSide });
+    const glintMat = new THREE.SpriteMaterial({ map: radial(TH.glintIn, TH.glintOut), blending: THREE.AdditiveBlending, depthWrite: false });
     W3.gates = TRK.gates.map(function (s) {
       const g = new THREE.Group();
-      const a = standee('arch', 9.4); g.add(a);
+      const a = standee('arch', 9.4, { tint: TH.archTint }); g.add(a);
+      if (TH.gateRim != null) {
+        // storm gates: a bright rim framing the dark threshold so the gate stays readable
+        const rim = new THREE.Mesh(new THREE.PlaneGeometry(T.HALF_W * 2 + 0.7, 1.8), new THREE.MeshBasicMaterial({ color: TH.gateRim, transparent: true, opacity: 0.9, depthWrite: false, side: THREE.DoubleSide }));
+        rim.rotation.x = -Math.PI / 2; rim.position.y = 0.045; g.add(rim);
+      }
       const th = new THREE.Mesh(new THREE.PlaneGeometry(T.HALF_W * 2, 1.2), threshMat.clone()); th.rotation.x = -Math.PI / 2; th.position.y = 0.06; g.add(th);
       const gl = new THREE.Sprite(glintMat.clone()); gl.position.set(0, 8.3, 0.1); gl.scale.set(3.4, 3.4, 1); g.add(gl);
       frameAt(g, s, 0, 0); world.add(g);
@@ -5656,7 +5730,7 @@ window.SKIFF_MESH = {"pos": "Mez2vM0UeNb2vNMt3MB+vmQae9X7vRUBMuh+vobr6f77vT7/PRV
     });
     // arrow signs before the drops, on the outside of the turn
     TRK.signs.forEach(function (o) {
-      const m = standee('sign', 2.6); frameAt(m, o.s, o.dir * -5.6, 0.2);
+      const m = standee('sign', 2.6, { tint: TH.signTint }); frameAt(m, o.s, o.dir * -5.6, 0.2);
       if (o.dir > 0) m.scale.x = -1;   // the art points left: mirrored for a right turn
       world.add(m);
     });
@@ -5702,6 +5776,7 @@ window.SKIFF_MESH = {"pos": "Mez2vM0UeNb2vNMt3MB+vmQae9X7vRUBMuh+vobr6f77vT7/PRV
   }
 
   const _a = new THREE.Vector3(), _b = new THREE.Vector3(), _c = new THREE.Vector3();
+  const _boltWhite = new THREE.Color(0xe8f1f6);
   function update3D(dt) {
     if (!W3.ready) return;
     const t = PA.realTime, s = st.s, x = st.x, warpK = st.boost === 'warp' ? 1 : 0;
@@ -5751,6 +5826,19 @@ window.SKIFF_MESH = {"pos": "Mez2vM0UeNb2vNMt3MB+vmQae9X7vRUBMuh+vobr6f77vT7/PRV
     if (Math.abs(c.fov - fov) > 0.05) { c.fov += (fov - c.fov) * Math.min(1, dt * 5); c.updateProjectionMatrix(); }
     W3.sky.position.copy(c.position);
     W3.sun.position.copy(c.position).addScaledVector(W3.sunDir, 900);
+    // the sea follows the camera and its streaks drift, so the water below always churns
+    if (W3.sea) {
+      W3.sea.position.set(c.position.x, -56, c.position.z);
+      if (W3.seaTex) { const dr = W3.theme.sea.drift; W3.seaTex.offset.set(t * dr, t * dr * 1.6); }
+    }
+    // storm lightning: a brief ambient lift on the sky dome only — never a screen flash
+    if (W3.theme && W3.theme.bolt && W3.skyMat) {
+      if (W3.boltNext == null || t > W3.boltNext) { W3.boltAt = t; W3.boltNext = t + 3.5 + fr1(Math.sin(t * 7.31) * 43758.5453) * 5; }
+      const bt = t - (W3.boltAt == null ? -99 : W3.boltAt);
+      let env = 0;
+      if (bt >= 0 && bt < 0.55) env = Math.max(Math.exp(-bt * 13), (bt > 0.16 && bt < 0.4) ? Math.exp(-(bt - 0.16) * 15) * 0.75 : 0);
+      W3.skyMat.color.setHex(W3.theme.skyTint).lerp(_boltWhite, env * 0.5);
+    }
   }
   // logical screen position of a point on the course (for sand bursts and floating text)
   function toScreen(s, x, y) {
@@ -5952,6 +6040,24 @@ window.SKIFF_MESH = {"pos": "Mez2vM0UeNb2vNMt3MB+vmQae9X7vRUBMuh+vobr6f77vT7/PRV
       c.restore();
     }
   }
+  function drawRain(c) {
+    // storm rain: slanted streaks blown sideways, drawn over the world, under the HUD
+    const v = PA.view, t = PA.realTime;
+    c.save();
+    c.strokeStyle = 'rgba(185,212,228,0.38)';
+    c.lineWidth = 2;
+    c.beginPath();
+    for (let i = 0; i < 110; i++) {
+      const rx = fr1(Math.sin(i * 12.9898) * 43758.5453), ry = fr1(Math.sin(i * 78.233 + 4.7) * 12543.21);
+      const sp = 0.85 + ry * 0.6;
+      const y = fr1(ry + t * sp) * (v.h + 40) - 20;
+      const x = rx * (v.w + 60) - 30 + y * 0.16;
+      c.moveTo(x, y);
+      c.lineTo(x - 4, y + 15 * sp);
+    }
+    c.stroke();
+    c.restore();
+  }
   function drawButton(c) {
     const y = btnY(), r = BTN.r, x = BTN.x, t = PA.realTime;
     const ready = st.charges > 0 && !st.boost && G.phase !== 'result';
@@ -6103,6 +6209,7 @@ window.SKIFF_MESH = {"pos": "Mez2vM0UeNb2vNMt3MB+vmQae9X7vRUBMuh+vobr6f77vT7/PRV
     }
     drawSpeed(c);
     fx.draw(c);
+    if (W3.theme && W3.theme.rain) drawRain(c);
     drawHud(c);
     drawButton(c);
     drawStick(c);
