@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-<title>Favorites Rotation — 7 Quick Games</title>
+<title>Favorites Rotation — 8 Quick Games</title>
 <style>
   * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
   html, body { height:100%; background:#000; overflow:hidden; }
@@ -49,20 +49,66 @@
 
   /* ---------- playlist overlay ---------- */
   #list {
-    position:fixed; inset:0; z-index:50; background:rgba(4,4,12,.94);
+    position:fixed; inset:0; z-index:50; background:rgba(4,4,12,.94); overflow-y:auto;
     display:none; flex-direction:column; padding:26px 20px calc(20px + env(safe-area-inset-bottom));
   }
   #list.open { display:flex; }
   #list h2 { font-size:15px; letter-spacing:.3em; text-transform:uppercase; color:#ffd94d; margin-bottom:18px; text-align:center; }
   #list .item {
-    display:flex; align-items:center; gap:14px; width:100%; text-align:left;
-    padding:18px 16px; margin-bottom:12px; border-radius:14px; cursor:pointer;
+    display:flex; align-items:center; gap:10px; width:100%;
+    padding:10px 12px; margin-bottom:12px; border-radius:14px;
     border:1px solid rgba(255,255,255,.16); background:rgba(255,255,255,.06); color:#fff;
+  }
+  #list .item .go {
+    flex:1 1 auto; min-width:0; display:flex; align-items:center; gap:14px; text-align:left;
+    background:none; border:0; color:#fff; cursor:pointer; padding:6px 2px; font:inherit;
   }
   #list .item.now { border-color:#7ee787; background:rgba(126,231,135,.12); }
   #list .item .n { font-size:22px; font-weight:900; color:rgba(255,255,255,.5); }
   #list .item .tt { font-size:19px; font-weight:800; }
   #list .item .ss { font-size:12.5px; color:rgba(255,255,255,.65); letter-spacing:.14em; }
+  #btnPlayAllList { width:100%; padding:16px; font-size:19px; margin-bottom:18px; flex:0 0 auto; }
+
+  /* ---------- home / start screen ---------- */
+  .playAll {
+    border:0; cursor:pointer; color:#08130a; background:linear-gradient(180deg,#8ff09a,#57c964);
+    font-weight:900; letter-spacing:.06em; border-radius:999px;
+    box-shadow:0 6px 24px rgba(87,201,100,.35); font-family:inherit;
+  }
+  .playAll:active { transform:scale(.98); }
+  #home {
+    position:fixed; inset:0; z-index:60; overflow-y:auto; -webkit-overflow-scrolling:touch;
+    display:flex; flex-direction:column; align-items:center; text-align:center;
+    padding:30px 18px calc(24px + env(safe-area-inset-bottom));
+    background:radial-gradient(ellipse at center, rgba(10,10,28,.94), rgba(0,0,0,.985));
+  }
+  #home.gone { display:none; }
+  #home .kicker { font-size:12px; letter-spacing:.35em; text-transform:uppercase; color:#ffd94d; margin-bottom:10px; }
+  #home .htitle { font-size:min(13vw,56px); font-weight:900; line-height:1.02; text-shadow:0 4px 30px rgba(0,0,0,.8); }
+  #home .hsub { margin-top:10px; font-size:14.5px; color:rgba(255,255,255,.72); }
+  #btnPlayAll { margin-top:24px; padding:19px 54px; font-size:24px; flex:0 0 auto; }
+  #home .hlabel { margin:26px 0 12px; font-size:12px; letter-spacing:.28em; text-transform:uppercase; color:rgba(255,255,255,.55); }
+  #homeItems { width:100%; max-width:560px; }
+  .hrow {
+    display:flex; align-items:center; gap:10px; width:100%;
+    padding:12px; margin-bottom:9px; border-radius:14px;
+    border:1px solid rgba(255,255,255,.16); background:rgba(255,255,255,.06);
+  }
+  .hrow .n { font-size:19px; font-weight:900; color:rgba(255,255,255,.5); flex:0 0 22px; }
+  .hrow .hinfo { flex:1 1 auto; min-width:0; text-align:left; }
+  .hrow .tt { font-size:16.5px; font-weight:800; }
+  .hrow .ss { font-size:11.5px; color:rgba(255,255,255,.6); letter-spacing:.06em; }
+  .startHere {
+    flex:0 0 auto; padding:11px 13px; border-radius:999px; border:1px solid rgba(126,231,135,.55);
+    background:rgba(126,231,135,.16); color:#b9f4c0; font-size:13.5px; font-weight:800; cursor:pointer; white-space:nowrap; font-family:inherit;
+  }
+  .startHere:active { background:rgba(126,231,135,.32); }
+  a.open {
+    flex:0 0 auto; padding:11px 12px; border-radius:999px; text-decoration:none;
+    border:1px solid rgba(255,255,255,.3); background:rgba(255,255,255,.08);
+    color:#fff; font-size:13.5px; font-weight:700; white-space:nowrap;
+  }
+  #home .hnote { margin-top:14px; font-size:12.5px; line-height:1.55; color:rgba(255,255,255,.55); max-width:560px; }
   #list .closeRow { margin-top:auto; text-align:center; }
   #list .closeRow button {
     padding:12px 34px; border-radius:999px; border:1px solid rgba(255,255,255,.3);
@@ -75,28 +121,39 @@
 <div id="prog"></div>
 <iframe id="frame" title="game" allow="autoplay; fullscreen; gamepad" referrerpolicy="no-referrer"></iframe>
 
-<div id="card">
-  <div class="kicker" id="cardKick">Game 1 of 7</div>
+<div id="card" class="hide">
+  <div class="kicker" id="cardKick">Game 1 of 8</div>
   <div class="gtitle" id="cardTitle">WIND RACER!</div>
   <div class="levels" id="cardLevels">1 LEVEL</div>
   <div class="gsub" id="cardSub">Sail racing — drag to steer</div>
 </div>
 
-<div id="bar">
+<div id="bar" style="display:none">
   <button id="btnPrev" title="Previous game" aria-label="Previous game">⏮</button>
   <button id="btnPlay" title="Pause rotation" aria-label="Pause or resume rotation">⏸</button>
   <button id="btnNext" title="Next game" aria-label="Next game">⏭</button>
   <div id="meta">
     <div class="t" id="metaTitle">WIND RACER!</div>
-    <div class="s"><span id="metaPos">Game 1 of 7</span> · Levels <span id="lvlCount">0 / 1</span><span id="metaWin"></span></div>
+    <div class="s"><span id="metaPos">Game 1 of 8</span> · Levels <span id="lvlCount">0 / 1</span><span id="metaWin"></span></div>
   </div>
   <button id="btnList" title="Playlist" aria-label="Playlist">☰</button>
 </div>
 
 <div id="list">
   <h2>Favorites — One Run Each</h2>
+  <button id="btnPlayAllList" class="playAll">▶ PLAY ALL — FROM GAME 1</button>
   <div id="listItems"></div>
   <div class="closeRow"><button id="btnCloseList">Close</button></div>
+</div>
+
+<div id="home">
+  <div class="kicker">Cherie's Favorites</div>
+  <div class="htitle">FAVORITES<br>ROTATION</div>
+  <div class="hsub">8 quick games — one run each, back to back</div>
+  <button id="btnPlayAll" class="playAll">▶ PLAY ALL</button>
+  <div class="hlabel">…or start at a specific game:</div>
+  <div id="homeItems"></div>
+  <div class="hnote">“Start here” begins the rotation at that game and plays on through the rest.<br>“Open ↗” plays just that one game, on its own page.</div>
 </div>
 
 <script>
@@ -113,6 +170,11 @@
      hero dies (one level per rotation slot).
    A per-game fallback timer (default 240s, ?seg=<s> overrides) still
    rotates if no run ever finishes.
+   The page opens on a home screen: a big PLAY ALL button (rotation
+   from game 1), a "Start here" button per game (rotation begins at
+   that game and plays on through the rest), and a plain "Open ↗"
+   direct link per game (that game alone, no rotation). ?start=<1-8>
+   and ?playall=1 deep-link straight into the rotation.
    ===================================================================== */
 
 var GAMES = [
@@ -157,6 +219,7 @@ var listEl   = document.getElementById("list");
 var listItems= document.getElementById("listItems");
 
 var idx = 0;              // current game index
+var started = false;      // rotation started (home screen dismissed)
 var levels = 0;           // micro-done messages counted for current game
 var paused = false;       // rotation paused (button or hidden tab)
 var userPaused = false;   // paused via the ⏯ button specifically
@@ -171,18 +234,27 @@ window.__rot = {
   get idx() { return idx; },
   get levels() { return levels; },
   get paused() { return paused; },
+  get started() { return started; },
   games: GAMES.map(function (g) { return g.title; })
 };
 
 /* ---------------- playlist overlay ---------------- */
 GAMES.forEach(function (g, i) {
-  var b = document.createElement("button");
-  b.className = "item"; b.id = "li-" + i;
-  b.innerHTML = '<span class="n">' + (i + 1) + '</span>' +
+  var row = document.createElement("div");
+  row.className = "item"; row.id = "li-" + i;
+  var go = document.createElement("button");
+  go.className = "go";
+  go.innerHTML = '<span class="n">' + (i + 1) + '</span>' +
                 '<span><span class="tt"></span><br><span class="ss">' + g.tag + ' · ' + g.sub + '</span></span>';
-  b.querySelector(".tt").textContent = g.title;
-  b.addEventListener("click", function () { closeList(); goTo(i); });
-  listItems.appendChild(b);
+  go.querySelector(".tt").textContent = g.title;
+  go.title = "Start the rotation here";
+  go.addEventListener("click", function () { closeList(); startRotation(i); });
+  var open = document.createElement("a");
+  open.className = "open"; open.href = g.url; open.textContent = "Open ↗";
+  open.title = "Open this game on its own";
+  row.appendChild(go);
+  row.appendChild(open);
+  listItems.appendChild(row);
 });
 function markCurrent() {
   GAMES.forEach(function (_, i) {
@@ -191,6 +263,39 @@ function markCurrent() {
 }
 function openList()  { listEl.classList.add("open"); showBar(); }
 function closeList() { listEl.classList.remove("open"); armBarFade(); }
+
+/* ---------------- home / start screen ---------------- */
+var homeEl = document.getElementById("home");
+var homeItems = document.getElementById("homeItems");
+GAMES.forEach(function (g, i) {
+  var row = document.createElement("div");
+  row.className = "hrow";
+  row.innerHTML = '<span class="n">' + (i + 1) + '</span>' +
+                  '<span class="hinfo"><span class="tt"></span><br><span class="ss">' + g.tag + ' · ' + g.sub + '</span></span>';
+  row.querySelector(".tt").textContent = g.title;
+  var start = document.createElement("button");
+  start.className = "startHere"; start.textContent = "▶ Start here";
+  start.addEventListener("click", function () { startRotation(i); });
+  var open = document.createElement("a");
+  open.className = "open"; open.href = g.url; open.textContent = "Open ↗";
+  open.title = "Open this game on its own";
+  row.appendChild(start);
+  row.appendChild(open);
+  homeItems.appendChild(row);
+});
+
+/* Begin the rotation at game i (0-based): dismiss the home screen,
+   clear any pause, and load that game; rotation continues from there. */
+function startRotation(i) {
+  started = true;
+  homeEl.classList.add("gone");
+  bar.style.display = "";
+  userPaused = false;
+  if (paused) setPaused(false, false);
+  goTo(i);
+}
+document.getElementById("btnPlayAll").addEventListener("click", function () { startRotation(0); });
+document.getElementById("btnPlayAllList").addEventListener("click", function () { closeList(); startRotation(0); });
 
 /* ---------------- controls bar auto-fade ---------------- */
 function showBar() {
@@ -335,9 +440,16 @@ document.addEventListener("visibilitychange", function () {
   else if (!userPaused) { setPaused(false, false); }
 });
 
-/* ---------------- go ---------------- */
+/* ---------------- go ----------------
+   The home screen waits for a choice; ?start=<1-8> / ?playall=1
+   deep-link straight into the rotation. */
 updateMeta();
-goTo(0);
+var startParam = parseInt(qs.get("start"), 10);
+if (isFinite(startParam) && startParam >= 1 && startParam <= GAMES.length) {
+  startRotation(startParam - 1);
+} else if (qs.get("playall") === "1") {
+  startRotation(0);
+}
 </script>
 </body>
 </html>
