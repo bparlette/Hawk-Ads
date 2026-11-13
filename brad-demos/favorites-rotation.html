@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<title>Favorites Rotation — 7 Quick Games</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
+  html, body { height:100%; background:#000; overflow:hidden; }
+  body { font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; color:#fff; }
+
+  #frame { position:fixed; inset:0; width:100%; height:100%; border:0; background:#000; display:block; }
+
+  /* ---------- title card ---------- */
+  #card {
+    position:fixed; inset:0; z-index:30; display:flex; flex-direction:column;
+    align-items:center; justify-content:center; text-align:center; padding:24px;
+    background:radial-gradient(ellipse at center, rgba(10,10,28,.88), rgba(0,0,0,.97));
+    opacity:1; transition:opacity .45s ease; pointer-events:none;
+  }
+  #card.hide { opacity:0; }
+  #card .kicker { font-size:13px; letter-spacing:.35em; text-transform:uppercase; color:#ffd94d; margin-bottom:14px; }
+  #card .gtitle { font-size:min(11vw,54px); font-weight:900; line-height:1.05; text-shadow:0 4px 30px rgba(0,0,0,.8); }
+  #card .levels { margin-top:16px; font-size:min(5.4vw,22px); font-weight:700; letter-spacing:.22em; color:#7ee787; }
+  #card .gsub { margin-top:10px; font-size:14px; color:rgba(255,255,255,.65); }
+
+  /* ---------- controls ---------- */
+  #bar {
+    position:fixed; left:0; right:0; bottom:0; z-index:40;
+    display:flex; align-items:center; gap:6px;
+    padding:8px 10px calc(8px + env(safe-area-inset-bottom));
+    background:linear-gradient(to top, rgba(0,0,0,.88), rgba(0,0,0,.55) 70%, transparent);
+    transition:opacity .4s ease, transform .4s ease;
+  }
+  #bar.fade { opacity:0; transform:translateY(8px); pointer-events:none; }
+  #bar button {
+    flex:0 0 auto; width:44px; height:44px; border-radius:50%; border:1px solid rgba(255,255,255,.25);
+    background:rgba(20,20,34,.75); color:#fff; font-size:19px; line-height:1; cursor:pointer;
+    display:flex; align-items:center; justify-content:center;
+  }
+  #bar button:active { background:rgba(70,70,110,.85); }
+  #meta { flex:1 1 auto; min-width:0; padding:0 4px; }
+  #meta .t { font-size:14px; font-weight:800; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  #meta .s { font-size:11.5px; color:rgba(255,255,255,.72); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  #lvlCount { font-weight:800; color:#7ee787; }
+
+  /* fallback progress hairline */
+  #prog { position:fixed; top:0; left:0; height:3px; z-index:41; background:#ffd94d; width:0%; transition:width .3s linear; }
+
+  /* ---------- playlist overlay ---------- */
+  #list {
+    position:fixed; inset:0; z-index:50; background:rgba(4,4,12,.94);
+    display:none; flex-direction:column; padding:26px 20px calc(20px + env(safe-area-inset-bottom));
+  }
+  #list.open { display:flex; }
+  #list h2 { font-size:15px; letter-spacing:.3em; text-transform:uppercase; color:#ffd94d; margin-bottom:18px; text-align:center; }
+  #list .item {
+    display:flex; align-items:center; gap:14px; width:100%; text-align:left;
+    padding:18px 16px; margin-bottom:12px; border-radius:14px; cursor:pointer;
+    border:1px solid rgba(255,255,255,.16); background:rgba(255,255,255,.06); color:#fff;
+  }
+  #list .item.now { border-color:#7ee787; background:rgba(126,231,135,.12); }
+  #list .item .n { font-size:22px; font-weight:900; color:rgba(255,255,255,.5); }
+  #list .item .tt { font-size:19px; font-weight:800; }
+  #list .item .ss { font-size:12.5px; color:rgba(255,255,255,.65); letter-spacing:.14em; }
+  #list .closeRow { margin-top:auto; text-align:center; }
+  #list .closeRow button {
+    padding:12px 34px; border-radius:999px; border:1px solid rgba(255,255,255,.3);
+    background:rgba(255,255,255,.08); color:#fff; font-size:15px; font-weight:700; cursor:pointer;
+  }
+</style>
+</head>
+<body>
+
+<div id="prog"></div>
+<iframe id="frame" title="game" allow="autoplay; fullscreen; gamepad" referrerpolicy="no-referrer"></iframe>
+
+<div id="card">
+  <div class="kicker" id="cardKick">Game 1 of 7</div>
+  <div class="gtitle" id="cardTitle">WIND RACER!</div>
+  <div class="levels" id="cardLevels">3 LEVELS</div>
+  <div class="gsub" id="cardSub">Sail racing — drag to steer</div>
+</div>
+
+<div id="bar">
+  <button id="btnPrev" title="Previous game" aria-label="Previous game">⏮</button>
+  <button id="btnPlay" title="Pause rotation" aria-label="Pause or resume rotation">⏸</button>
+  <button id="btnNext" title="Next game" aria-label="Next game">⏭</button>
+  <div id="meta">
+    <div class="t" id="metaTitle">WIND RACER!</div>
+    <div class="s"><span id="metaPos">Game 1 of 7</span> · Levels <span id="lvlCount">0 / 3</span><span id="metaWin"></span></div>
+  </div>
+  <button id="btnList" title="Playlist" aria-label="Playlist">☰</button>
+</div>
+
+<div id="list">
+  <h2>Favorites — One Run Each</h2>
+  <div id="listItems"></div>
+  <div class="closeRow"><button id="btnCloseList">Close</button></div>
+</div>
+
+<script>
+"use strict";
+/* =====================================================================
+   FAVORITES ROTATION — Cherie's quick-play favorites, one run each.
+   Rotation is driven by the games' own end-of-run signals; a message
+   means the current game's run is finished, so the shell rotates on
+   the 1st message:
+   - pixel + pixel-3 games post  { type:"micro-done", win, score }
+     once, when their full run ends (pixel-3 = the whole 3 levels);
+   - gp2d/gp3d vendor games post  { gp:"end", win, score }  at run end;
+   - PITBALL VERITY posts micro-done when a level is cleared or the
+     hero dies (one level per rotation slot).
+   A per-game fallback timer (default 240s, ?seg=<s> overrides) still
+   rotates if no run ever finishes.
+   ===================================================================== */
+
+var GAMES = [
+  { title: "WIND RACER!",  sub: "Sail racing — drag to steer", levels: 3, tag: "3 LEVELS",
+    url: "https://bparlette.github.io/Hawk-Ads/games/pixel-3/wind-racer/" },
+  { title: "RICOCHET!",    sub: "Bank-shot target blasting", levels: 3, tag: "3 LEVELS",
+    url: "https://bparlette.github.io/Hawk-Ads/games/pixel-3/ricochet/" },
+  { title: "SNACK HOLE!",  sub: "Eat the city — grow the hole", levels: 3, tag: "3 LEVELS",
+    url: "https://bparlette.github.io/Hawk-Ads/games/pixel-3/snack-hole/" },
+  { title: "MOB MARCH!",   sub: "Steer the crowd — pick the right gate", levels: 1, tag: "1 LEVEL",
+    url: "https://bparlette.github.io/Hawk-Ads/games/pixel-marathon/mob-march/" },
+  { title: "SHARDBORN",    sub: "Survive the swarm!", levels: 1, tag: "1 LEVEL",
+    url: "https://bparlette.github.io/Hawk-Ads/games/pixel-marathon/shardborn/" },
+  { title: "PITBALL VERITY", sub: "Pinball pit survival — clear one level", levels: 1, tag: "1 LEVEL",
+    url: "https://bparlette.github.io/Hawk/games/pitball-verity/" },
+  { title: "ZOMBIE SURVIVORS", sub: "One cat vs the horde — survive 32s", levels: 1, tag: "1 RUN",
+    url: "https://bparlette.github.io/Hawk/brad-demos/g/bullet-heaven/" }
+];
+var GAME_ORIGIN = "https://bparlette.github.io";
+var CARD_MS = 2500;
+
+var qs = new URLSearchParams(location.search);
+var segParam = parseInt(qs.get("seg"), 10);
+var FALLBACK_S = (isFinite(segParam) && segParam > 0) ? segParam : 240;
+
+var frame    = document.getElementById("frame");
+var card     = document.getElementById("card");
+var cardKick = document.getElementById("cardKick");
+var cardTitle= document.getElementById("cardTitle");
+var cardSub  = document.getElementById("cardSub");
+var cardLevels = document.getElementById("cardLevels");
+var bar      = document.getElementById("bar");
+var metaTitle= document.getElementById("metaTitle");
+var metaPos  = document.getElementById("metaPos");
+var metaWin  = document.getElementById("metaWin");
+var lvlCount = document.getElementById("lvlCount");
+var prog     = document.getElementById("prog");
+var btnPlay  = document.getElementById("btnPlay");
+var listEl   = document.getElementById("list");
+var listItems= document.getElementById("listItems");
+
+var idx = 0;              // current game index
+var levels = 0;           // micro-done messages counted for current game
+var paused = false;       // rotation paused (button or hidden tab)
+var userPaused = false;   // paused via the ⏯ button specifically
+var fallbackTimer = null; // setTimeout id
+var fallbackDeadline = 0; // ms epoch when fallback fires
+var fallbackRemaining = FALLBACK_S * 1000;
+var progTimer = null;
+var barFadeTimer = null;
+
+/* test/inspection hook */
+window.__rot = {
+  get idx() { return idx; },
+  get levels() { return levels; },
+  get paused() { return paused; },
+  games: GAMES.map(function (g) { return g.title; })
+};
+
+/* ---------------- playlist overlay ---------------- */
+GAMES.forEach(function (g, i) {
+  var b = document.createElement("button");
+  b.className = "item"; b.id = "li-" + i;
+  b.innerHTML = '<span class="n">' + (i + 1) + '</span>' +
+                '<span><span class="tt"></span><br><span class="ss">' + g.tag + ' · ' + g.sub + '</span></span>';
+  b.querySelector(".tt").textContent = g.title;
+  b.addEventListener("click", function () { closeList(); goTo(i); });
+  listItems.appendChild(b);
+});
+function markCurrent() {
+  GAMES.forEach(function (_, i) {
+    document.getElementById("li-" + i).classList.toggle("now", i === idx);
+  });
+}
+function openList()  { listEl.classList.add("open"); showBar(); }
+function closeList() { listEl.classList.remove("open"); armBarFade(); }
+
+/* ---------------- controls bar auto-fade ---------------- */
+function showBar() {
+  bar.classList.remove("fade");
+  clearTimeout(barFadeTimer);
+}
+function armBarFade() {
+  clearTimeout(barFadeTimer);
+  barFadeTimer = setTimeout(function () {
+    if (!listEl.classList.contains("open")) bar.classList.add("fade");
+  }, 3000);
+}
+["pointermove", "pointerdown", "touchstart"].forEach(function (ev) {
+  document.addEventListener(ev, function () { showBar(); armBarFade(); }, { passive: true });
+});
+
+/* ---------------- fallback timer ---------------- */
+function startProgTicker() {
+  stopProgTicker();
+  progTimer = setInterval(function () {
+    if (paused || !fallbackDeadline) { return; }
+    var total = FALLBACK_S * 1000;
+    var left = Math.max(0, fallbackDeadline - Date.now());
+    prog.style.width = (100 * (1 - left / total)).toFixed(1) + "%";
+  }, 250);
+}
+function stopProgTicker() { if (progTimer) { clearInterval(progTimer); progTimer = null; } }
+
+function armFallback(ms) {
+  clearFallback();
+  fallbackRemaining = (typeof ms === "number") ? ms : FALLBACK_S * 1000;
+  if (paused) { prog.style.width = "0%"; return; }
+  fallbackDeadline = Date.now() + fallbackRemaining;
+  fallbackTimer = setTimeout(function () { advance(); }, fallbackRemaining);
+  startProgTicker();
+}
+function clearFallback() {
+  if (fallbackTimer) { clearTimeout(fallbackTimer); fallbackTimer = null; }
+  fallbackDeadline = 0;
+}
+function freezeFallback() {
+  if (fallbackTimer && fallbackDeadline) {
+    fallbackRemaining = Math.max(0, fallbackDeadline - Date.now());
+  }
+  clearFallback(); stopProgTicker();
+}
+
+/* ---------------- game loading / rotation ---------------- */
+function updateMeta() {
+  metaTitle.textContent = GAMES[idx].title;
+  metaPos.textContent = "Game " + (idx + 1) + " of " + GAMES.length;
+  lvlCount.textContent = levels + " / " + GAMES[idx].levels;
+  markCurrent();
+}
+
+function goTo(i) {
+  idx = ((i % GAMES.length) + GAMES.length) % GAMES.length;
+  levels = 0;
+  metaWin.textContent = "";
+  updateMeta();
+
+  /* title card */
+  cardKick.textContent = "Game " + (idx + 1) + " of " + GAMES.length;
+  cardTitle.textContent = GAMES[idx].title;
+  cardSub.textContent = GAMES[idx].sub;
+  cardLevels.textContent = GAMES[idx].tag;
+  card.classList.remove("hide");
+  showBar(); armBarFade();
+
+  /* load the game behind the card */
+  frame.src = GAMES[idx].url;
+  clearFallback();
+  prog.style.width = "0%";
+
+  setTimeout(function () {
+    card.classList.add("hide");
+    armFallback();
+  }, CARD_MS);
+}
+function advance() { goTo(idx + 1); }
+
+/* ---------------- end-of-run signals ---------------- */
+window.addEventListener("message", function (e) {
+  if (e.origin !== GAME_ORIGIN) return;                 // only the games' origin
+  if (e.source !== frame.contentWindow) return;          // only the current frame
+  var d = e.data;
+  if (!d || (d.type !== "micro-done" && d.gp !== "end")) return;
+  levels = GAMES[idx].levels;   // one end signal = this game's run is done
+  if (typeof d.score === "number") {
+    metaWin.textContent = " · last score " + d.score + (d.win ? " · WIN" : "");
+  }
+  updateMeta();
+  if (levels >= GAMES[idx].levels) { advance(); }
+  else { armFallback(); }                                // reset fallback per message
+});
+
+/* ---------------- auto-start attempt ----------------
+   Same-origin in production (this page is served from bparlette.github.io),
+   so poking the game's start button usually works. Cross-origin (local
+   preview) it throws — caught, and rotation carries on regardless. */
+frame.addEventListener("load", function () {
+  setTimeout(function () {
+    try {
+      var cw = frame.contentWindow;
+      if (!cw) return;
+      try { if (cw.__holeGame && typeof cw.__holeGame.begin === "function") cw.__holeGame.begin(); } catch (e) {}
+      var doc = cw.document;
+      if (doc) {
+        var els = doc.querySelectorAll("button, [role=button], a, canvas");
+        for (var i = 0; i < els.length; i++) {
+          var t = (els[i].textContent || "").toLowerCase();
+          if (/start|play|begin|go|tap/.test(t) && els[i].offsetParent !== null) {
+            els[i].dispatchEvent(new cw.MouseEvent("click", { bubbles: true }));
+            break;
+          }
+        }
+      }
+      try { cw.dispatchEvent(new cw.KeyboardEvent("keydown", { key: " ", bubbles: true })); } catch (e) {}
+      try { cw.dispatchEvent(new cw.PointerEvent("pointerdown", { bubbles: true })); } catch (e) {}
+    } catch (e) { /* cross-origin or not ready: ignore */ }
+  }, 900);
+});
+
+/* ---------------- pause / resume ---------------- */
+function setPaused(p, fromUser) {
+  if (fromUser) userPaused = p;
+  if (p === paused) return;
+  paused = p;
+  btnPlay.textContent = paused ? "▶️" : "⏸";
+  btnPlay.title = paused ? "Resume rotation" : "Pause rotation";
+  if (paused) { freezeFallback(); }
+  else { armFallback(fallbackRemaining); }
+}
+btnPlay.addEventListener("click", function () { setPaused(!paused, true); showBar(); armBarFade(); });
+document.getElementById("btnPrev").addEventListener("click", function () { goTo(idx - 1); });
+document.getElementById("btnNext").addEventListener("click", function () { advance(); });
+document.getElementById("btnList").addEventListener("click", openList);
+document.getElementById("btnCloseList").addEventListener("click", closeList);
+
+document.addEventListener("visibilitychange", function () {
+  if (document.hidden) { setPaused(true, false); }
+  else if (!userPaused) { setPaused(false, false); }
+});
+
+/* ---------------- go ---------------- */
+updateMeta();
+goTo(0);
+</script>
+</body>
+</html>
